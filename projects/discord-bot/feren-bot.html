@@ -9,6 +9,13 @@
 	<link rel="stylesheet" href="../../css/button.css">
 </head>
 <body>
+	<script>
+		const onlineHostname = 'www.stefanuslie25.my.id';
+	
+		if (window.location.hostname === onlineHostname && window.location.pathname.endsWith('feren-bot.html')) {
+			window.location.replace(window.location.pathname.replace('feren-bot.html', 'feren-bot'));
+		}
+	</script>
 	<div class="background"></div>
 	<div class="overlay"></div>
 	<div class="center-content">

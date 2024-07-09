@@ -9,6 +9,13 @@
 	<link rel="stylesheet" href="css/button.css">
 </head>
 <body>
+	<script>
+		const onlineHostname = 'www.stefanuslie25.my.id';
+	
+		if (window.location.hostname === onlineHostname && window.location.pathname.endsWith('index.html')) {
+			window.location.replace('/');
+		}
+	</script>
 	<div class="background"></div>
 	<div class="overlay"></div>
 	<div class="center-content">

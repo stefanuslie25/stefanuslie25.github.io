@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Web by stefanuslie25</title>
+	<link rel="icon" href="https://i.imgur.com/taLNQSv.png" type="image/png">
+	<link rel="stylesheet" href="../..ttps://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+	<link rel="stylesheet" href="../../styles/main.css">
+	<link rel="stylesheet" href="../../styles/button.css">
+	<link rel="stylesheet" href="../../styles/box.css">
+	<script src="../../styles/script.js"></script>
+</head>
+<body>
+	<script>
+		if (window.location.hostname === 'www.stefanuslie25.my.id' && window.location.pathname.endsWith('template.html')) {
+			window.location.replace(window.location.pathname.replace('template.html', 'template'));
+		}
+		
+		function showAlert() {
+			alert("Ini adalah pesan peringatan!");
+			
+			var textToCopy = document.getElementById("textToCopy");
+			
+			textToCopy.select();
+			textToCopy.setSelectionRange(0, 99999);
+			
+			document.execCommand("copy");
+		}
+	</script>
+	<div class="bg"></div>
+	<div class="bg-filter"></div>
+	<div class="list-content">
+		<div>
+			<div class="center-box">
+				<h1>My Template<br></h1>
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+				</p>
+				<textarea id="textToCopy" rows="4" cols="50" class="copy-box" readonly>https://google.com/</textarea>
+				<div class="button-in-box">
+					<button onclick="showAlert()" class="button">Copy me, senpai!</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="footer-with-button">
+		<button onclick="window.location.href='../../index.html'" class="button">Home</button>
+	</div>
+	<div class="footer">
+		<p>Made with github page and chatgpt.</p>
+	</div>
+</body>
+</html>

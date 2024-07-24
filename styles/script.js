@@ -1,80 +1,30 @@
-// Menu functionality code
-const menuIcon = document.querySelector('.menu-icon');
-const menu = document.querySelector('.menu');
-
-// Toggle menu visibility
-menuIcon.addEventListener('click', function() {
-  menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
-});
-
-// Copy to clipboard functionality
-const copyButtons = document.querySelectorAll('.copy-btn');
-
-copyButtons.forEach(function(button) {
-  button.addEventListener('click', function() {
-    const codeArea = this.previousElementSibling;
-    navigator.clipboard.writeText(codeArea.textContent.trim());
-    showCopyConfirmation(this);
-  });
-});
-
-function showCopyConfirmation(button) {
-  const confirmationElement = document.createElement('div');
-  confirmationElement.classList.add('copy-confirmation');
-  confirmationElement.textContent = 'Copied to clipboard!';
-
-  button.parentNode.appendChild(confirmationElement);
-
-  setTimeout(function() {
-    confirmationElement.classList.add('fade-out');
-    setTimeout(function() {
-      confirmationElement.remove();
-    }, 300);
-  }, 2000);
+if (window.location.hostname === 'www.stefanuslie25.my.id' && window.location.pathname.endsWith('index.html')) {
+	window.location.replace('/');
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-  const container = document.querySelector('.container');
-  const snippetCountElement = document.querySelector('.snippet-count');
+if (window.location.hostname === 'www.stefanuslie25.my.id' && window.location.pathname.endsWith('list.html')) {
+	window.location.replace(window.location.pathname.replace('list.html', 'list'));
+}
 
-  // Populate snippet elements
-  snippetData.forEach(function(snippet) {
-    const snippetElement = document.createElement('div');
-    snippetElement.classList.add('snippet');
+if (window.location.hostname === 'www.stefanuslie25.my.id' && window.location.pathname.endsWith('template.html')) {
+	window.location.replace(window.location.pathname.replace('template.html', 'template-page'));
+}
 
-    const titleElement = document.createElement('h2');
-    titleElement.classList.add('snippet-title');
-    titleElement.textContent = snippet.title;
+if (window.location.hostname === 'www.stefanuslie25.my.id' && window.location.pathname.endsWith('001_Counting.html')) {
+	window.location.replace(window.location.pathname.replace('001_Counting.html', 'counting'));
+}
 
-    const descriptionElement = document.createElement('p');
-    descriptionElement.classList.add('snippet-description');
-    descriptionElement.textContent = snippet.description;
+function copyAlert() {
+	alert("Successfully copy the code!");
+	
+	var textToCopy = document.getElementById("textToCopy");
+	
+	textToCopy.select();
+	textToCopy.setSelectionRange(0, 99999);
+	
+	document.execCommand("copy");
+}
 
-    const getCodeElement = document.createElement('a');
-    getCodeElement.classList.add('get-code');
-    getCodeElement.href = snippet.link;
-    getCodeElement.textContent = 'Get Code';
-
-    snippetElement.appendChild(titleElement);
-    snippetElement.appendChild(descriptionElement);
-    snippetElement.appendChild(getCodeElement);
-    container.appendChild(snippetElement);
-  });
-
-  // Update the snippet count
-  snippetCountElement.textContent = `(${snippetData.length})`;
-
-  // Handle snippet click events
-  const snippets = document.querySelectorAll('.snippet');
-  snippets.forEach(function(snippet) {
-    snippet.addEventListener('click', function() {
-      // Remove 'active' class from all snippets
-      snippets.forEach(function(s) {
-        s.classList.remove('active');
-      });
-
-      // Add 'active' class to the clicked snippet
-      this.classList.add('active');
-    });
-  });
-});
+function comingsoonAlert() {
+	alert("Coming soon!");
+}

@@ -1,6 +1,7 @@
 .button {
 	position: relative;
-	padding: 10px 20px;
+	padding: 10px 15px;
+	margin: 10px;
 	font-size: 1em;
 	color: white;
 	background-color: #007BFF;
@@ -39,10 +40,10 @@
 	color: white;
 	text-align: center;
 	position: fixed;
-	bottom: 40px;
+	bottom: 45px;
 	width: 100%;
-	height: 40px;
-	line-height: 40px;
+	height: 50px;
+	z-index: 1000;
 }
 
 .button-in-box {
@@ -51,4 +52,5 @@
 	text-align: center;
 	position: flex;
 	bottom: auto;
+	padding-top: 20px;
 }

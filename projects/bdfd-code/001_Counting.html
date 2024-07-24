@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Web by stefanuslie25</title>
+	<link rel="icon" href="https://i.imgur.com/taLNQSv.png" type="image/png">
+	<link rel="stylesheet" href="../..ttps://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+	<link rel="stylesheet" href="../../styles/main.css">
+	<link rel="stylesheet" href="../../styles/button.css">
+	<link rel="stylesheet" href="../../styles/box.css">
+	<script src="../../styles/script.js"></script>
+</head>
+<body>
+	<div class="bg"></div>
+	<div class="bg-filter"></div>
+	<div class="list-content">
+		<div class="black-box-desc">
+			<h1>Basic "Clean" Counting<br></h1>
+			<p class="notes">I can't think another better name, sorry</p>
+			<p class="desc">
+				1. <span class="desc-bold">One Number at a Time:</span> Each member can only write one number at a time. They must wait until another member writes a number before they can write again.
+			</p>
+			<p class="desc">
+				2. <span class="desc-bold">Correct Number:</span> When a member writes the correct number in the sequence, the bot should react with a tick emoji (✅).
+			</p>
+			<p class="desc">
+				3. <span class="desc-bold">Avoid Wrong Counting:</span> If a member writes two numbers in a row, the last number they wrote should be automatically deleted and not counted.
+			</p>
+			<p class="desc">
+				4. <span class="desc-bold">Delete Incorrect Entries:</span> If a number is incorrect, it should be deleted.
+			</p>
+			<p class="desc">
+				5. <span class="desc-bold">Enforce Alternation:</span> Ensure that members alternate writing numbers—if someone writes two numbers in a row, only the first one is counted, and the second one is removed.
+			</p>
+			<hr>
+			<h1>Before we start</h1>
+			<p class="explanation">
+				<span class="desc-bold">First:</span> You will need 2 variables.<br><br>
+				If you know how to use JSON or Text Spliting, that would be better because you can only use 1 variable.<br><br>
+				But I'll explain the basic stuff, here :)
+			</p>
+			<p class="explanation">
+				<span class="desc-bold">Second:</span> This only works for <span class="func">$alwaysReply</span> HAHAHA
+				<p class="notes">For free users, I'll do it later! Please be patience :)</p>
+			</p>
+			<hr>
+			<h1>Example Variables</h1>
+			<p class="explanation">1. Name: <span class="desc-bold">countingUser</span> and Value: <span class="quote">none</span></p>
+			<p class="explanation">2. Name: <span class="desc-bold">countingNumber</span> and Value: <span class="quote">0</span></p>
+			<p class="notes">value = 1 is also okay</p>
+		</div>
+		<div class="black-box-code">
+			<h1>Step 1<br></h1>
+			<p class="explanation">
+				<span class="quote">"Each member can only write one number at a time."</span>
+			</p>
+			<p class="explanation">
+				<span class="desc-bold">To do this:</span> we can use <span class="func">$if</span> and <span class="func">$else</span> function to check if <span class="func">$authorID</span> is already input a number or not yet.
+			</p>
+<pre  class="copy-box" readonly><code class="bdscript">$if[$getVar[countingUser]==$authorID]
+	$c[Do something]
+$else
+	$c[Do something]
+$endif
+</code></pre>
+			<p class="explanation">
+				You will need <span class="func">$deletecommand</span> to delete the input by author who just input the <span style="color: lightgreen;">correct</span> number.
+			</p>
+			<p class="explanation">
+				Then <span class="quote">optionally</span> warn him and deletes the warn message in 5 seconds using <span class="func">$deleteIn[</span><span class="argValue">5s</span><span class="func">]</span><br>(You can change the time to any time, read more about it <a href="https://nilpointer-software.github.io/bdfd-wiki/bdscript/deleteIn.html">here</a>)
+			</p>
+<pre  class="copy-box" readonly><code class="bdscript">$if[$getVar[countingUser]==$authorID]
+	$deletecommand
+	You can't count anymore, just one at a time, my brother!
+	$deleteIn[5s]
+$else
+	$c[Do something]
+$endif
+</code></pre>
+		<p class="notes">
+			Notes: Number 3 and 5 is just the same as Step 1 if you read it carefully, so we will skip that.
+		</p>
+		<br>
+		</div>
+		<div class="black-box-code">
+			<h1>Step 2<br></h1>
+		<p class="explanation">
+			Now step 2 is about correct number, which <span class="quote">"...the bot should react with a tick emoji (✅)
+		</p>
+		<p class="explanation">
+			For that, we can simply use the <span class="func">$addCmdReactions</span> function
+		</p>
+<pre  class="copy-box" readonly><code class="bdscript">$if[$message[1]==$getVar[countingNumber]]
+	$addCmdReactions[✅]
+$endif
+</code></pre>
+		<p class="explanation">
+			And after that, we need to save the <span class="quote">correct number + 1</span> and the <span class="quote">last user who input the number</span> into variable.
+		</p>
+		<p class="explanation">
+			<span class="desc-bold">To do this:</span> You'll need to use <span class="func">$setVar</span>.
+		</p>
+		<p class="notes">
+			Tip: You can always change to any type of variable as you like!
+		</p>
+<pre  class="copy-box" readonly><code class="bdscript">$if[$message[1]==$getVar[countingNumber]]
+	$addCmdReactions[✅]
+	$setVar[countingNumber;$calculate[$message[1]+1]]
+	$setVar[countingUser;$authorID]
+$endif
+</code></pre>
+		<h1>Final Looks</h1>
+<pre  class="copy-box" readonly><code class="bdscript">$if[$getVar[countingUser]==$authorID]
+	$deletecommand
+	You can't count anymore, just one at a time, my brother!
+	$deleteIn[5s]
+$else
+	$if[$message[1]==$getVar[countingNumber]]
+	$addCmdReactions[✅]
+	$setVar[countingNumber;$calculate[$message[1]+1]]
+	$setVar[countingUser;$authorID]
+	$endif
+$endif
+</code></pre>
+		<br>
+		</div>
+		<div class="black-box-code">
+			<h1>Step 3<br></h1>
+			<p class="desc">
+				<span class="quote">"If a number is incorrect, it should be deleted."</span>
+			</p>
+			<p class="explanation">
+				This thing will be use the same function as step 1, which is <span class="func">$deletecommand</span>
+			</p>
+<pre  class="copy-box" readonly><code class="bdscript">$if[$message[1]!=$getVar[countingNumber]]
+	$deletecommand
+	You input the wrong number, my brother!
+	$deleteIn[5s]
+$else
+	$c[Do something]
+$endif
+</code></pre>
+			<br>
+		</div>
+		<div class="black-box-code">
+			<h1>Whole Code<br></h1>
+			<p class="explanation">Very short, i know..</p>
+<pre  class="copy-box" readonly><code class="bdscript">$if[$authorID!=$getVar[countingUser]]
+	$if[$message[1]==$getVar[countingNumber]]
+		$addCmdReactions[✅]
+		$setVar[countingNumber;$calculate[$getVar[countingNumber]+1]]
+		$setVar[countingUser;$authorID]
+	$elseif[$message[1]!=$getVar[countingNumber]]
+		$deletecommand
+		You input the wrong number, my brother!
+		$deleteIn[5s]
+	$endif
+$elseif[$authorID==$getVar[countingUser]]
+	$deletecommand
+	You can't count anymore, just one at a time, my brother!
+	$deleteIn[5s]
+$endif</code></pre>
+			<div class="button-in-box">
+				<button onclick="copyAlert()" class="button">Copy me, senpai!</button>
+			</div>
+		</div>
+		<div class="black-box-code">
+			<h1>Another Version<br></h1>
+			<p class="explanation">I added some more things here</p>
+<pre  class="copy-box" readonly><code class="bdscript">$nomention
+$onlyForChannels[(Limit to channel you want);]
+
+$if[$isNumber[$message[1]]==false]
+	$deletecommand
+	You can only input a number, my brother!
+	$deleteIn[5s]
+	$stop
+$endif
+
+$if[$authorID!=$getVar[countingUser]]
+	$if[$message[1]==$getVar[countingNumber]]
+		$addCmdReactions[✅]
+		$setVar[countingNumber;$calculate[$getVar[countingNumber]+1]]
+		$setVar[countingUser;$authorID]
+		$modifyChannel[$channelID;!unchanged;Last number: $message[1] - Last user: <@$authorID>]
+	$elseif[$message[1]!=$getVar[countingNumber]]
+		$deletecommand
+		You input the wrong number, my brother!
+		$deleteIn[5s]
+	$endif
+$elseif[$authorID==$getVar[countingUser]]
+	$deletecommand
+	You can't count anymore, just one at a time, my brother!
+	$deleteIn[5s]
+$endif</code></pre>
+		</div>
+	</div>
+	<div class="footer-with-button">
+		<button onclick="window.location.href='list.html'" class="button">Back</button>
+	</div>
+	<div class="footer">
+		<p>Made with github page and chatgpt. <span class="quote"><-- Why is it here tbh</span></p>
+	</div>
+<textarea id="textToCopy" class="hidden-text" readonly>$if[$authorID!=$getVar[countingUser]]
+	$if[$message[1]==$getVar[countingNumber]]
+		$addCmdReactions[✅]
+		$setVar[countingNumber;$calculate[$getVar[countingNumber]+1]]
+		$setVar[countingUser;$authorID]
+	$elseif[$message[1]!=$getVar[countingNumber]]
+		$deletecommand
+		You input the wrong number, my brother!
+		$deleteIn[5s]
+	$endif
+$elseif[$authorID==$getVar[countingUser]]
+	$deletecommand
+	You can't count anymore, just one at a time, my brother!
+	$deleteIn[5s]
+$endif</textarea>
+</body>
+	<script src="../../styles/bdshighlighter.js"></script>
+</html>

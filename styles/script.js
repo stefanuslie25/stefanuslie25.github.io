@@ -10,10 +10,6 @@ if (window.location.hostname === 'www.stefanuslie25.my.id' && window.location.pa
 	window.location.replace(window.location.pathname.replace('template.html', 'template-page'));
 }
 
-if (window.location.hostname === 'www.stefanuslie25.my.id' && window.location.pathname.endsWith('001-Counting.html')) {
-	window.location.replace(window.location.pathname.replace('001-Counting.html', 'counting'));
-}
-
 if (window.location.hostname === 'www.stefanuslie25.my.id' && window.location.pathname.endsWith('counting-freeversion.html')) {
 	window.location.replace(window.location.pathname.replace('counting-freeversion.html', 'counting-freeversion'));
 }

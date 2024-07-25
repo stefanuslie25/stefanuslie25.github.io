@@ -4,8 +4,8 @@
 	scrollbar-width: none;
 	overflow-y: scroll;
 	position: fixed;
-	top: 15%;
-	bottom:15%;
+	top: 10%;
+	bottom:10%;
 	left: 25vw;
 	right: 25vw;
 }
@@ -70,13 +70,26 @@
 	color: yellow;
 }
 
+a {
+	color: lightgray;
+}
+
 .func {
 	color: cyan;
 	font-family: 'Courier New', Courier, monospace;
+	background-color: black;
 }
 
-.argValue, a {
+.argValue {
 	color: lightgray;
+	font-family: 'Courier New', Courier, monospace;
+	background-color: black;
+}
+
+.trigger {
+	color: lightgray;
+	font-family: 'Courier New', Courier, monospace;
+	background-color: black;
 }
 
 .copy-box {

@@ -5,24 +5,13 @@
 	overflow-y: scroll;
 	position: fixed;
 	top: 15%;
-	bottom:10%;
-	margin-left: 25vw;
-	margin-right: 25vw;
+	bottom:22.5%;
+	left: 25vw;
+	right: 25vw;
+	
 }
 
-.black-box {
-	background-color: rgba(0, 0, 0, 0.75);
-	color: white;
-	border-radius: 10px;
-	padding: 15px;
-	margin-bottom: 20px;
-	overflow: hidden;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-}
-
-.black-box-desc {
+.black-box, .black-box-code, .black-box-desc {
 	background-color: rgba(0, 0, 0, 0.75);
 	color: white;
 	border-radius: 10px;
@@ -33,15 +22,7 @@
 	flex-direction: column;
 }
 
-.black-box-code {
-	background-color: rgba(0, 0, 0, 0.75);
-	color: white;
-	border-radius: 10px;
-	padding: 15px;
-	margin-bottom: 20px;
-	overflow: hidden;
-	display: flex;
-	flex-direction: column;
+.black-box, .black-box-code {
 	align-items: center;
 }
 
@@ -50,7 +31,7 @@
 	position: absolute;
 }
 
-.preview {
+.preview, .explanation, .notes {
 	text-align: center;
 }
 
@@ -64,12 +45,10 @@
 }
 
 .explanation {
-	text-align: center;
 	color: white;
 }
 
 .notes {
-	text-align: center;
 	color: gray;
 	font-style: italic;
 }
@@ -85,9 +64,10 @@
 
 .func {
 	color: cyan;
+	font-family: 'Courier New', Courier, monospace;
 }
 
-.argValue {
+.argValue, a {
 	color: lightgray;
 }
 
@@ -123,10 +103,6 @@ hr {
 	height: 2px;
 	background-color: #333;
 	margin: 20px 0;
-}
-
-a {
-	color: lightgray;
 }
 
 textarea {

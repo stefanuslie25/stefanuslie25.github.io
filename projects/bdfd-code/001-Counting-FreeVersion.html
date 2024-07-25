@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Web by stefanuslie25</title>
+	<link rel="icon" href="https://i.imgur.com/taLNQSv.png" type="image/png">
+	<link rel="stylesheet" href="../../styles/main.css">
+	<link rel="stylesheet" href="../../styles/button.css">
+	<link rel="stylesheet" href="../../styles/box.css">
+	<script src="../../styles/script.js"></script>
+</head>
+<body>
+	<div class="bg"></div>
+	<div class="bg-filter"></div>
+	<div class="list-content">
+	
+		<div class="black-box-desc">
+			<h1>Basic "Clean" Counting<br></h1>
+			<p class="notes">It's for free version that uses 1-9 as triggers. For basic explanation you can go to <a href="counting.html">here</a></p>
+			<hr>
+			<h1>Before we start</h1>
+			<p class="explanation">
+				<span class="desc-bold">First:</span> You will need 2 variables only.
+			</p>
+			<p class="notes">
+				If you know how to use JSON or Text Spliting, that would be better because you can only use 1 variable.<br><br>
+				But I'll explain the basic stuff, here :)
+			</p>
+			<p class="explanation">
+				<span class="desc-bold">Second:</span> This works for <span class="quote">Free Users</span>
+				<p class="notes">Premium user want to use this too? sure, why not..</p>
+			</p>
+			<hr>
+			<h1>Example Variables</h1>
+			<p class="explanation">1. Name: <span class="desc-bold">countingUser</span> and Value: <span class="quote">none</span></p>
+			<p class="explanation">2. Name: <span class="desc-bold">countingNumber1</span> and Value: <span class="quote">1</span></p>
+			<p class="notes">Why not 0? Because you'll need 0-9 triggers that way and 0 is just gonna be typed only once anyway.
+		</div>
+		
+		<div class="black-box-code">
+			<h1>Trigger: <span class="trigger">1</span></h1>
+<pre  class="copy-box" readonly><code class="bdscript">$var[number;1$message]
+$onlyIf[$cropText[$getVar[countingNumber];1;]==1;]
+$if[$authorID!=$getVar[countingUser]]
+	$if[$var[number]==$getVar[countingNumber]]
+		$addCmdReactions[✅]
+		$setVar[countingNumber;$calculate[$getVar[countingNumber]+1]]
+		$setVar[countingUser;$authorID]
+	$elseif[$var[number]!=$getVar[countingNumber]]
+		$deletecommand
+		You input the wrong number, my brother!
+		$deleteIn[5s]
+	$endif
+$elseif[$authorID==$getVar[countingUser]]
+	$deletecommand
+	You can't count anymore, just one at a time, my brother!
+	$deleteIn[5s]
+$endif
+</code></pre>
+			<p class="explanation">
+				So basically what I did here is to know what the trigger we type using a <span class="quote">temporary variable</span> (<span class="func">$var</span>). Since normal <span class="func">$message</span> or <span class="func">$message[</span><span class="argValue">1</span><span class="func">]</span> will ignore the <span class="quote">trigger</span>.<br><br>
+				Then, I used <span class="func">$onlyIf</span> function to check if the first character of current value of <span class="func">$getVar</span> is the same as trigger or no and if it's not same then give no response.
+			</p>
+			<p class="notes">Click to learn more about how to use <a href="https://nilpointer-software.github.io/bdfd-wiki/bdscript/var.html" target="_blank">$var</a> and <a href="https://nilpointer-software.github.io/bdfd-wiki/bdscript/onlyIf.html" target="_blank">$onlyIf</a></p>
+			<p class="explanation">
+				Thanks to <a href="https://sanaa.netlify.app/" target="_blank">o.sana.o</a> for telling me this!
+			</p>
+			<img src="https://i.imgur.com/76iecNS.png">
+		<br>
+		</div>
+		
+	</div>
+	<div class="footer-with-button">
+		<button onclick="window.location.href='list.html'" class="button">Back</button>
+	</div>
+	<div class="footer">
+		<p class="text-footer">Made with github page and chatgpt.</p>
+	</div>
+</body>
+	<script src="../../styles/bdshighlighter.js"></script>
+</html>

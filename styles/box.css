@@ -17,6 +17,17 @@
 		top: 5%;
 		bottom: 10%;
 	}
+	.img-resizer {
+		width: 90%;
+		height: auto;
+		align-items: center;
+	}
+}
+
+@media (min-width: 666px) and (max-width: 1065px) {
+	.img-resizer {
+		width: auto;
+	}
 }
 
 .black-box, .black-box-code, .black-box-desc {

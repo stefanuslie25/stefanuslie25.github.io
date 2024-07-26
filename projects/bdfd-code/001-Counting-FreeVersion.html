@@ -34,14 +34,73 @@
 			<hr>
 			<h1>Example Variables</h1>
 			<p class="explanation">1. Name: <span class="desc-bold">countingUser</span> and Value: <span class="quote">none</span></p>
-			<p class="explanation">2. Name: <span class="desc-bold">countingNumber1</span> and Value: <span class="quote">1</span></p>
+			<p class="explanation">2. Name: <span class="desc-bold">countingNumber</span> and Value: <span class="quote">1</span></p>
 			<p class="notes">Why not 0? Because you'll need 0-9 triggers that way and 0 is just gonna be typed only once anyway.
 		</div>
 		
 		<div class="black-box-code">
 			<h1>Trigger: <span class="trigger">1</span></h1>
-<pre  class="copy-box" readonly><code class="bdscript">$var[number;1$message]
-$onlyIf[$cropText[$getVar[countingNumber];1;]==1;]
+<pre  class="copy-box" readonly><code class="bdscript">$nomention
+$var[number;1$message]
+$if[$authorID!=$getVar[countingUser]]
+	$if[$var[number]==$getVar[countingNumber]]
+		$addCmdReactions[✅]
+		$setVar[countingNumber;$calculate[$getVar[countingNumber]+1]]
+		$setVar[countingUser;$authorID]
+	$elseif[$var[number]!=$getVar[countingNumber]]
+		$deletecommand
+		You input the wrong number, my brother!
+		$deleteIn[5s]
+	$endif
+$elseif[$authorID==$getVar[countingUser]]
+	$deletecommand
+	You can't count anymore, just one at a time, my brother!
+	$deleteIn[5s]
+$endif
+</code></pre>
+			<div class="button-in-box">
+				<button onclick="copyAlert()" class="button">Copy me, senpai!</button>
+			</div>
+<textarea id="textToCopy" class="hidden-text" readonly>$nomention
+$var[number;1$message]
+$if[$authorID!=$getVar[countingUser]]
+	$if[$var[number]==$getVar[countingNumber]]
+		$addCmdReactions[✅]
+		$setVar[countingNumber;$calculate[$getVar[countingNumber]+1]]
+		$setVar[countingUser;$authorID]
+	$elseif[$var[number]!=$getVar[countingNumber]]
+		$deletecommand
+		You input the wrong number, my brother!
+		$deleteIn[5s]
+	$endif
+$elseif[$authorID==$getVar[countingUser]]
+	$deletecommand
+	You can't count anymore, just one at a time, my brother!
+	$deleteIn[5s]
+$endif</textarea>
+			<p class="explanation">
+				So basically what I did here is to know what the trigger we type using a <span class="quote">temporary variable</span> (<span class="func">$var</span>). Since normal <span class="func">$message</span> or <span class="func">$message[</span><span class="argValue">1</span><span class="func">]</span> will ignore the <span class="quote">trigger</span>, so I try to force show the trigger here. (lol)
+			</p>
+			<p class="notes">Click <a href="https://nilpointer-software.github.io/bdfd-wiki/bdscript/var.html" target="_blank">here</a> to learn more about how to use $var.</p>
+			<p class="explanation">
+				Thanks to <a href="https://sanaa.netlify.app/" target="_blank">o.sana.o</a> for telling me this!
+			</p>
+			<img src="https://i.imgur.com/76iecNS.png">
+			<p class="explanation">
+				There's little problem here tho, when you use that method for free version..
+			</p>
+			<img src="https://i.imgur.com/hr7AAub.png">
+			<p class="notes">
+				If you understands and still want to use it, alright!<br><br>
+				If you don't like it, simply don't touch it.. :)
+			</p>
+		<br>
+		</div>
+		
+		<div class="black-box-code">
+			<h1>Trigger: <span class="trigger">2</span></h1>
+<pre  class="copy-box" readonly><code class="bdscript">$nomention
+$var[number;2$message]
 $if[$authorID!=$getVar[countingUser]]
 	$if[$var[number]==$getVar[countingNumber]]
 		$addCmdReactions[✅]
@@ -59,14 +118,174 @@ $elseif[$authorID==$getVar[countingUser]]
 $endif
 </code></pre>
 			<p class="explanation">
-				So basically what I did here is to know what the trigger we type using a <span class="quote">temporary variable</span> (<span class="func">$var</span>). Since normal <span class="func">$message</span> or <span class="func">$message[</span><span class="argValue">1</span><span class="func">]</span> will ignore the <span class="quote">trigger</span>.<br><br>
-				Then, I used <span class="func">$onlyIf</span> function to check if the first character of current value of <span class="func">$getVar</span> is the same as trigger or no and if it's not same then give no response.
+				Isn't it same but just change the number in <span class="func">$var[</span><span class="argValue">number</span><span class="func">]</span> ??
 			</p>
-			<p class="notes">Click to learn more about how to use <a href="https://nilpointer-software.github.io/bdfd-wiki/bdscript/var.html" target="_blank">$var</a> and <a href="https://nilpointer-software.github.io/bdfd-wiki/bdscript/onlyIf.html" target="_blank">$onlyIf</a></p>
-			<p class="explanation">
-				Thanks to <a href="https://sanaa.netlify.app/" target="_blank">o.sana.o</a> for telling me this!
+			<p class="notes">
+				Very correct!
 			</p>
-			<img src="https://i.imgur.com/76iecNS.png">
+		<br>
+		</div>
+		
+		<div class="black-box-code">
+			<p class="notes">And we need to do this until trigger = 9 :)</p>
+			<h1>Trigger: <span class="trigger">3</span></h1>
+<pre  class="copy-box" readonly><code class="bdscript">$nomention
+$var[number;3$message]
+$if[$authorID!=$getVar[countingUser]]
+	$if[$var[number]==$getVar[countingNumber]]
+		$addCmdReactions[✅]
+		$setVar[countingNumber;$calculate[$getVar[countingNumber]+1]]
+		$setVar[countingUser;$authorID]
+	$elseif[$var[number]!=$getVar[countingNumber]]
+		$deletecommand
+		You input the wrong number, my brother!
+		$deleteIn[5s]
+	$endif
+$elseif[$authorID==$getVar[countingUser]]
+	$deletecommand
+	You can't count anymore, just one at a time, my brother!
+	$deleteIn[5s]
+$endif
+</code></pre>
+		<br>
+		</div>
+		
+		<div class="black-box-code">
+			<h1>Trigger: <span class="trigger">4</span></h1>
+<pre  class="copy-box" readonly><code class="bdscript">$nomention
+$var[number;4$message]
+$if[$authorID!=$getVar[countingUser]]
+	$if[$var[number]==$getVar[countingNumber]]
+		$addCmdReactions[✅]
+		$setVar[countingNumber;$calculate[$getVar[countingNumber]+1]]
+		$setVar[countingUser;$authorID]
+	$elseif[$var[number]!=$getVar[countingNumber]]
+		$deletecommand
+		You input the wrong number, my brother!
+		$deleteIn[5s]
+	$endif
+$elseif[$authorID==$getVar[countingUser]]
+	$deletecommand
+	You can't count anymore, just one at a time, my brother!
+	$deleteIn[5s]
+$endif
+</code></pre>
+		<br>
+		</div>
+		
+		<div class="black-box-code">
+			<h1>Trigger: <span class="trigger">5</span></h1>
+<pre  class="copy-box" readonly><code class="bdscript">$nomention
+$var[number;5$message]
+$if[$authorID!=$getVar[countingUser]]
+	$if[$var[number]==$getVar[countingNumber]]
+		$addCmdReactions[✅]
+		$setVar[countingNumber;$calculate[$getVar[countingNumber]+1]]
+		$setVar[countingUser;$authorID]
+	$elseif[$var[number]!=$getVar[countingNumber]]
+		$deletecommand
+		You input the wrong number, my brother!
+		$deleteIn[5s]
+	$endif
+$elseif[$authorID==$getVar[countingUser]]
+	$deletecommand
+	You can't count anymore, just one at a time, my brother!
+	$deleteIn[5s]
+$endif
+</code></pre>
+		<br>
+		</div>
+		
+		<div class="black-box-code">
+			<h1>Trigger: <span class="trigger">6</span></h1>
+<pre  class="copy-box" readonly><code class="bdscript">$nomention
+$var[number;6$message]
+$if[$authorID!=$getVar[countingUser]]
+	$if[$var[number]==$getVar[countingNumber]]
+		$addCmdReactions[✅]
+		$setVar[countingNumber;$calculate[$getVar[countingNumber]+1]]
+		$setVar[countingUser;$authorID]
+	$elseif[$var[number]!=$getVar[countingNumber]]
+		$deletecommand
+		You input the wrong number, my brother!
+		$deleteIn[5s]
+	$endif
+$elseif[$authorID==$getVar[countingUser]]
+	$deletecommand
+	You can't count anymore, just one at a time, my brother!
+	$deleteIn[5s]
+$endif
+</code></pre>
+		<br>
+		</div>
+		
+		<div class="black-box-code">
+			<h1>Trigger: <span class="trigger">7</span></h1>
+<pre  class="copy-box" readonly><code class="bdscript">$nomention
+$var[number;7$message]
+$if[$authorID!=$getVar[countingUser]]
+	$if[$var[number]==$getVar[countingNumber]]
+		$addCmdReactions[✅]
+		$setVar[countingNumber;$calculate[$getVar[countingNumber]+1]]
+		$setVar[countingUser;$authorID]
+	$elseif[$var[number]!=$getVar[countingNumber]]
+		$deletecommand
+		You input the wrong number, my brother!
+		$deleteIn[5s]
+	$endif
+$elseif[$authorID==$getVar[countingUser]]
+	$deletecommand
+	You can't count anymore, just one at a time, my brother!
+	$deleteIn[5s]
+$endif
+</code></pre>
+		<br>
+		</div>
+		
+		<div class="black-box-code">
+			<h1>Trigger: <span class="trigger">8</span></h1>
+<pre  class="copy-box" readonly><code class="bdscript">$nomention
+$var[number;8$message]
+$if[$authorID!=$getVar[countingUser]]
+	$if[$var[number]==$getVar[countingNumber]]
+		$addCmdReactions[✅]
+		$setVar[countingNumber;$calculate[$getVar[countingNumber]+1]]
+		$setVar[countingUser;$authorID]
+	$elseif[$var[number]!=$getVar[countingNumber]]
+		$deletecommand
+		You input the wrong number, my brother!
+		$deleteIn[5s]
+	$endif
+$elseif[$authorID==$getVar[countingUser]]
+	$deletecommand
+	You can't count anymore, just one at a time, my brother!
+	$deleteIn[5s]
+$endif
+</code></pre>
+		<br>
+		</div>
+		
+		<div class="black-box-code">
+			<p class="notes">This is the last one!</p>
+			<h1>Trigger: <span class="trigger">9</span></h1>
+<pre  class="copy-box" readonly><code class="bdscript">$nomention
+$var[number;9$message]
+$if[$authorID!=$getVar[countingUser]]
+	$if[$var[number]==$getVar[countingNumber]]
+		$addCmdReactions[✅]
+		$setVar[countingNumber;$calculate[$getVar[countingNumber]+1]]
+		$setVar[countingUser;$authorID]
+	$elseif[$var[number]!=$getVar[countingNumber]]
+		$deletecommand
+		You input the wrong number, my brother!
+		$deleteIn[5s]
+	$endif
+$elseif[$authorID==$getVar[countingUser]]
+	$deletecommand
+	You can't count anymore, just one at a time, my brother!
+	$deleteIn[5s]
+$endif
+</code></pre>
 		<br>
 		</div>
 		

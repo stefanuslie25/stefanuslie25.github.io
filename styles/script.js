@@ -10,6 +10,10 @@ if (window.location.hostname === 'www.stefanuslie25.my.id' && window.location.pa
 	window.location.replace(window.location.pathname.replace('template.html', 'template'));
 }
 
+if (window.location.hostname === 'www.stefanuslie25.my.id' && window.location.pathname.endsWith('credits.html')) {
+	window.location.replace(window.location.pathname.replace('credits.html', 'credits'));
+}
+
 function copyAlert() {
 	alert("Successfully copy the code!");
 	

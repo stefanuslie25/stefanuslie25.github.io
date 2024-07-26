@@ -73,3 +73,14 @@ body, html {
 .text-footer {
 	text-align: center;
 }
+
+@media (orientation: portrait) {
+	.img-resizer {
+		width: 95%;
+		height: auto;
+		align-items: center;
+	}
+	.text-resizer {
+		font-size: 1em;
+	}
+}

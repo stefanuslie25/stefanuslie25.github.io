@@ -42,7 +42,7 @@
 				But I'll explain the basic stuff, here :)
 			</p>
 			<p class="explanation">
-				<span class="desc-bold">Second:</span> This only works for <span class="func">$alwaysReply</span> HAHAHA
+				<span class="desc-bold">Second:</span> This only works for <span class="func">$alwaysReply</span>
 				<p class="notes">For free users, you can skip to <a href="001-Counting-FreeVersion.html">this</a> page to just copy the code or stay in this page if you want to learn the basic :)</p>
 			</p>
 			<hr>
@@ -165,6 +165,21 @@ $endif</code></pre>
 			<div class="button-in-box">
 				<button onclick="copyAlert()" class="button">Copy me, senpai!</button>
 			</div>
+<textarea id="textToCopy" class="hidden-text" readonly>$if[$authorID!=$getVar[countingUser]]
+	$if[$message[1]==$getVar[countingNumber]]
+		$addCmdReactions[✅]
+		$setVar[countingNumber;$calculate[$getVar[countingNumber]+1]]
+		$setVar[countingUser;$authorID]
+	$elseif[$message[1]!=$getVar[countingNumber]]
+		$deletecommand
+		You input the wrong number, my brother!
+		$deleteIn[5s]
+	$endif
+$elseif[$authorID==$getVar[countingUser]]
+	$deletecommand
+	You can't count anymore, just one at a time, my brother!
+	$deleteIn[5s]
+$endif</textarea>
 		</div>
 		<div class="black-box-code">
 			<h1>Another Version<br></h1>
@@ -204,21 +219,6 @@ $endif</code></pre>
 	<div class="footer">
 		<p class="text-footer">Made with github page and chatgpt.</p>
 	</div>
-<textarea id="textToCopy" class="hidden-text" readonly>$if[$authorID!=$getVar[countingUser]]
-	$if[$message[1]==$getVar[countingNumber]]
-		$addCmdReactions[✅]
-		$setVar[countingNumber;$calculate[$getVar[countingNumber]+1]]
-		$setVar[countingUser;$authorID]
-	$elseif[$message[1]!=$getVar[countingNumber]]
-		$deletecommand
-		You input the wrong number, my brother!
-		$deleteIn[5s]
-	$endif
-$elseif[$authorID==$getVar[countingUser]]
-	$deletecommand
-	You can't count anymore, just one at a time, my brother!
-	$deleteIn[5s]
-$endif</textarea>
 </body>
 	<script src="../../styles/bdshighlighter.js"></script>
 </html>

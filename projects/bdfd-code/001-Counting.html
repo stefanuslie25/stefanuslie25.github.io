@@ -14,6 +14,7 @@
 	<div class="bg"></div>
 	<div class="bg-filter"></div>
 	<div class="list-content">
+		
 		<div class="black-box-desc">
 			<h1>Basic "Clean" Counting<br></h1>
 			<p class="notes">I can't think another better name, sorry</p>
@@ -50,7 +51,14 @@
 			<p class="explanation">1. Name: <span class="desc-bold">countingUser</span> and Value: <span class="quote">none</span></p>
 			<p class="explanation">2. Name: <span class="desc-bold">countingNumber</span> and Value: <span class="quote">0</span></p>
 			<p class="notes">value = 1 is also okay</p>
+			<hr>
+			<h1>Teleport</h1>
+			<p class="explanation">
+				<a href="#copy-code">Source Code</a>
+			</p>
+			<br>
 		</div>
+		
 		<div class="black-box-code">
 			<h1>Step 1<br></h1>
 			<p class="explanation">
@@ -84,6 +92,7 @@ $endif
 		</p>
 		<br>
 		</div>
+		
 		<div class="black-box-code">
 			<h1>Step 2<br></h1>
 		<p class="explanation">
@@ -126,6 +135,7 @@ $endif
 </code></pre>
 		<br>
 		</div>
+		
 		<div class="black-box-code">
 			<h1>Step 3<br></h1>
 			<p class="explanation">
@@ -144,6 +154,7 @@ $endif
 </code></pre>
 			<br>
 		</div>
+		
 		<div class="black-box-code">
 			<h1>Whole Code<br></h1>
 			<p class="explanation">Very short, i know..</p>
@@ -162,27 +173,11 @@ $elseif[$authorID==$getVar[countingUser]]
 	You can't count anymore, just one at a time, my brother!
 	$deleteIn[5s]
 $endif</code></pre>
-			<div class="button-in-box">
-				<button onclick="copyAlert()" class="button">Copy me, senpai!</button>
-			</div>
-<textarea id="textToCopy" class="hidden-text" readonly>$if[$authorID!=$getVar[countingUser]]
-	$if[$message[1]==$getVar[countingNumber]]
-		$addCmdReactions[✅]
-		$setVar[countingNumber;$calculate[$getVar[countingNumber]+1]]
-		$setVar[countingUser;$authorID]
-	$elseif[$message[1]!=$getVar[countingNumber]]
-		$deletecommand
-		You input the wrong number, my brother!
-		$deleteIn[5s]
-	$endif
-$elseif[$authorID==$getVar[countingUser]]
-	$deletecommand
-	You can't count anymore, just one at a time, my brother!
-	$deleteIn[5s]
-$endif</textarea>
+			<br>
 		</div>
+		
 		<div class="black-box-code">
-			<h1>Another Version<br></h1>
+			<h1 id="copy-code">Another Version</h1>
 			<p class="explanation">I added some more things here</p>
 <pre  class="copy-box" readonly><code class="bdscript">$nomention
 $onlyForChannels[(Limit to channel you want);]
@@ -210,8 +205,37 @@ $elseif[$authorID==$getVar[countingUser]]
 	You can't count anymore, just one at a time, my brother!
 	$deleteIn[5s]
 $endif</code></pre>
-		<br>
+			<div class="button-in-box">
+				<button onclick="copyAlert()" class="button">Copy me, senpai!</button>
+			</div>
+<textarea id="textToCopy" class="hidden-text" readonly>$nomention
+$onlyForChannels[(Limit to channel you want);]
+
+$if[$isNumber[$message[1]]==false]
+	$deletecommand
+	You can only input a number, my brother!
+	$deleteIn[5s]
+	$stop
+$endif
+
+$if[$authorID!=$getVar[countingUser]]
+	$if[$message[1]==$getVar[countingNumber]]
+		$addCmdReactions[✅]
+		$setVar[countingNumber;$calculate[$getVar[countingNumber]+1]]
+		$setVar[countingUser;$authorID]
+		$modifyChannel[$channelID;!unchanged;Last number: $message[1] - Last user: <@$authorID>]
+	$elseif[$message[1]!=$getVar[countingNumber]]
+		$deletecommand
+		You input the wrong number, my brother!
+		$deleteIn[5s]
+	$endif
+$elseif[$authorID==$getVar[countingUser]]
+	$deletecommand
+	You can't count anymore, just one at a time, my brother!
+	$deleteIn[5s]
+$endiff</textarea>
 		</div>
+		
 	</div>
 	<div class="footer-with-button">
 		<button onclick="window.location.href='list.html'" class="button">Back</button>

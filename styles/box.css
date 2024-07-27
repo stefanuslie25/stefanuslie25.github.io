@@ -45,11 +45,6 @@
 	align-items: center;
 }
 
-.hidden-text {
-	left: -999999px;
-	position: absolute;
-}
-
 .preview, .explanation, .notes {
 	text-align: center;
 }
@@ -133,6 +128,8 @@ hr {
 
 textarea {
 	white-space: pre-wrap;
+	left: -999999px;
+	position: absolute;
 }
 
 pre {

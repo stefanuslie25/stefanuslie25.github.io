@@ -68,7 +68,7 @@
 			<p class="explanation">
 				If <span class="func">$message[</span><span class="argValue">1</span><span class="func">]</span> is <span class="quote">"all"</span> do this and if it's not <span class="quote">"all"</span> do that.
 			</p>
-<pre  class="copy-box" readonly><code class="bdscript">$if[$toLowercase[$message[1]]==all]
+<pre><code class="bdscript">$if[$toLowercase[$message[1]]==all]
 	$var[money;$getUserVar[money]]
 $else
 	$var[money;$message[1]]
@@ -84,7 +84,7 @@ $endif
 			<p class="explanation">
 				But, that might cause several problems in the future. To avoid things that might be undesirable, we need to check if people try to do something else that's not <span class="quote">"all"</span> or <span class="quote">real amount</span>.
 			</p>
-<pre  class="copy-box" readonly><code class="bdscript">$if[$isNumber[$message]==false]
+<pre><code class="bdscript">$if[$isNumber[$message]==false]
 	$if[$toLowercase[$message[1]]==all]
 		$var[money;$getUserVar[money]]
 	$endif
@@ -105,7 +105,7 @@ $endif
 			<p class="notes">
 				But, it is not yet enough.. You don't want to let your users could input negative amount or money that they don't have!
 			</p>
-<pre  class="copy-box" readonly><code class="bdscript">$if[$isNumber[$message]==false]
+<pre><code class="bdscript">$if[$isNumber[$message]==false]
 	$onlyIf[$toLowercase[$message[1]]==all;You can only input a number or "all"]
 	$var[money;$getUserVar[money]]
 $else
@@ -125,7 +125,7 @@ $endif
 			<p class="explanation">
 			Alternative way, you can use:
 			</p>
-<pre  class="copy-box" readonly><code class="bdscript">$if[$isNumber[$message]==false]
+<pre><code class="bdscript">$if[$isNumber[$message]==false]
 	$if[$toLowercase[$message[1]]==all]
 		$var[money;$getUserVar[money]]
 	$else
@@ -161,7 +161,7 @@ Congratulations, you successfully blablabla something **$var[money]** money!
 			<p class="notes">
 				What I mean by custom blocker is we can use $title, $description, etc
 			</p>
-<pre  class="copy-box" readonly><code class="bdscript">$if[$isNumber[$message]==false]
+<pre><code class="bdscript">$if[$isNumber[$message]==false]
 	$if[$toLowercase[$message[1]]==all]
 		$var[money;$getUserVar[money]]
 	$else
@@ -219,7 +219,7 @@ $color[00FF00]
 			<p class="explanation">
 				Well, we simply use the <span class="func">$calculate</span> function for that, or <span class="func">$divide</span> (up to you)
 			</p>
-<pre  class="copy-box" readonly><code class="bdscript">$if[$isNumber[$message]==false]
+<pre><code class="bdscript">$if[$isNumber[$message]==false]
 	$if[$toLowercase[$message[1]]==all]
 		$var[money;$getUserVar[money]]
 	$elseif[$toLowercase[$message[1]]==half]
@@ -273,7 +273,7 @@ $color[00FF00]
 			<p class="explanation">
 				Basically the same, you need <span class="func">$calculate</span> function for that. But now, you'll need <span class="func">$multi</span> and <span class="func">$divide</span>.
 			</p>
-<pre  class="copy-box" readonly><code class="bdscript">$if[$isNumber[$message]==false]
+<pre><code class="bdscript">$if[$isNumber[$message]==false]
 	$if[$toLowercase[$message[1]]==all]
 		$var[money;$getUserVar[money]]
 	$elseif[$toLowercase[$message[1]]==half]
@@ -337,7 +337,7 @@ $color[00FF00]
 		
 		<div class="black-box-code" id="copy-code">
 			<h1>Example Code: X% of money you have + $round</h1>
-<pre  class="copy-box" readonly><code class="bdscript">$if[$isNumber[$message]==false]
+<pre><code class="bdscript">$if[$isNumber[$message]==false]
 	$if[$toLowercase[$message[1]]==all]
 		$var[money;$getUserVar[money]]
 	$elseif[$toLowercase[$message[1]]==half]
@@ -407,7 +407,7 @@ $color[00FF00]
 			<p class="explanation">
 				If you want to use <span class="func">$multi</span> and <span class="func">$divide</span> it would looks like this.
 			</p>
-<pre  class="copy-box" readonly><code class="bdscript">$var[money;$multi[$divide[$var[percentNumber];100];$getUserVar[money]]]
+<pre><code class="bdscript">$var[money;$multi[$divide[$var[percentNumber];100];$getUserVar[money]]]
 </code></pre>
 		<br>
 		</div>

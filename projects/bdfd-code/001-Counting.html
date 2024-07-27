@@ -67,7 +67,7 @@
 			<p class="explanation">
 				<span class="desc-bold">To do this:</span> we can use <span class="func">$if</span> and <span class="func">$else</span> function to check if <span class="func">$authorID</span> is already input a number or not yet.
 			</p>
-<pre  class="copy-box" readonly><code class="bdscript">$if[$getVar[countingUser]==$authorID]
+<pre><code class="bdscript">$if[$getVar[countingUser]==$authorID]
 	$c[Do something]
 $else
 	$c[Do something]
@@ -79,7 +79,7 @@ $endif
 			<p class="explanation">
 				Then <span class="quote">optionally</span> warn him and deletes the warn message in 5 seconds using <span class="func">$deleteIn[</span><span class="argValue">5s</span><span class="func">]</span><br>(You can change the time to any time, read more about it <a href="https://nilpointer-software.github.io/bdfd-wiki/bdscript/deleteIn.html">here</a>)
 			</p>
-<pre  class="copy-box" readonly><code class="bdscript">$if[$getVar[countingUser]==$authorID]
+<pre><code class="bdscript">$if[$getVar[countingUser]==$authorID]
 	$deletecommand
 	You can't count anymore, just one at a time, my brother!
 	$deleteIn[5s]
@@ -101,7 +101,7 @@ $endif
 		<p class="explanation">
 			For that, we can simply use the <span class="func">$addCmdReactions</span> function
 		</p>
-<pre  class="copy-box" readonly><code class="bdscript">$if[$message[1]==$getVar[countingNumber]]
+<pre><code class="bdscript">$if[$message[1]==$getVar[countingNumber]]
 	$addCmdReactions[✅]
 $endif
 </code></pre>
@@ -114,14 +114,14 @@ $endif
 		<p class="notes">
 			Tip: You can always change to any type of variable as you like!
 		</p>
-<pre  class="copy-box" readonly><code class="bdscript">$if[$message[1]==$getVar[countingNumber]]
+<pre><code class="bdscript">$if[$message[1]==$getVar[countingNumber]]
 	$addCmdReactions[✅]
 	$setVar[countingNumber;$calculate[$message[1]+1]]
 	$setVar[countingUser;$authorID]
 $endif
 </code></pre>
 		<h1>Final Looks</h1>
-<pre  class="copy-box" readonly><code class="bdscript">$if[$getVar[countingUser]==$authorID]
+<pre><code class="bdscript">$if[$getVar[countingUser]==$authorID]
 	$deletecommand
 	You can't count anymore, just one at a time, my brother!
 	$deleteIn[5s]
@@ -144,7 +144,7 @@ $endif
 			<p class="explanation">
 				This thing will be use the same function as step 1, which is <span class="func">$deletecommand</span>
 			</p>
-<pre  class="copy-box" readonly><code class="bdscript">$if[$message[1]!=$getVar[countingNumber]]
+<pre><code class="bdscript">$if[$message[1]!=$getVar[countingNumber]]
 	$deletecommand
 	You input the wrong number, my brother!
 	$deleteIn[5s]
@@ -158,7 +158,7 @@ $endif
 		<div class="black-box-code">
 			<h1>Whole Code<br></h1>
 			<p class="explanation">Very short, i know..</p>
-<pre  class="copy-box" readonly><code class="bdscript">$if[$authorID!=$getVar[countingUser]]
+<pre><code class="bdscript">$if[$authorID!=$getVar[countingUser]]
 	$if[$message[1]==$getVar[countingNumber]]
 		$addCmdReactions[✅]
 		$setVar[countingNumber;$calculate[$getVar[countingNumber]+1]]
@@ -179,7 +179,7 @@ $endif</code></pre>
 		<div class="black-box-code">
 			<h1 id="copy-code">Another Version</h1>
 			<p class="explanation">I added some more things here</p>
-<pre  class="copy-box" readonly><code class="bdscript">$nomention
+<pre><code class="bdscript">$nomention
 $onlyForChannels[(Limit to channel you want);]
 
 $if[$isNumber[$message[1]]==false]

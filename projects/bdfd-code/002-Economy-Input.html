@@ -68,7 +68,7 @@
 			<p class="explanation">
 				If <span class="func">$message[</span><span class="argValue">1</span><span class="func">]</span> is <span class="quote">"all"</span> do this and if it's not <span class="quote">"all"</span> do that.
 			</p>
-<pre  class="copy-box" readonly><code class="bdscript">$if[$message[1]==all]
+<pre  class="copy-box" readonly><code class="bdscript">$if[$toLowercase[$message[1]]==all]
 	$var[money;$getUserVar[money]]
 $else
 	$var[money;$message[1]]
@@ -85,7 +85,7 @@ $endif
 				But, that might cause several problems in the future. To avoid things that might be undesirable, we need to check if people try to do something else that's not <span class="quote">"all"</span> or <span class="quote">real amount</span>.
 			</p>
 <pre  class="copy-box" readonly><code class="bdscript">$if[$isNumber[$message]==false]
-	$if[$message[1]==all]
+	$if[$toLowercase[$message[1]]==all]
 		$var[money;$getUserVar[money]]
 	$endif
 $else
@@ -106,7 +106,7 @@ $endif
 				But, it is not yet enough.. You don't want to let your users could input negative amount or money that they don't have!
 			</p>
 <pre  class="copy-box" readonly><code class="bdscript">$if[$isNumber[$message]==false]
-	$onlyIf[$message[1]==all;You can only input a number or "all"]
+	$onlyIf[$toLowercase[$message[1]]==all;You can only input a number or "all"]
 	$var[money;$getUserVar[money]]
 $else
 	$var[money;$message[1]]
@@ -126,7 +126,7 @@ $endif
 			Alternative way, you can use:
 			</p>
 <pre  class="copy-box" readonly><code class="bdscript">$if[$isNumber[$message]==false]
-	$if[$message[1]==all]
+	$if[$toLowercase[$message[1]]==all]
 		$var[money;$getUserVar[money]]
 	$else
 		You can only input a number or "all"
@@ -162,7 +162,7 @@ Congratulations, you successfully blablabla something **$var[money]** money!
 				What I mean by custom blocker is we can use $title, $description, etc
 			</p>
 <pre  class="copy-box" readonly><code class="bdscript">$if[$isNumber[$message]==false]
-	$if[$message[1]==all]
+	$if[$toLowercase[$message[1]]==all]
 		$var[money;$getUserVar[money]]
 	$else
 		$title[Invalid Amount!]
@@ -220,11 +220,11 @@ $color[00FF00]
 				Well, we simply use the <span class="func">$calculate</span> function for that, or <span class="func">$divide</span> (up to you)
 			</p>
 <pre  class="copy-box" readonly><code class="bdscript">$if[$isNumber[$message]==false]
-	$if[$message[1]==all]
+	$if[$toLowercase[$message[1]]==all]
 		$var[money;$getUserVar[money]]
-	$elseif[$message[1]==half]
+	$elseif[$toLowercase[$message[1]]==half]
 		$var[money;$calculate[$getUserVar[money]/2]]
-	$elseif[$message[1]==quarter]
+	$elseif[$toLowercase[$message[1]]==quarter]
 		$var[money;$divide[$getUserVar[money];4]]
 	$else
 		$title[Invalid Amount!]
@@ -274,11 +274,11 @@ $color[00FF00]
 				Basically the same, you need <span class="func">$calculate</span> function for that. But now, you'll need <span class="func">$multi</span> and <span class="func">$divide</span>.
 			</p>
 <pre  class="copy-box" readonly><code class="bdscript">$if[$isNumber[$message]==false]
-	$if[$message[1]==all]
+	$if[$toLowercase[$message[1]]==all]
 		$var[money;$getUserVar[money]]
-	$elseif[$message[1]==half]
+	$elseif[$toLowercase[$message[1]]==half]
 		$var[money;$calculate[$getUserVar[money]/2]]
-	$elseif[$message[1]==quarter]
+	$elseif[$toLowercase[$message[1]]==quarter]
 		$var[money;$divide[$getUserVar[money];4]]
 	$elseif[$checkContains[$message[1];%]==true]
 		$textSplit[$message[1];%]
@@ -338,11 +338,11 @@ $color[00FF00]
 		<div class="black-box-code" id="copy-code">
 			<h1>Example Code: X% of money you have + $round</h1>
 <pre  class="copy-box" readonly><code class="bdscript">$if[$isNumber[$message]==false]
-	$if[$message[1]==all]
+	$if[$toLowercase[$message[1]]==all]
 		$var[money;$getUserVar[money]]
-	$elseif[$message[1]==half]
+	$elseif[$toLowercase[$message[1]]==half]
 		$var[money;$calculate[$getUserVar[money]/2]]
-	$elseif[$message[1]==quarter]
+	$elseif[$toLowercase[$message[1]]==quarter]
 		$var[money;$divide[$getUserVar[money];4]]
 	$elseif[$checkContains[$message[1];%]==true]
 		$textSplit[$message[1];%]

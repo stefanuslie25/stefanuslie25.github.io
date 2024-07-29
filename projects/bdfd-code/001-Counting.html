@@ -11,11 +11,21 @@
 	<script src="../../styles/script.js"></script>
 </head>
 <body>
+
+	<div class="footer-with-button">
+		<button onclick="window.location.href='list.html'" class="button" id="toggleButton">Back</button>
+		<button onclick="window.location.href='#top-page'" class="button">Back to top</button>
+	</div>
+
+	<div class="footer">
+		<p class="text-footer">Made with github page and chatgpt.</p>
+	</div>
+
 	<div class="bg"></div>
 	<div class="bg-filter"></div>
 	<div class="list-content">
 		
-		<div class="black-box-desc">
+		<div class="black-box-desc" id="top-page">
 			<h1>Basic "Clean" Counting<br></h1>
 			<p class="notes">I can't think another better name, sorry</p>
 			<p class="desc">
@@ -44,7 +54,13 @@
 			</p>
 			<p class="explanation">
 				<span class="desc-bold">Second:</span> This only works for <span class="func">$alwaysReply</span> (premium)
-				<p class="notes">For free users, you can skip to <a href="001-Counting-FreeVersion.html">this page</a> to just copy the code or stay in this page if you want to learn the basic :)</p>
+			</p>
+			<p class="notes">
+				For free users, you can skip to <a href="001-Counting-FreeVersion.html">this page</a> to just copy the code or stay in this page if you want to learn the basic :)
+			</p>
+			<p class="explanation">
+				<span class="desc-bold">Any modifications to the code are none of my business, learn it again until you really understand it! 😊</span><br>
+				If the code is 100% from my page, you can blame me and I will fix it ASAP.
 			</p>
 			<hr>
 			<h1>Example Variables</h1>
@@ -236,12 +252,6 @@ $elseif[$authorID==$getVar[countingUser]]
 $endiff</textarea>
 		</div>
 		
-	</div>
-	<div class="footer-with-button">
-		<button onclick="window.location.href='list.html'" class="button">Back</button>
-	</div>
-	<div class="footer">
-		<p class="text-footer">Made with github page and chatgpt.</p>
 	</div>
 </body>
 	<script src="../../styles/bdshighlighter.js"></script>

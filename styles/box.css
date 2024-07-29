@@ -126,14 +126,24 @@ textarea {
 
 pre {
 	width:80%;
-	border: 1px solid #ccc;
-	border-radius: 5px;
-	padding: 10px;
+	padding: 15px;
 	resize: none;
 	background-color: #212121;
 	color: #9AE569;
 	overflow-x: auto;
 	tab-size: 2;
+	scrollbar-width: none;
+	border: 1px solid rgba(231, 76, 60, 1);
+	border-radius: 10px;
+	box-shadow:
+	0 0 5px rgba(231, 76, 60, 0.25),
+	0 0 10px rgba(231, 76, 60, 0.25),
+	0 0 15px rgba(231, 76, 60, 0.25),
+	0 0 20px rgba(231, 76, 60, 0.25),
+	inset 0 0 5px rgba(231, 76, 60, 0.25),
+	inset 0 0 10px rgba(231, 76, 60, 0.25),
+	inset 0 0 15px rgba(231, 76, 60, 0.25),
+	inset 0 0 20px rgba(231, 76, 60, 0.25);
 }
 
 a {

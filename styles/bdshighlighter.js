@@ -27,7 +27,7 @@ for (b = 0; b < cb.length; b++) {
 	
 	arr = arr.replaceAll("[", '<span style="color: #FF4C4C; font-weight: bold;">' + "[" + '</span>');
 	arr = arr.replaceAll("]", '<span style="color: #FF4C4C; font-weight: bold;">' + "]" + '</span>');
-	arr = arr.replaceAll("/;/", '<span style="color: #FF4C4C; font-weight: bold;">' + "/;/" + '</span>');
+	arr = arr.replaceAll(".;", '<span style="color: #FF4C4C; font-weight: bold;">' + ";" + '</span>');
 	
 	cb[b].innerHTML = arr; 
 	

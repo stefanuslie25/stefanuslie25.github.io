@@ -9,7 +9,6 @@
 	<meta property="og:image" content="https://i.imgur.com/i7weA9p.png">
 	<meta property="og:type" content="article">
 	<link rel="icon" href="https://i.imgur.com/taLNQSv.png" type="image/png">
-	<link rel="stylesheet" href="../..ttps://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 	<link rel="stylesheet" href="../../styles/main.css">
 	<link rel="stylesheet" href="../../styles/button.css">
 	<link rel="stylesheet" href="../../styles/box.css">
@@ -48,7 +47,7 @@
 				<span style="color: lightgray;">4. <span style="font-weight: bold; color: gray;">Barter</span>: Barter is the exchange of goods or services directly for other goods or services without using money.</span>
 			</p>
 			<p class="explanation">
-				Basically, 4 of them have the same system. But I'll explain Forex and Barter on <a class="quote" onclick="comingsoonAlert()" href="">part 2</a>. (lol)
+				Basically, 4 of them have the same system. But I'll explain Forex and Barter on <a class="quote" onclick="comingsoonAlert()">part 2</a>. (lol)
 			</p>
 			<hr>
 			<h1>Before we start</h1>
@@ -79,10 +78,10 @@
 				You don't need to have variable for price, btw. Too much variable also not good, imo. Just use the temporary variable.
 			</p>
 <pre><code class="bdscript">$nomention
-$var[foodPrice;5000]
-$var[totalPrice;$multi[$message[1];$var[foodPrice]]]
-$setUserVar[money;$sub[$getUserVar[money];$var[totalPrice]]]
-$setUserVar[food;$sum[$getUserVar[food];$message[1]]]
+$var[foodPrice.;5000]
+$var[totalPrice.;$multi[$message[1].;$var[foodPrice]]]
+$setUserVar[money.;$sub[$getUserVar[money].;$var[totalPrice]]]
+$setUserVar[food.;$sum[$getUserVar[food].;$message[1]]]
 $title[Purchase Completed]
 $description[You successfully buy **$message[1]x food** for **$var[totalPrice]** money!]
 $footer[You now have: $getUserVar[money] money]
@@ -113,13 +112,13 @@ $footer[You now have: $getUserVar[money] money]
 				You can use the <span class="func">$onlyIf</span> function to keep it simple.
 			</p>
 <pre><code class="bdscript">$nomention
-$var[foodPrice;5000]
-$var[totalPrice;$multi[$message[1];$var[foodPrice]]]
-$onlyIf[$message[1]!=0;You can't buy 0 food!]
-$onlyIf[$message[1]>=1;You can't buy for negative amount of food!]
-$onlyIf[$var[totalPrice]<=$getUserVar[money];You don't have enough money!]
-$setUserVar[money;$sub[$getUserVar[money];$var[totalPrice]]]
-$setUserVar[food;$sum[$getUserVar[food];$message[1]]]
+$var[foodPrice.;5000]
+$var[totalPrice.;$multi[$message[1];$var[foodPrice]]]
+$onlyIf[$message[1]!=0.;You can't buy 0 food!]
+$onlyIf[$message[1]>=1.;You can't buy for negative amount of food!]
+$onlyIf[$var[totalPrice]<=$getUserVar[money].;You don't have enough money!]
+$setUserVar[money.;$sub[$getUserVar[money].;$var[totalPrice]]]
+$setUserVar[food.;$sum[$getUserVar[food].;$message[1]]]
 $title[Purchase Completed]
 $description[You successfully buy **$message[1]x food** for **$var[totalPrice]** money!]
 $footer[You now have: $getUserVar[money] money]
@@ -133,20 +132,20 @@ $footer[You now have: $getUserVar[money] money]
 			<p class="explanation">
 				Above code was about invalid amount and not enough money. But now, you might also need invalid input, which is <span class="quote">text</span>.
 			</p>
-<pre><code class="bdscript">$onlyIf[isNumber[$message[1]]==true;You must input a number only!]
+<pre><code class="bdscript">$onlyIf[isNumber[$message[1]]==true.;You must input a number only!]
 </code></pre>
 			<p class="explanation">
 				Add that code to above code. You need to <span class="desc-bold">becareful</span> here, because it should be put above the calculation part that we put inside <span class="func">$var[</span><span class="argValue">totalPrice</span><span class="func">]</span>.
 			</p>
 <pre><code class="bdscript">$nomention
-$var[foodPrice;5000]
-$onlyIf[$isNumber[$message[1]]==true;You must input a number only!]
-$var[totalPrice;$multi[$message[1];$var[foodPrice]]]
-$onlyIf[$message[1]!=0;You can't buy 0 food!]
-$onlyIf[$message[1]>=1;You can't buy for negative amount of food!]
-$onlyIf[$var[totalPrice]<=$getUserVar[money];You don't have enough money!]
-$setUserVar[money;$sub[$getUserVar[money];$var[totalPrice]]]
-$setUserVar[food;$sum[$getUserVar[food];$message[1]]]
+$var[foodPrice.;5000]
+$onlyIf[$isNumber[$message[1]]==true.;You must input a number only!]
+$var[totalPrice.;$multi[$message[1].;$var[foodPrice]]]
+$onlyIf[$message[1]!=0.;You can't buy 0 food!]
+$onlyIf[$message[1]>=1.;You can't buy for negative amount of food!]
+$onlyIf[$var[totalPrice]<=$getUserVar[money].;You don't have enough money!]
+$setUserVar[money.;$sub[$getUserVar[money].;$var[totalPrice]]]
+$setUserVar[food.;$sum[$getUserVar[food].;$message[1]]]
 $title[Purchase Completed]
 $description[You successfully buy **$message[1]x food** for **$var[totalPrice]** money!]
 $footer[You now have: $getUserVar[money] money]
@@ -168,29 +167,29 @@ $footer[You now have: $getUserVar[money] money]
 			</p>
 			<p class="explanation">
 				You don't need to think too hard about this, <span class="desc-bold">first</span> simply change the <span class="quote">money variable</span> to work together with <span class="func">$sum</span> and <span class="quote">food variable</span> with <span class="func">$sub</span>.
-<pre><code class="bdscript">$setUserVar[money;$sum[$getUserVar[money];$var[totalPrice]]]
-$setUserVar[food;$sub[$getUserVar[food];$message[1]]]
+<pre><code class="bdscript">$setUserVar[money.;$sum[$getUserVar[money].;$var[totalPrice]]]
+$setUserVar[food.;$sub[$getUserVar[food].;$message[1]]]
 </code></pre>
 			<p class="explanation">
 				Then also don't forget to change <span class="func">$var[</span><span class="argValue">totalPrice</span><span class="func">]</span> become <span class="func">$message[</span><span class="argValue">1</span><span class="func">]</span> and the <span class="quote">money</span> word become <span class="quote">food</span>
 			</p>
-<pre><code class="bdscript">$onlyIf[$message[1]<=$getUserVar[food];You don't have enough food!]</code></pre>
+<pre><code class="bdscript">$onlyIf[$message[1]<=$getUserVar[food].;You don't have enough food!]</code></pre>
 			<p class="explanation">
 				You also might need to change the <span class="quote">buy</span> word become <span class="quote">sell</span>.
 			</p>
-<pre><code class="bdscript">$onlyIf[$message[1]!=0;You can't sell 0 food!]
-$onlyIf[$message[1]>=1;You can't sell for negative amount of food!]
+<pre><code class="bdscript">$onlyIf[$message[1]!=0.;You can't sell 0 food!]
+$onlyIf[$message[1]>=1.;You can't sell for negative amount of food!]
 </code></pre><br><hr id="sell-code">
 			<h1>Final Code</h1>
 <pre><code class="bdscript">$nomention
-$var[foodPrice;5000]
-$onlyIf[$isNumber[$message[1]]==true;You must input a number only!]
-$var[totalPrice;$multi[$message[1];$var[foodPrice]]]
-$onlyIf[$message[1]!=0;You can't sell 0 food!]
-$onlyIf[$message[1]>=1;You can't sell for negative amount of food!]
-$onlyIf[$message[1]<=$getUserVar[food];You don't have enough food!]
-$setUserVar[money;$sum[$getUserVar[money];$var[totalPrice]]]
-$setUserVar[food;$sub[$getUserVar[food];$message[1]]]
+$var[foodPrice.;5000]
+$onlyIf[$isNumber[$message[1]]==true.;You must input a number only!]
+$var[totalPrice.;$multi[$message[1].;$var[foodPrice]]]
+$onlyIf[$message[1]!=0.;You can't sell 0 food!]
+$onlyIf[$message[1]>=1.;You can't sell for negative amount of food!]
+$onlyIf[$message[1]<=$getUserVar[food].;You don't have enough food!]
+$setUserVar[money.;$sum[$getUserVar[money].;$var[totalPrice]]]
+$setUserVar[food.;$sub[$getUserVar[food].;$message[1]]]
 $title[Transaction Completed]
 $description[You successfully sold **$message[1]x food** for **$var[totalPrice]** money!]
 $footer[You now have: $getUserVar[money] money]
@@ -228,11 +227,11 @@ $elseif[$message[1]>$getUserVar[money]]
 	$deleteIn[5s]
 $endif
 
-$var[foodPrice;5000]
-$var[totalPrice;$multi[$message[1];$var[foodPrice]]]
+$var[foodPrice.;5000]
+$var[totalPrice.;$multi[$message[1].;$var[foodPrice]]]
 
-$setUserVar[money;$sub[$getUserVar[money];$var[totalPrice]]]
-$setUserVar[food;$sum[$getUserVar[food];$message[1]]]
+$setUserVar[money.;$sub[$getUserVar[money].;$var[totalPrice]]]
+$setUserVar[food.;$sum[$getUserVar[food].;$message[1]]]
 
 $title[Purchase Completed]
 $description[You successfully buy **$message[1]x food** for **$var[totalPrice]** money!]

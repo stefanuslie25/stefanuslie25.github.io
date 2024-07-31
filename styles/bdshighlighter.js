@@ -17,13 +17,13 @@ for (b = 0; b < cb.length; b++) {
 	
 	arr = arr.replaceAll("$nomention", '<span style="color: #FF77F9;">' + "$nomention" + '</span>');
 	
-	arr = arr.replaceAll("$if", '<span style="color: #A020F0;">' + "$if" + '</span>');
-	arr = arr.replaceAll("$elseif", '<span style="color: #A020F0;">' + "$elseif" + '</span>');
-	arr = arr.replaceAll("$else", '<span style="color: #A020F0;">' + "$else" + '</span>');
-	arr = arr.replaceAll("$endif", '<span style="color: #A020F0;">' + "$endif" + '</span>');
-	arr = arr.replaceAll("$try", '<span style="color: #A020F0;">' + "$try" + '</span>');
-	arr = arr.replaceAll("$catch", '<span style="color: #A020F0;">' + "$catch" + '</span>');
-	arr = arr.replaceAll("$endtry", '<span style="color: #A020F0;">' + "$endtry" + '</span>');
+	arr = arr.replaceAll("$if", '<span style="color: #B95CF4;">' + "$if" + '</span>');
+	arr = arr.replaceAll("$elseif", '<span style="color: #B95CF4;">' + "$elseif" + '</span>');
+	arr = arr.replaceAll("$else", '<span style="color: #B95CF4;">' + "$else" + '</span>');
+	arr = arr.replaceAll("$endif", '<span style="color: #B95CF4;">' + "$endif" + '</span>');
+	arr = arr.replaceAll("$try", '<span style="color: #B95CF4;">' + "$try" + '</span>');
+	arr = arr.replaceAll("$catch", '<span style="color: #B95CF4;">' + "$catch" + '</span>');
+	arr = arr.replaceAll("$endtry", '<span style="color: #B95CF4;">' + "$endtry" + '</span>');
 	
 	arr = arr.replaceAll("[", '<span style="color: #FF4C4C; font-weight: bold;">' + "[" + '</span>');
 	arr = arr.replaceAll("]", '<span style="color: #FF4C4C; font-weight: bold;">' + "]" + '</span>');

@@ -124,6 +124,7 @@ textarea {
 
 pre {
 	width:80%;
+	font-size: 1em;
 	padding: 15px;
 	resize: none;
 	background-color: #212121;

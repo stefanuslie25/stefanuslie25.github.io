@@ -132,8 +132,8 @@ $endif
 		</p>
 <pre><code class="bdscript">$if[$message[1]==$getVar[countingNumber]]
 	$addCmdReactions[✅]
-	$setVar[countingNumber;$calculate[$message[1]+1]]
-	$setVar[countingUser;$authorID]
+	$setVar[countingNumber.;$calculate[$message[1]+1]]
+	$setVar[countingUser.;$authorID]
 $endif
 </code></pre><br><hr>
 		<h1>Final Looks</h1>
@@ -144,8 +144,8 @@ $endif
 $else
 	$if[$message[1]==$getVar[countingNumber]]
 	$addCmdReactions[✅]
-	$setVar[countingNumber;$calculate[$message[1]+1]]
-	$setVar[countingUser;$authorID]
+	$setVar[countingNumber.;$calculate[$message[1]+1]]
+	$setVar[countingUser.;$authorID]
 	$endif
 $endif
 </code></pre>
@@ -177,8 +177,8 @@ $endif
 <pre><code class="bdscript">$if[$authorID!=$getVar[countingUser]]
 	$if[$message[1]==$getVar[countingNumber]]
 		$addCmdReactions[✅]
-		$setVar[countingNumber;$calculate[$getVar[countingNumber]+1]]
-		$setVar[countingUser;$authorID]
+		$setVar[countingNumber.;$calculate[$getVar[countingNumber]+1]]
+		$setVar[countingUser.;$authorID]
 	$elseif[$message[1]!=$getVar[countingNumber]]
 		$deletecommand
 		You input the wrong number, my brother!
@@ -196,7 +196,7 @@ $endif</code></pre>
 			<h1 id="copy-code">Another Version</h1>
 			<p class="explanation">I added some more things here</p>
 <pre><code class="bdscript">$nomention
-$onlyForChannels[(Limit to channel you want);]
+$onlyForChannels[(Limit to channel you want).;]
 
 $if[$isNumber[$message[1]]==false]
 	$deletecommand
@@ -208,9 +208,9 @@ $endif
 $if[$authorID!=$getVar[countingUser]]
 	$if[$message[1]==$getVar[countingNumber]]
 		$addCmdReactions[✅]
-		$setVar[countingNumber;$calculate[$getVar[countingNumber]+1]]
-		$setVar[countingUser;$authorID]
-		$modifyChannel[$channelID;!unchanged;Last number: $message[1] - Last user: <@$authorID>]
+		$setVar[countingNumber.;$calculate[$getVar[countingNumber]+1]]
+		$setVar[countingUser.;$authorID]
+		$modifyChannel[$channelID.;!unchanged.;Last number: $message[1] - Last user: <@$authorID>]
 	$elseif[$message[1]!=$getVar[countingNumber]]
 		$deletecommand
 		You input the wrong number, my brother!
@@ -225,7 +225,7 @@ $endif</code></pre>
 				<button onclick="copyAlert()" class="button">Copy me, senpai!</button>
 			</div>
 <textarea id="textToCopy" class="hidden-text" readonly>$nomention
-$onlyForChannels[(Limit to channel you want);]
+$onlyForChannels[(Limit to channel you want).;]
 
 $if[$isNumber[$message[1]]==false]
 	$deletecommand
@@ -237,9 +237,9 @@ $endif
 $if[$authorID!=$getVar[countingUser]]
 	$if[$message[1]==$getVar[countingNumber]]
 		$addCmdReactions[✅]
-		$setVar[countingNumber;$calculate[$getVar[countingNumber]+1]]
-		$setVar[countingUser;$authorID]
-		$modifyChannel[$channelID;!unchanged;Last number: $message[1] - Last user: <@$authorID>]
+		$setVar[countingNumber.;$calculate[$getVar[countingNumber]+1]]
+		$setVar[countingUser.;$authorID]
+		$modifyChannel[$channelID.;!unchanged.;Last number: $message[1] - Last user: <@$authorID>]
 	$elseif[$message[1]!=$getVar[countingNumber]]
 		$deletecommand
 		You input the wrong number, my brother!

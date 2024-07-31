@@ -82,9 +82,9 @@
 				If <span class="func">$message[</span><span class="argValue">1</span><span class="func">]</span> is <span class="quote">"all"</span> do this and if it's not <span class="quote">"all"</span> do that.
 			</p>
 <pre><code class="bdscript">$if[$toLowercase[$message[1]]==all]
-	$var[money;$getUserVar[money]]
+	$var[money.;$getUserVar[money]]
 $else
-	$var[money;$message[1]]
+	$var[money.;$message[1]]
 $endif
 </code></pre>
 			<p class="notes">
@@ -99,10 +99,10 @@ $endif
 			</p>
 <pre><code class="bdscript">$if[$isNumber[$message]==false]
 	$if[$toLowercase[$message[1]]==all]
-		$var[money;$getUserVar[money]]
+		$var[money.;$getUserVar[money]]
 	$endif
 $else
-	$var[money;$message[1]]
+	$var[money.;$message[1]]
 $endif
 </code></pre>
 			<p class="notes">
@@ -119,13 +119,13 @@ $endif
 				But, it is not yet enough.. You don't want to let your users could input negative amount or money that they don't have!
 			</p>
 <pre><code class="bdscript">$if[$isNumber[$message]==false]
-	$onlyIf[$toLowercase[$message[1]]==all;You can only input a number or "all"]
-	$var[money;$getUserVar[money]]
+	$onlyIf[$toLowercase[$message[1]]==all.;You can only input a number or "all"]
+	$var[money.;$getUserVar[money]]
 $else
-	$var[money;$message[1]]
-	$onlyIf[$var[money]!=0;You can't input 0 as an amount!]
-	$onlyIf[$var[money]>0;You can't input negative amount!]
-	$onlyIf[$var[money]<=$getUserVar[money];You don't have that much money!]
+	$var[money.;$message[1]]
+	$onlyIf[$var[money]!=0.;You can't input 0 as an amount!]
+	$onlyIf[$var[money]>0.;You can't input negative amount!]
+	$onlyIf[$var[money]<=$getUserVar[money].;You don't have that much money!]
 $endif
 </code></pre>
 			<p class="explanation">
@@ -140,13 +140,13 @@ $endif
 			</p>
 <pre><code class="bdscript">$if[$isNumber[$message]==false]
 	$if[$toLowercase[$message[1]]==all]
-		$var[money;$getUserVar[money]]
+		$var[money.;$getUserVar[money]]
 	$else
 		You can only input a number or "all"
 		$stop
 	$endif
 $else
-	$var[money;$message[1]]
+	$var[money.;$message[1]]
 	$if[$var[money]==0]
 		You can't input 0 as an amount!
 		$stop
@@ -176,7 +176,7 @@ Congratulations, you successfully blablabla something **$var[money]** money!
 			</p>
 <pre><code class="bdscript">$if[$isNumber[$message]==false]
 	$if[$toLowercase[$message[1]]==all]
-		$var[money;$getUserVar[money]]
+		$var[money.;$getUserVar[money]]
 	$else
 		$title[Invalid Amount!]
 		$color[FF0000]
@@ -185,7 +185,7 @@ Congratulations, you successfully blablabla something **$var[money]** money!
 		$stop
 	$endif
 $else
-	$var[money;$message[1]]
+	$var[money.;$message[1]]
 	$if[$var[money]==0]
 		$title[Invalid Amount!]
 		$color[FF0000]
@@ -234,11 +234,11 @@ $color[00FF00]
 			</p>
 <pre><code class="bdscript">$if[$isNumber[$message]==false]
 	$if[$toLowercase[$message[1]]==all]
-		$var[money;$getUserVar[money]]
+		$var[money.;$getUserVar[money]]
 	$elseif[$toLowercase[$message[1]]==half]
-		$var[money;$calculate[$getUserVar[money]/2]]
+		$var[money.;$calculate[$getUserVar[money]/2]]
 	$elseif[$toLowercase[$message[1]]==quarter]
-		$var[money;$divide[$getUserVar[money];4]]
+		$var[money.;$divide[$getUserVar[money].;4]]
 	$else
 		$title[Invalid Amount!]
 		$color[FF0000]
@@ -247,7 +247,7 @@ $color[00FF00]
 		$stop
 	$endif
 $else
-	$var[money;$message[1]]
+	$var[money.;$message[1]]
 	$if[$var[money]==0]
 		$title[Invalid Amount!]
 		$color[FF0000]
@@ -288,17 +288,17 @@ $color[00FF00]
 			</p>
 <pre><code class="bdscript">$if[$isNumber[$message]==false]
 	$if[$toLowercase[$message[1]]==all]
-		$var[money;$getUserVar[money]]
+		$var[money.;$getUserVar[money]]
 	$elseif[$toLowercase[$message[1]]==half]
-		$var[money;$calculate[$getUserVar[money]/2]]
+		$var[money.;$calculate[$getUserVar[money]/2]]
 	$elseif[$toLowercase[$message[1]]==quarter]
-		$var[money;$divide[$getUserVar[money];4]]
-	$elseif[$checkContains[$message[1];%]==true]
-		$textSplit[$message[1];%]
-		$var[percentNumber;$splitText[1]]
+		$var[money.;$divide[$getUserVar[money].;4]]
+	$elseif[$checkContains[$message[1].;%]==true]
+		$textSplit[$message[1].;%]
+		$var[percentNumber.;$splitText[1]]
 		$if[$isNumber[$var[percentNumber]]==true]
 			$enableDecimals[yes]
-			$var[money;$calculate[($var[percentNumber]/100.0)*$getUserVar[money]]]
+			$var[money.;$calculate[($var[percentNumber]/100.0)*$getUserVar[money]]]
 			$enableDecimals[no]
 			$if[$var[money]<=0]
 				$title[Invalid Amount!]
@@ -316,7 +316,7 @@ $color[00FF00]
 		$stop
 	$endif
 $else
-	$var[money;$message[1]]
+	$var[money.;$message[1]]
 	$if[$var[money]==0]
 		$title[Invalid Amount!]
 		$color[FF0000]
@@ -352,18 +352,18 @@ $color[00FF00]
 			<h1>Example Code: X% of money you have + $round</h1>
 <pre><code class="bdscript">$if[$isNumber[$message]==false]
 	$if[$toLowercase[$message[1]]==all]
-		$var[money;$getUserVar[money]]
+		$var[money.;$getUserVar[money]]
 	$elseif[$toLowercase[$message[1]]==half]
-		$var[money;$calculate[$getUserVar[money]/2]]
+		$var[money.;$calculate[$getUserVar[money]/2]]
 	$elseif[$toLowercase[$message[1]]==quarter]
-		$var[money;$divide[$getUserVar[money];4]]
-	$elseif[$checkContains[$message[1];%]==true]
-		$textSplit[$message[1];%]
-		$var[percentNumber;$splitText[1]]
+		$var[money.;$divide[$getUserVar[money].;4]]
+	$elseif[$checkContains[$message[1].;%]==true]
+		$textSplit[$message[1].;%]
+		$var[percentNumber.;$splitText[1]]
 		$if[$isNumber[$var[percentNumber]]==true]
 			$enableDecimals[yes]
-			$var[money;$calculate[($var[percentNumber]/100.0)*$getUserVar[money]]]
-			$var[money;$round[$var[money];2]]
+			$var[money.;$calculate[($var[percentNumber]/100.0)*$getUserVar[money]]]
+			$var[money.;$round[$var[money].;2]]
 			$enableDecimals[no]
 			$if[$var[money]<=0]
 				$title[Invalid Amount!]
@@ -381,7 +381,7 @@ $color[00FF00]
 		$stop
 	$endif
 $else
-	$var[money;$message[1]]
+	$var[money.;$message[1]]
 	$if[$var[money]==0]
 		$title[Invalid Amount!]
 		$color[FF0000]
@@ -420,7 +420,7 @@ $color[00FF00]
 			<p class="explanation">
 				If you want to use <span class="func">$multi</span> and <span class="func">$divide</span> it would looks like this.
 			</p>
-<pre><code class="bdscript">$var[money;$multi[$divide[$var[percentNumber];100];$getUserVar[money]]]
+<pre><code class="bdscript">$var[money.;$multi[$divide[$var[percentNumber].;100].;$getUserVar[money]]]
 </code></pre>
 		<br>
 		</div>

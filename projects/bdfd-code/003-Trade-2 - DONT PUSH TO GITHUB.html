@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Trade System (Part 2)</title>
+	<meta property="og:title" content="Basic Trade System (Part 2)">
+	<meta property="og:description" content="Trade is an activity where you give something to receive something.">
+	<meta property="og:image" content="https://i.imgur.com/zEmdcRC.jpg">
+	<meta property="og:type" content="article">
+	<link rel="icon" href="https://i.imgur.com/taLNQSv.png" type="image/png">
+	<link rel="stylesheet" href="../../styles/main.css">
+	<link rel="stylesheet" href="../../styles/content.css">
+	<link rel="stylesheet" href="../../styles/text.css">
+	<script src="../../styles/script.js"></script>
+</head>
+<body>
+	<header>
+		<div>
+			<button class="nav-menu" onclick="window.location.href='../../index.html'">Home</button>
+			<button class="nav-menu">My Projects</button>
+			<button class="nav-menu" onclick="window.location.href='list.html'">BDFD Code</button>
+			<button class="nav-menu">Contact Me</button>
+			<button class="nav-menu" onclick="window.location.href='../../credits.html'">Credits</button>
+		</div>
+	</header>
+	<footer><p>Unaffiliated with Bot Designer For Discord and Discord Inc.</p></footer>
+	<button class="menu-portrait" id="sidebar-toggle">Menu</button>
+	<aside class="sidebar" id="sidebar">
+		<button class="sidebar-button" onclick="window.location.href='../../index.html'">Home</button>
+		<button class="sidebar-button">My Projects</button>
+		<button class="sidebar-button" onclick="window.location.href='list.html'">BDFD Codes</button>
+		<button class="sidebar-button">Contact Me</button>
+		<button class="sidebar-button" onclick="window.location.href='../../credits.html'">Credits</button>
+	</aside>
+	<div class="overlay" id="overlay"></div>
+	
+	<div class="list-content">
+	
+		<div class="black-box-desc" id="top-page">
+			<h1>Trade Part 2</h1>
+			<p class="notes">
+				What is trade?
+			</p>
+			<p class="desc">
+				<span style="color: lightgray;">1. <span style="font-weight: bold; color: gray;">Buy</span>: Buying involves purchasing items or services by paying the agreed-upon price to the seller.</span>
+			</p>
+			<p class="desc">
+				<span style="color: lightgray;">2. <span style="font-weight: bold; color: gray;">Sell</span>: Selling involves transferring ownership of an item or service from a seller to a buyer in return for payment.</span>
+			</p>
+			<p class="notes">
+				Now, we will discuss about the basic of forex and barter and how to do it.
+			</p>
+			<p class="desc">
+				3. <span class="desc-bold">Forex</span>: Forex (Foreign Exchange) is the market where participants buy and sell currencies, aiming to profit from changes in exchange rates.
+			</p>
+			<p class="desc">
+				4. <span class="desc-bold">Barter</span>: Barter is the exchange of goods or services directly for other goods or services without using money.
+			</p>
+			<hr>
+			<h1>Before we start</h1>
+			<p class="explanation">
+				<span class="desc-bold">First:</span> We will need at least 2 variables.
+			</p>
+			<p class="notes">
+				If you don't know how to use variables, please go to <a href="https://wiki.botdesignerdiscord.com/guides/introduction/variables.html" target="_blank">BDFD wiki</a>. Thank you!
+			</p>
+			<p class="explanation">
+				<span class="desc-bold">Any modifications to the code are none of my business, learn it again until you really understand it! 😊</span><br>
+				If the code is 100% from my page, you can blame me and I will fix it ASAP.
+			</p>
+			<hr>
+			<h1>Teleport</h1>
+			<p class="explanation">
+				<a href="#forex-code">Forex Source Code</a> | <a href="#barter-code">Barter Source Code</a>
+			</p>
+			<br>
+		</div>
+		
+		<div class="black-box-code">
+			<p class="notes">
+				Sorry, I want to talk about Barter first..
+			</p>
+			<h1>Basic Barter Explanations</h1>
+			<p class="notes">
+				This probably the hardest trade system to make, either learn it or just copy the code, up to you. :)
+			</p>
+			<p class="explanation">
+				Barter means trade things to things. So what you wanna change is the variable. For now, let's create another variable and call it as <span class="quote">"drink"</span>.
+			</p>
+			<p class="explanation">
+				For example, the price of <span class="quote">2x foods</span> are <span class="quote">3x drinks</span>. So, if you want to trade less than 2 foods or less than 3 drinks, the bot will <span class="desc-bold">block</span> your action or if you trying to trade 3 foods or 4 drinks will do the same
+			</p>
+			<p class="explanation">
+				That's what we call as <span class="quote">"multiples of X"</span>. For example, <span class="desc-bold">multiples of 2</span> is 2, 4, 6, 8,.. and <span class="desc-bold">multiples of 3</span> is 3, 6, 9, 12,.. 
+			</p><br><hr>
+			<p class="explanation">
+				Save the trade rate you want into <span class="quote">temporary variables</span>.
+			</p>
+<pre><code class="bdscript">$c[Trade Rate]
+$var[DrinkToFood;3]
+$var[FoodToDrink;2]</code></pre>
+			<p class="notes">
+				What is $c for ? Click <a href="https://wiki.botdesignerdiscord.com/bdscript/c.html" target="_blank">here</a> to learn more. Basically, it's nothing don't worry about it.
+			</p>
+			<p class="explanation">
+				<span class="quote">Forex</span> would have the similar system at this point.
+			</p><br><hr>
+			<p class="explanation">
+				Next, you might need this for easier viewing. 
+			</p>
+<pre><code class="bdscript">$c[Arguments]
+$var[itemYouAsk;$toLowercase[$message[1]]]
+$var[itemYouGive;$toLowercase[$message[2]]]
+$var[amountYouGive;$message[3]]</code></pre>
+			<p class="explanation">
+				Without <span class="func">$var[</span><span class="argValue">something</span><span class="func">;</span><span class="argValue">...</span><span class="func">]</span> your code might looks so confusing.
+			</p>
+<pre><code class="bdscript">$if[$toLowercase[$message[1]]==food]
+	$if[$toLowercase[$message[2]]==food]
+		You can't trade food for food.
+		$stop
+	$elseif[$toLowercase[$message[2]]==drink]
+		$c[Blablabla something]
+	$endif
+$elseif[$toLowercase[$message[1]]==drink]
+	$if[$toLowercase[$message[2]]==food]
+		$c[Blablabla something]
+	$elseif[$toLowercase[$message[2]]==drink]
+		You can't trade drink for drink.
+		$stop
+	$endif
+$endif</code></pre>
+			<p class="notes">
+				So, what do you think?<br>But, anyway I'll just continue with $var. You may put without $var in your code.
+			</p>
+			<br>
+		</div>
+		
+		<div class="black-box-code">
+			<h1>Example Code: Barter</h1>
+			<p class="explanation">
+				Next, we need to make sure if it's <span class="quote">different item for different item</span> or no.
+			</p>
+			<p class="notes">
+				If you want to let your users to could trade same item to same item, <span class="quote">you may skip this part</span>.
+			</p>
+			<p class="notes">
+				But like, why?
+			</p>
+<pre><code class="bdscript">$if[$var[itemYouAsk]==food]
+	$if[$var[itemYouGive]==food]
+		You can't trade food for food.
+		$stop
+	$elseif[$var[itemYouGive]==drink]
+		OK
+	$endif
+$elseif[$var[itemYouAsk]==drink]
+	$if[$var[itemYouGive]==food]
+		OK
+	$elseif[$var[itemYouGive]==drink]
+		You can't trade drink for drink.
+		$stop
+	$endif
+$endif</code></pre>
+			<br>
+		</div>
+		
+		<div class="black-box-code">
+			<h1>Example Code: Barter + Blocker</h1>
+			<p class="explanation">
+				You might need blocker for example if they put <span class="quote">unknown items</span> or <span class="quote">no items at all</span> and that thing might cause problems in the future.
+			</p>
+<pre><code class="bdscript">$if[$var[itemYouAsk]==food]
+	$if[$var[itemYouGive]==food]
+		You can't trade food for food.
+		$stop
+	$elseif[$var[itemYouGive]==drink]
+		OK
+	$elseif[$var[itemYouGive]==]
+		You must input item 2's name, try again.
+		$stop
+	$else
+		Item 2's name not found, try again.
+		$stop
+	$endif
+$elseif[$var[itemYouAsk]==drink]
+	$if[$var[itemYouGive]==food]
+		OK
+	$elseif[$var[itemYouGive]==drink]
+		You can't trade drink for drink.
+		$stop
+	$elseif[$var[itemYouGive]==]
+		You must input item 2's name, try again.
+		$stop
+	$else
+		Item 2's name not found, try again.
+		$stop
+	$endif
+$elseif[$var[itemYouAsk]==]
+	You must input item 1's name, try again.
+	$stop
+$else
+	Item 1's name not found, try again.
+	$stop
+$endif</code></pre><hr><br>
+			<p class="explanation">
+				Now, we just need to add the <span class="quote">real calculation</span> here.
+			</p>
+			<p class="notes">
+				What "real calculation" we need?
+			</p>
+			<p class="explanation">
+				So, the amount we input in <span class="func">$message[</span><span class="argValue">3</span><span class="func">]</span> is might not yet valid. Because, users could put any number's there. What I'm trying to do in this step is to know automatically when they try to put 99 of foods or drinks: <span class="quote">What's the valid number should be.</span>
+			</p>
+<pre><code class="bdscript">$var[validAmount;$divide[$var[amountYouGive];$var[DrinkToFood]]]
+$var[amountYouGet;$multi[$var[validAmount];$var[FoodToDrink]]]
+
+$title[Result]
+$addField[Valid amount:;$var[validAmount] $var[itemYouGive](s)]
+$addField[You get:;$var[amountYouGet] $var[itemYouAsk](s)]</code></pre>
+			<p class="explanation">
+				2 foods could get 3 drinks, so if we put 99 foods, we should get 49*3 = 147 drinks. It's because: <span class="quote">99 divided by 2 is equal 49.5</span> and the valid number is <span class="quote">49</span> only.
+			</p>
+<pre><code class="bdscript">$var[validAmount;$divide[$var[amountYouGive];$var[FoodToDrink]]]
+$var[amountYouGet;$multi[$var[validAmount];$var[DrinkToFood]]]
+
+$title[Result]
+$addField[Valid amount:;$var[validAmount] $var[itemYouGive](s)]
+$addField[You get:;$var[amountYouGet] $var[itemYouAsk](s)]</code></pre>
+			<p class="explanation">
+				3 drinks could get 2 foods, so if we put 99 drinks, we should get 33*2 = 66 drinks. It's because: <span class="quote">99 divided by 3 is equal 33</span>.
+			</p>
+			<br><hr>
+			<br>
+		</div>
+		
+		<div class="black-box-code" id="barter-code">
+			<h1>Example Final Code: Barter</h1>
+			<p class="notes">
+				If you don't understand this, then nothing I could help either :')
+			</p>
+			<p class="explanation">
+				Example command usage: <span class="func">!trade &lt;item you want&gt; &lt;item you give&gt; &lt;amount you give&gt;</span>
+			</p>
+<pre><code class="bdscript">$nomention
+
+$c[Trade Rate]
+$var[DrinkToFood;3]
+$var[FoodToDrink;2]
+
+$c[Arguments]
+$var[itemYouAsk;$toLowercase[$message[1]]]
+$var[itemYouGive;$toLowercase[$message[2]]]
+$var[amountYouGive;$message[3]]
+
+$if[$var[itemYouAsk]==food]
+	$if[$var[itemYouGive]==food]
+		You can't trade food for food.
+		$stop
+	$elseif[$var[itemYouGive]==drink]
+		$if[$var[amountYouGive]==]
+			You must input amount of **$var[itemYouGive]** you want to give.
+			$stop
+		$elseif[$isNumber[$var[amountYouGive]]==false]
+			**$var[amountYouGive]** is not a number, try again.
+			$stop
+		$endif
+		$var[validAmount;$divide[$var[amountYouGive];$var[DrinkToFood]]]
+	$elseif[$var[itemYouGive]==]
+		You must input item 2's name, try again.
+		$stop
+	$else
+		Item 2's name not found, try again.
+		$stop
+	$endif
+$elseif[$var[itemYouAsk]==drink]
+	$if[$var[itemYouGive]==food]
+		$if[$var[amountYouGive]==]
+			You must input amount of **$var[itemYouGive]** you want to give.
+			$stop
+		$elseif[$isNumber[$var[amountYouGive]]==false]
+			**$var[amountYouGive]** is not a number, try again.
+			$stop
+		$endif
+		$var[validAmount;$divide[$var[amountYouGive];$var[FoodToDrink]]]
+	$elseif[$var[itemYouGive]==drink]
+		You can't trade drink for drink.
+		$stop
+	$elseif[$var[itemYouGive]==]
+		You must input item 2's name, try again.
+		$stop
+	$else
+		Item 2's name not found, try again.
+		$stop
+	$endif
+$elseif[$var[itemYouAsk]==]
+	You must input item 1's name, try again.
+	$stop
+$else
+	Item 1's name not found, try again.
+	$stop
+$endif
+
+$c[Code Result]
+$title[Result]
+$addField[Valid amount:;$var[validAmount] $var[itemYouGive](s)]
+$addField[You get:;$var[amountYouGet] $var[itemYouAsk](s)]
+</code></pre>
+			<br>
+		</div>
+		
+		<div class="black-box-code">
+		</div>
+	
+	</div>
+</body>
+	<script src="../../styles/bdshighlighter.js"></script>
+	<script src="../../styles/toggleButton.js"></script>
+</html>

@@ -6,40 +6,42 @@
 	<title>Thankyou!</title>
 	<link rel="icon" href="https://i.imgur.com/taLNQSv.png" type="image/png">
 	<link rel="stylesheet" href="styles/main.css">
-	<link rel="stylesheet" href="styles/button.css">
-	<link rel="stylesheet" href="styles/box.css">
+	<link rel="stylesheet" href="styles/content.css">
+	<link rel="stylesheet" href="styles/text.css">
 	<script src="styles/script.js"></script>
 </head>
 <body>
-	<div class="bg"></div>
-	<div class="bg-filter"></div>
-	<div class="list-content">
+	<header>
 		<div>
-			<div class="black-box">
-				<h1>Credits<br></h1>
-				<p class="explanation">
-					Thankyou to Github team for your Github Page, your contribution is the biggest, without you I don't know how to get this website online for 24/7
-				</p>
-				<p class="explanation">
-					Thankyou to ChatGPT team for your A.I's technology that help me to answer few things that I don't understand at all and I could explain it with my own language that google search sometimes can't understand me and it's annoying ._.
-				</p>
-				<p class="explanation">
-					Thankyou to rumahweb for your cheap custom domain and it's so easy to configure the DNS and everything!
-				</p>
-				<p class="explanation">
-					Thanks to discord user <a class="quote" href="https://discord.com/users/1095378481237475409">@.koomball</a> (or Roxette Menzy Dillon) to let me use the bdscript highlighter, it's looks awesome!
-				</p>
-				<p class="explanation">
-					Thanks to discord user <a class="quote" href="https://discord.com/users/713752533763489893">@fai_kun</a> for telling me to use @media so it could looks good on any size of browser!
-				</p>
-			</div>
+			<button class="nav-menu" onclick="window.location.href='index.html'">Home</button>
+			<button class="nav-menu">My Projects</button>
+			<button class="nav-menu" onclick="window.location.href='projects/bdfd-code/list.html'">BDFD Code</button>
+			<button class="nav-menu">Contact Me</button>
+			<button class="youre-here">Credits</button>
 		</div>
-	</div>
-	<div class="footer-with-button">
-		<button onclick="window.location.href='index.html'" class="button">Home</button>
-	</div>
-	<div class="footer">
-		<p class="text-footer">Made with github page and chatgpt.</p>
+	</header>
+	<footer><p>Unaffiliated with Bot Designer For Discord and Discord Inc.</p></footer>
+	<button class="menu-portrait" id="sidebar-toggle">Menu</button>
+	<aside class="sidebar" id="sidebar">
+		<button class="sidebar-button" onclick="window.location.href='index.html'">Home</button>
+		<button class="sidebar-button">My Projects</button>
+		<button class="sidebar-button" onclick="window.location.href='projects/bdfd-code/list.html'">BDFD Codes</button>
+		<button class="sidebar-button">Contact Me</button>
+		<button class="youre-here-2">Credits</button>
+	</aside>
+	<div class="overlay" id="overlay"></div>
+	
+	<div class="credit-content">
+	<h1 style="color: white;">Credits</h1>
+	<p class="explanation">
+		Thankyou to Github team for your Github Page, your contribution is the biggest, without you I don't know how to get this website online for 24/7
+	</p>
+	<p class="explanation">
+		Thankyou to ChatGPT team for your A.I's technology that help me to answer few things that I don't understand at all and I could explain it with my own language that google search sometimes can't understand me and it's annoying ._.
+	</p>
+	<p class="explanation">
+		Thanks to discord user <a class="quote" href="https://discord.com/users/1095378481237475409" target="_blank">@.koomball</a> (or Roxette Menzy Dillon) to let me use the <a class="quote" href="https://github.com/Koomball/discbot-scripts-highlighter" target="_blank">bdscript highlighter</a>, it's looks awesome!
+	</p>
 	</div>
 </body>
 </html>

@@ -10,17 +10,27 @@ if (window.location.hostname === 'www.stefanuslie25.my.id' && window.location.pa
 	window.location.replace(window.location.pathname.replace('credits.html', 'credits'));
 }
 
-function copyAlert() {
-	alert("Successfully copy the code!");
-	
-	var textToCopy = document.getElementById("textToCopy");
-	
-	textToCopy.select();
-	textToCopy.setSelectionRange(0, 99999);
-	
-	document.execCommand("copy");
-}
+document.addEventListener('DOMContentLoaded', function () {
+    const toggleButton = document.getElementById('sidebar-toggle');
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('overlay');
 
-function comingsoonAlert() {
-	alert("Coming soon!");
-}
+    toggleButton.addEventListener('click', function () {
+        sidebar.classList.toggle('open');
+        overlay.classList.toggle('visible');
+    });
+
+    // Close sidebar and overlay when clicking outside
+    document.addEventListener('click', function (event) {
+        if (!sidebar.contains(event.target) && !toggleButton.contains(event.target)) {
+            sidebar.classList.remove('open');
+            overlay.classList.remove('visible');
+        }
+    });
+
+    // Close sidebar and overlay when clicking on overlay
+    overlay.addEventListener('click', function () {
+        sidebar.classList.remove('open');
+        overlay.classList.remove('visible');
+    });
+});

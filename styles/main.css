@@ -68,7 +68,8 @@ header {
 	width: 100px;
 	height: 30px;
 	color: #fff;
-	padding: 10px;
+	left: 10px;
+	top: 10px;
 	cursor: pointer;
 	margin-bottom: 10px;
 	transition: background-color 0.3s ease;
@@ -100,6 +101,7 @@ header {
 	height: 30px;
 	background-color: lightblue;
 	z-index: 1;
+	user-select: none;
 	cursor: pointer;
 	overflow: hidden;
 	transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;

@@ -12,7 +12,6 @@
 	<link rel="stylesheet" href="../../styles/main.css">
 	<link rel="stylesheet" href="../../styles/content.css">
 	<link rel="stylesheet" href="../../styles/text.css">
-	<script src="../../styles/script.js"></script>
 </head>
 <body>
 	<header>
@@ -35,76 +34,73 @@
 	</aside>
 	<div class="overlay" id="overlay"></div>
 	
-	<div class="list-content">
+	<div class="list-nav">
+		<button data-target="top"><p>▲</p></button>
+		<button data-target="point-1"><p>1.</p></button>
+		<button data-target="point-2"><p>2.</p></button>
+		<button data-target="point-3"><p>3.</p></button>
+		<button data-target="point-4"><p>4.</p></button>
+	</div>
+	<button class="list-nav-toggle"></button>
 	
-		<div class="black-box-desc" id="top-page">
-			<h1>Basic Economy Input</h1>
-			<p class="desc">
-				1. Ability to <span class="desc-bold">input "all"</span> so users don't need to check how much money they have right now.
-			</p>
-			<p class="desc">
-				2. Prevent users to <span class="desc-bold">input negative amount</span>
-			</p>
-			<p class="desc">
-				3. Prevent users to <span class="desc-bold">input zero as an amount</span>
-			</p>
-			<p class="desc">
-				4. Prevent users to <span class="desc-bold">input money they don't have</span>
-			</p>
-			<p class="desc">
-				5. Ability to <span class="desc-bold">custom error message</span> so you as the developer could express your own style.
-			</p>
-			<p class="notes">And if you already understand the basic, you can also do things below</p>
-			<p class="desc">
-				6. Ability to <span class="desc-bold">input "half" or "quarter" of money</span>
-			</p>
-			<p class="desc">
-				7. Ability to <span class="desc-bold">input X% of money</span>
-			</p>
-			<hr>
-			<h1>Before we start</h1>
-			<p class="explanation">
-				<span class="desc-bold">Of course</span> you need a variable, and if you don't have one yet. Please make one and let's call it as <span class="quote">"money"</span> for now..
-			</p>
-			<p class="notes">
-				If you don't know how to use variables, please go to <a href="https://wiki.botdesignerdiscord.com/guides/introduction/variables.html" target="_blank">BDFD wiki</a>. Thank you!
-			</p>
-			<p class="explanation">
-				<span class="desc-bold">Any modifications to the code are none of my business, learn it again until you really understand it! 😊</span><br>
-				If the code is 100% from my page, you can blame me and I will fix it ASAP.
-			</p>
-			<hr>
-			<h1>Teleport</h1>
-			<p class="explanation">
-				<a href="#copy-code">Source Code</a>
-			</p>
-			<br>
-		</div>
+	<div class="content">
+	
+		<h1 id="top">Basic Economy Input</h1>
+		<p class="desc">
+			1. Ability to <span class="desc-bold">input "all"</span> so users don't need to check how much money they have right now.<br>
+			1.1. Prevent users to <span class="desc-bold">input negative amount</span><br>
+			1.2. Prevent users to <span class="desc-bold">input zero as an amount</span><br>
+			1.3. Prevent users to <span class="desc-bold">input money they don't have</span>
+		</p>
+		<p class="desc">
+			2. Ability to <span class="desc-bold">custom error message</span> so you as the developer could express your own style.
+		</p>
+		<p class="notes">And if you already understand the basic, you can also do things below</p>
+		<p class="desc">
+			3. Ability to <span class="desc-bold">input "half" or "quarter" of money</span>
+		</p>
+		<p class="desc">
+			4. Ability to <span class="desc-bold">input X% of money</span>
+		</p>
+		<hr>
 		
-		<div class="black-box-code">
-			<h1>Example Code 1</h1>
-			<p class="explanation">
-				Basically, you just need to check using <span class="func">$if</span> function, what you try to type.
-			</p>
-			<p class="explanation">
-				If <span class="func">$message[</span><span class="argValue">1</span><span class="func">]</span> is <span class="quote">"all"</span> do this and if it's not <span class="quote">"all"</span> do that.
-			</p>
+		<h1>Before we start</h1>
+		<p class="explanation">
+			<span class="desc-bold">Of course</span> you need a variable, and if you don't have one yet. Please make one and let's call it as <span class="quote">"money"</span> for now..
+		</p>
+		<p class="notes">
+			If you don't know how to use variables, please go to <a href="https://wiki.botdesignerdiscord.com/guides/introduction/variables.html" target="_blank">BDFD wiki</a>. Thank you!
+		</p>
+		<p class="explanation">
+			<span class="desc-bold">Any modifications to the code are none of my business, learn it again until you really understand it! 😊</span><br>
+			If the code is 100% from my page, you can blame me and I will fix it ASAP.
+		</p>
+		<hr id="point-1">
+		
+		<h1>Example Code 1</h1>
+		<p class="explanation">
+			Basically, you just need to check using <span class="func">$if</span> function, what you try to type.
+		</p>
+		<p class="explanation">
+			If <span class="func">$message[</span><span class="argValue">1</span><span class="func">]</span> is <span class="quote">"all"</span> do this and if it's not <span class="quote">"all"</span> do that.
+		</p>
+		
 <pre><code class="bdscript">$if[$toLowercase[$message[1]]==all]
 	$var[money.;$getUserVar[money]]
 $else
 	$var[money.;$message[1]]
 $endif
 </code></pre>
-			<p class="notes">
-				It is indeed so simple.
-			</p>
-		</div>
+
+		<p class="notes">
+			It is indeed so simple.
+		</p>
+		<hr>
 		
-		<div class="black-box-code">
-			<h1>Example Code 2</h1>
-			<p class="explanation">
-				But, that might cause several problems in the future. To avoid things that might be undesirable, we need to check if people try to do something else that's not <span class="quote">"all"</span> or <span class="quote">real amount</span>.
-			</p>
+		<h1>Example Code 2</h1>
+		<p class="explanation">
+			But, that might cause several problems in the future. To avoid things that might be undesirable, we need to check if people try to do something else that's not <span class="quote">"all"</span> or <span class="quote">real amount</span>.
+		</p>
 <pre><code class="bdscript">$if[$isNumber[$message]==false]
 	$if[$toLowercase[$message[1]]==all]
 		$var[money.;$getUserVar[money]]
@@ -113,19 +109,13 @@ $else
 	$var[money.;$message[1]]
 $endif
 </code></pre>
-			<p class="notes">
-				..And just like that!
-			</p>
-			<p class="explanation">
-				Learn more about what <span class="func">$isNumber</span> function for, <a href="https://wiki.botdesignerdiscord.com/bdscript/isNumber.html" target="_blank">here</a>
-			</p>
-		</div>
+		<p class="notes">..And just like that!</p>
+		<p class="explanation">Learn more about what <span class="func">$isNumber</span> function for, <a href="https://wiki.botdesignerdiscord.com/bdscript/isNumber.html" target="_blank">here</a></p>
+		<hr>
 		
-		<div class="black-box-code">
-			<h1>Example Code 2 + Simple Blocker</h1>
-			<p class="notes">
-				But, it is not yet enough.. You don't want to let your users could input negative amount or money that they don't have!
-			</p>
+		<h1>Example Code 2 + Simple Blocker</h1>
+		<p class="notes">But, it is not yet enough.. You don't want to let your users could input negative amount or money that they don't have!</p>
+		
 <pre><code class="bdscript">$if[$isNumber[$message]==false]
 	$onlyIf[$toLowercase[$message[1]]==all.;You can only input a number or "all"]
 	$var[money.;$getUserVar[money]]
@@ -136,16 +126,11 @@ $else
 	$onlyIf[$var[money]<=$getUserVar[money].;You don't have that much money!]
 $endif
 </code></pre>
-			<p class="explanation">
-				What I just did in above code is adding <span class="func">$onlyIf</span> function to keep it simple.
-			</p>
-		</div>
+		<p class="explanation">What I just did in above code is adding <span class="func">$onlyIf</span> function to keep it simple.</p>
+		<hr>
 		
-		<div class="black-box-code">
-			<h1>Example Code 2 + Basic $if Blocker</h1>
-			<p class="explanation">
-			Alternative way, you can use:
-			</p>
+		<h1>Example Code 2 + Basic $if Blocker</h1>
+		<p class="explanation">Alternative way, you can use:</p>
 <pre><code class="bdscript">$if[$isNumber[$message]==false]
 	$if[$toLowercase[$message[1]]==all]
 		$var[money.;$getUserVar[money]]
@@ -169,19 +154,18 @@ $endif
 
 Congratulations, you successfully blablabla something **$var[money]** money!
 </code></pre>
-			<p class="explanation">
-				The <span class="func">$stop</span> function is needed so it won't give any errors we don't want to be happened.
-			</p>
-			<p class="notes">
-				It's longer indeed, but you could customize it! (e.g. $title or $description)
-			</p>
-		</div>
+		<p class="explanation">
+			The <span class="func">$stop</span> function is needed so it won't give any errors we don't want to be happened.
+		</p>
+		<p class="notes">
+			It's longer indeed, but you could customize it! (e.g. $title or $description)
+		</p>
+		<hr id="point-2">
 		
-		<div class="black-box-code">
-			<h1>Example Code 2 + Custom Blocker</h1>
-			<p class="notes">
-				What I mean by custom blocker is we can use $title, $description, etc
-			</p>
+		<h1>Example Code 2 + Custom Blocker</h1>
+		<p class="notes">
+			What I mean by custom blocker is we can use $title, $description, etc
+		</p>
 <pre><code class="bdscript">$if[$isNumber[$message]==false]
 	$if[$toLowercase[$message[1]]==all]
 		$var[money.;$getUserVar[money]]
@@ -218,28 +202,26 @@ $endif
 $description[Congratulations, you successfully blablabla something **$var[money]** money!]
 $color[00FF00]
 </code></pre>
-		<br>
-		</div>
+		<hr id="point-3">
 		
-		<div class="black-box-code">
-			<h1>Example Code: Input "half" or "quarter"</h1>
-			<p class="notes">
-				Now, let's level up a bit.
-			</p>
-			<p class="explanation">
-				Let's think using basic math on <span class="quote">How you could get half or quarter of all money you have?</span>
-			</p>
-			<p class="notes">
-				If you don't know <span class="quote">HOW</span>, alright..
-			<p class="explanation">
-				So, <span class="quote">half</span> always means divided by <span class="quote">2</span> and <span class="quote">quarter</span> means divided by <span class="quote">4</span>. 
-			</p>
-			<p class="notes">
-				And how to implement it to the bot?
-			</p>
-			<p class="explanation">
-				Well, we simply use the <span class="func">$calculate</span> function for that, or <span class="func">$divide</span> (up to you)
-			</p>
+		<h1>Example Code: Input "half" or "quarter"</h1>
+		<p class="notes">
+			Now, let's level up a bit.
+		</p>
+		<p class="explanation">
+			Let's think using basic math on <span class="quote">How you could get half or quarter of all money you have?</span>
+		</p>
+		<p class="notes">
+			If you don't know <span class="quote">HOW</span>, alright..
+		<p class="explanation">
+			So, <span class="quote">half</span> always means divided by <span class="quote">2</span> and <span class="quote">quarter</span> means divided by <span class="quote">4</span>. 
+		</p>
+		<p class="notes">
+			And how to implement it to the bot?
+		</p>
+		<p class="explanation">
+			Well, we simply use the <span class="func">$calculate</span> function for that, or <span class="func">$divide</span> (up to you)
+		</p>
 <pre><code class="bdscript">$if[$isNumber[$message]==false]
 	$if[$toLowercase[$message[1]]==all]
 		$var[money.;$getUserVar[money]]
@@ -280,20 +262,18 @@ $endif
 $description[Congratulations, you successfully blablabla something **$var[money]** money!]
 $color[00FF00]
 </code></pre>
-			<p class="notes">
-				Just for example, I used both <a href="https://wiki.botdesignerdiscord.com/bdscript/calculate.html" target="_blank" class="func">$calculate</a> and <a href="https://wiki.botdesignerdiscord.com/bdscript/divide.html" target="_blank" class="func">$divide</a> function :)
-			</p>
-		<br>
-		</div>
+		<p class="notes">
+			Just for example, I used both <a href="https://wiki.botdesignerdiscord.com/bdscript/calculate.html" target="_blank" class="func">$calculate</a> and <a href="https://wiki.botdesignerdiscord.com/bdscript/divide.html" target="_blank" class="func">$divide</a> function :)
+		</p>
+		<hr id="point-4">
 		
-		<div class="black-box-code" id="copy-code">
-			<p class="notes">
-				Finally..
-			</p>
-			<h1>Example Code: X% of money you have</h1>
-			<p class="explanation">
-				Basically the same, you need <span class="func">$calculate</span> function for that. But now, you'll need <span class="func">$multi</span> and <span class="func">$divide</span>.
-			</p>
+		<p class="notes">
+			Finally..
+		</p>
+		<h1>Example Code: X% of money you have</h1>
+		<p class="explanation">
+			Basically the same, you need <span class="func">$calculate</span> function for that. But now, you'll need <span class="func">$multi</span> and <span class="func">$divide</span>.
+		</p>
 <pre><code class="bdscript">$if[$isNumber[$message]==false]
 	$if[$toLowercase[$message[1]]==all]
 		$var[money.;$getUserVar[money]]
@@ -349,15 +329,13 @@ $endif
 $description[Congratulations, you successfully blablabla something **$var[money]** money!]
 $color[00FF00]
 </code></pre>
-			<p class="explanation">
-				Also, sometime this thing could be happen too and to fix it is simple, you just need <span class="func">$round</span> function.
-			</p>
-			<img src="https://i.imgur.com/M0BKRky.png">
-			<br>
-		</div>
+		<p class="explanation">
+			Also, sometime this thing could be happen too and to fix it is simple, you just need <span class="func">$round</span> function.
+		</p>
+		<div class="centered"><img src="https://i.imgur.com/M0BKRky.png"></div>
+		<hr>
 		
-		<div class="black-box-code">
-			<h1>Example Code: X% of money you have + $round</h1>
+		<h1>Example Code: X% of money you have + $round</h1>
 <pre><code class="bdscript">$if[$isNumber[$message]==false]
 	$if[$toLowercase[$message[1]]==all]
 		$var[money.;$getUserVar[money]]
@@ -414,26 +392,25 @@ $endif
 $description[Congratulations, you successfully blablabla something **$var[money]** money!]
 $color[00FF00]
 </code></pre>
-			<p class="explanation">
-				Taadaaa, magic!
-			</p>
-			<img src="https://i.imgur.com/II2z8yI.png">
-			<p class="notes">
-				Click <a href="https://wiki.botdesignerdiscord.com/bdscript/round.html" target="_blank">here</a> to learn more. 
-			</p>
-			<br>
-		</div>
+		<p class="explanation">
+			Taadaaa, magic!
+		</p>
+		<div class="centered"><img src="https://i.imgur.com/II2z8yI.png"></div>
+		<p class="notes">
+			Click <a href="https://wiki.botdesignerdiscord.com/bdscript/round.html" target="_blank">here</a> to learn more. 
+		</p>
+		<hr>
 		
-		<div class="black-box-code">
-			<p class="explanation">
-				If you want to use <span class="func">$multi</span> and <span class="func">$divide</span> it would looks like this.
-			</p>
+		<p class="explanation">
+			If you want to use <span class="func">$multi</span> and <span class="func">$divide</span> it would looks like this.
+		</p>
 <pre><code class="bdscript">$var[money.;$multi[$divide[$var[percentNumber].;100].;$getUserVar[money]]]
 </code></pre>
 		<br>
-		</div>
 		
 	</div>
-</body>
+	
 	<script src="../../styles/bdshighlighter.js"></script>
+	<script src="../../styles/script.js"></script>
+</body>
 </html>

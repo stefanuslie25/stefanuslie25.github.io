@@ -12,7 +12,6 @@
 	<link rel="stylesheet" href="../../styles/main.css">
 	<link rel="stylesheet" href="../../styles/content.css">
 	<link rel="stylesheet" href="../../styles/text.css">
-	<script src="../../styles/script.js"></script>
 </head>
 <body>
 	<header>
@@ -35,56 +34,53 @@
 	</aside>
 	<div class="overlay" id="overlay"></div>
 	
-	<div class="list-content">
+	<div class="list-nav">
+		<button data-target="top"><p>▲</p></button>
+		<button data-target="point-1"><p>1.</p></button>
+		<button data-target="point-2"><p>2.</p></button>
+	</div>
+	<button class="list-nav-toggle"></button>
 	
-		<div class="black-box-desc" id="top-page">
-			<h1>Trade Part 1</h1>
-			<p class="notes">
-				What is trade?
-			</p>
-			<p class="desc">
-				1. <span class="desc-bold">Buy</span>: Buying involves purchasing items or services by paying the agreed-upon price to the seller.
-			</p>
-			<p class="desc">
-				2. <span class="desc-bold">Sell</span>: Selling involves transferring ownership of an item or service from a seller to a buyer in return for payment.
-			</p>
-			<p class="desc">
-				<span style="color: lightgray;">3. <span style="font-weight: bold; color: gray;">Forex</span>: Forex (Foreign Exchange) is the market where participants buy and sell currencies, aiming to profit from changes in exchange rates.</span>
-			</p>
-			<p class="desc">
-				<span style="color: lightgray;">4. <span style="font-weight: bold; color: gray;">Barter</span>: Barter is the exchange of goods or services directly for other goods or services without using money.</span>
-			</p>
-			<p class="explanation">
-				Basically, 4 of them have the same system. But I'll explain Forex and Barter on <a class="quote" onclick="comingsoonAlert()">part 2</a>. (lol)
-			</p>
-			<hr>
-			<h1>Before we start</h1>
-			<p class="explanation">
-				<span class="desc-bold">First:</span> We will need at least 2 variables.
-			</p>
-			<p class="notes">
-				If you don't know how to use variables, please go to <a href="https://wiki.botdesignerdiscord.com/guides/introduction/variables.html" target="_blank">BDFD wiki</a>. Thank you!
-			</p>
-			<p class="explanation">
-				<span class="desc-bold">Any modifications to the code are none of my business, learn it again until you really understand it! 😊</span><br>
-				If the code is 100% from my page, you can blame me and I will fix it ASAP.
-			</p>
-			<hr>
-			<h1>Teleport</h1>
-			<p class="explanation">
-				<a href="#buy-code">Buy Source Code</a> | <a href="#sell-code">Sell Source Code</a>
-			</p>
-			<br>
-		</div>
+	<div class="content">
+	
+		<h1 id="top">Trade Part 1</h1>
+		<p class="notes">
+			What is trade?
+		</p>
+		<p class="desc">
+			1. <span class="desc-bold">Buy</span>: Buying involves purchasing items or services by paying the agreed-upon price to the seller.
+		</p>
+		<p class="desc">
+			2. <span class="desc-bold">Sell</span>: Selling involves transferring ownership of an item or service from a seller to a buyer in return for payment.
+		</p>
+		<p class="desc">
+			<span style="color: lightgray;">3. <span style="font-weight: bold; color: gray;">Forex</span>: Forex (Foreign Exchange) is the market where participants buy and sell currencies, aiming to profit from changes in exchange rates.</span>
+		</p>
+		<p class="desc">
+			<span style="color: lightgray;">4. <span style="font-weight: bold; color: gray;">Barter</span>: Barter is the exchange of goods or services directly for other goods or services without using money.</span>
+		</p>
+		<p class="explanation">
+			Basically, 4 of them have the same system. But I'll explain Forex and Barter on <span class="quote">part 2</a>. (lol)
+		</p>
+		<hr>
 		
-		<div class="black-box-code">
-			<h1>Example Code: Buy</h1>
-			<p class="explanation">
-				For example, you want to buy <span class="quote">7x food</span> for <span class="quote">5000 money</span> as the price for each food.
-			</p>
-			<p class="notes">
-				You don't need to have variable for price, btw. Too much variable also not good, imo. Just use the temporary variable.
-			</p>
+		<h1>Before we start</h1>
+		<p class="explanation">
+			<span class="desc-bold">First:</span> We will need at least 2 variables.
+		</p>
+		<p class="notes">
+			If you don't know how to use variables, please go to <a href="https://wiki.botdesignerdiscord.com/guides/introduction/variables.html" target="_blank">BDFD wiki</a>. Thank you!
+		</p>
+		<p class="explanation">
+			<span class="desc-bold">Any modifications to the code are none of my business, learn it again until you really understand it! 😊</span><br>
+			If the code is 100% from my page, you can blame me and I will fix it ASAP.
+		</p>
+		<hr id="point-1">
+		
+		<h1>Example Code: Buy</h1>
+		<p class="explanation">
+			For example, you want to buy <span class="quote">7x food</span> for <span class="quote">5000 money</span> as the price for each food.
+		</p>
 <pre><code class="bdscript">$nomention
 $var[foodPrice.;5000]
 $var[totalPrice.;$multi[$message[1].;$var[foodPrice]]]
@@ -93,32 +89,31 @@ $setUserVar[food.;$sum[$getUserVar[food].;$message[1]]]
 $title[Purchase Completed]
 $description[You successfully buy **$message[1]x food** for **$var[totalPrice]** money!]
 $footer[You now have: $getUserVar[money] money]
-</code></pre><br><hr>
-			<h1>Example Command Usage</h1>
-			<p class="explanation">
-				<span class="func">!buy-food &lt;amount&gt;</span>
-			</p>
-			<p class="explanation">
-				Example result
-			</p>
-			<img src="https://i.imgur.com/ROBBwHe.png">
-			<br>
-			<p class="notes">
-				You also need to make sure have a blocker, so this thing not happens to you.
-			</p>
-			<img src="https://i.imgur.com/RsPZJ8d.png">
-			<p class="notes">
-				..or maybe this.
-			</p>
-			<img src="https://i.imgur.com/ac80XO4.png">
-			<br>
-		</div>
+</code></pre>
+		<hr>
 		
-		<div class="black-box-code">
-			<h1>Example Code: Buy + Blocker</h1>
-			<p class="explanation">
-				You can use the <span class="func">$onlyIf</span> function to keep it simple.
-			</p>
+		<h1>Example Command Usage</h1>
+		<p class="explanation">
+			<span class="func">!buy-food &lt;amount&gt;</span>
+		</p>
+		<p class="explanation">
+			Example result
+		</p>
+		<div class="centered"><img src="https://i.imgur.com/ROBBwHe.png"></div>
+		<p class="notes">
+			You also need to make sure have a blocker, so this thing not happens to you.
+		</p>
+		<div class="centered"><img src="https://i.imgur.com/RsPZJ8d.png"></div>
+		<p class="notes">
+			..or maybe this.
+		</p>
+		<div class="centered"><img src="https://i.imgur.com/ac80XO4.png"></div>
+		<hr>
+		
+		<h1>Example Code: Buy + Blocker</h1>
+		<p class="explanation">
+			You can use the <span class="func">$onlyIf</span> function to keep it simple.
+		</p>
 <pre><code class="bdscript">$nomention
 $var[foodPrice.;5000]
 $var[totalPrice.;$multi[$message[1];$var[foodPrice]]]
@@ -131,20 +126,21 @@ $title[Purchase Completed]
 $description[You successfully buy **$message[1]x food** for **$var[totalPrice]** money!]
 $footer[You now have: $getUserVar[money] money]
 </code></pre>
-			<p class="explanation">
-				Example result
-			</p>
-			<img src="https://i.imgur.com/VDgghwS.png">
-			<br><hr id="buy-code">
-			<h1>Example Code: Buy + Another Blocker</h1>
-			<p class="explanation">
-				Above code was about invalid amount and not enough money. But now, you might also need invalid input, which is <span class="quote">text</span>.
-			</p>
+		<p class="explanation">
+			Example result
+		</p>
+		<div class="centered"><img src="https://i.imgur.com/VDgghwS.png"></div>
+		<hr>
+		
+		<h1>Example Code: Buy + Another Blocker</h1>
+		<p class="explanation">
+			Above code was about invalid amount and not enough money. But now, you might also need invalid input, which is <span class="quote">text</span>.
+		</p>
 <pre><code class="bdscript">$onlyIf[isNumber[$message[1]]==true.;You must input a number only!]
 </code></pre>
-			<p class="explanation">
-				Add that code to above code. You need to <span class="desc-bold">becareful</span> here, because it should be put above the calculation part that we put inside <span class="func">$var[</span><span class="argValue">totalPrice</span><span class="func">]</span>.
-			</p>
+		<p class="explanation">
+			Add that code to above code. You need to <span class="desc-bold">becareful</span> here, because it should be put above the calculation part that we put inside <span class="func">$var[</span><span class="argValue">totalPrice</span><span class="func">]</span>.
+		</p>
 <pre><code class="bdscript">$nomention
 $var[foodPrice.;5000]
 $onlyIf[$isNumber[$message[1]]==true.;You must input a number only!]
@@ -158,37 +154,38 @@ $title[Purchase Completed]
 $description[You successfully buy **$message[1]x food** for **$var[totalPrice]** money!]
 $footer[You now have: $getUserVar[money] money]
 </code></pre>
-			<p class="notes">
-				Just like that...
-			</p>
-			<p class="explanation">
-				Example result
-			</p>
-			<img src="https://i.imgur.com/KBYXUZW.png">
-			<br>
-		</div>
+		<p class="notes">
+			Just like that...
+		</p>
+		<p class="explanation">
+			Example result
+		</p>
+		<div class="centered"><img src="https://i.imgur.com/KBYXUZW.png"></div>
+		<hr id="point-2">
 		
-		<div class="black-box-code">
-			<h1>Example Code: Sell</h1>
-			<p class="notes">
-				It's the same actually, you just need to reverse the process and change few small things but okay
-			</p>
-			<p class="explanation">
-				You don't need to think too hard about this, <span class="desc-bold">first</span> simply change the <span class="quote">money variable</span> to work together with <span class="func">$sum</span> and <span class="quote">food variable</span> with <span class="func">$sub</span>.
+		<h1>Example Code: Sell</h1>
+		<p class="notes">
+			It's the same actually, you just need to reverse the process and change few small things but okay
+		</p>
+		<p class="explanation">
+			You don't need to think too hard about this, <span class="desc-bold">first</span> simply change the <span class="quote">money variable</span> to work together with <span class="func">$sum</span> and <span class="quote">food variable</span> with <span class="func">$sub</span>.
+		</p>
 <pre><code class="bdscript">$setUserVar[money.;$sum[$getUserVar[money].;$var[totalPrice]]]
 $setUserVar[food.;$sub[$getUserVar[food].;$message[1]]]
 </code></pre>
-			<p class="explanation">
-				Then also don't forget to change <span class="func">$var[</span><span class="argValue">totalPrice</span><span class="func">]</span> become <span class="func">$message[</span><span class="argValue">1</span><span class="func">]</span> and the <span class="quote">money</span> word become <span class="quote">food</span>
-			</p>
+		<p class="explanation">
+			Then also don't forget to change <span class="func">$var[</span><span class="argValue">totalPrice</span><span class="func">]</span> become <span class="func">$message[</span><span class="argValue">1</span><span class="func">]</span> and the <span class="quote">money</span> word become <span class="quote">food</span>
+		</p>
 <pre><code class="bdscript">$onlyIf[$message[1]<=$getUserVar[food].;You don't have enough food!]</code></pre>
-			<p class="explanation">
-				You also might need to change the <span class="quote">buy</span> word become <span class="quote">sell</span>.
-			</p>
+		<p class="explanation">
+			You also might need to change the <span class="quote">buy</span> word become <span class="quote">sell</span>.
+		</p>
 <pre><code class="bdscript">$onlyIf[$message[1]!=0.;You can't sell 0 food!]
 $onlyIf[$message[1]>=1.;You can't sell for negative amount of food!]
-</code></pre><br><hr id="sell-code">
-			<h1>Final Code</h1>
+</code></pre>
+		<hr>
+		
+		<h1>Final Code</h1>
 <pre><code class="bdscript">$nomention
 $var[foodPrice.;5000]
 $onlyIf[$isNumber[$message[1]]==true.;You must input a number only!]
@@ -201,23 +198,23 @@ $setUserVar[food.;$sub[$getUserVar[food].;$message[1]]]
 $title[Transaction Completed]
 $description[You successfully sold **$message[1]x food** for **$var[totalPrice]** money!]
 $footer[You now have: $getUserVar[money] money]
-</code></pre><br><hr>
-			<h1>Example Command Usage</h1>
-			<p class="explanation">
-				<span class="func">!sell-food &lt;amount&gt;</span>
-			</p>
-			<p class="explanation">
-				Example result
-			</p>
-			<img src="https://i.imgur.com/Q4qKtYz.png">
-			<br>
-		</div>
+</code></pre>
+		<hr>
 		
-		<div class="black-box-code">
-			<h1>Another Version of Blocker</h1>
-			<p class="notes">
-				You might need this if you want to make the error message as an embed or delete after specific mentioned time.
-			</p>
+		<h1>Example Command Usage</h1>
+		<p class="explanation">
+			<span class="func">!sell-food &lt;amount&gt;</span>
+		</p>
+		<p class="explanation">
+			Example result
+		</p>
+		<div class="centered"><img src="https://i.imgur.com/Q4qKtYz.png"></div>
+		<hr>
+		
+		<h1>Another Version of Blocker</h1>
+		<p class="notes">
+			You might need this if you want to make the error message as an embed or delete after specific mentioned time.
+		</p>
 <pre><code class="bdscript">$if[$isNumber[$message[1]]==false]
 	You must input a number only!
 	$deleteIn[5s]
@@ -244,11 +241,10 @@ $setUserVar[food.;$sum[$getUserVar[food].;$message[1]]]
 $title[Purchase Completed]
 $description[You successfully buy **$message[1]x food** for **$var[totalPrice]** money!]
 $footer[You now have: $getUserVar[money] money]
-</code></pre><br>
-		</div>
+</code></pre>
 		
 	</div>
-</body>
 	<script src="../../styles/bdshighlighter.js"></script>
-	<script src="../../styles/toggleButton.js"></script>
+	<script src="../../styles/script.js"></script>
+</body>
 </html>

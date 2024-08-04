@@ -8,7 +8,6 @@
 	<link rel="stylesheet" href="../../styles/main.css">
 	<link rel="stylesheet" href="../../styles/content.css">
 	<link rel="stylesheet" href="../../styles/text.css">
-	<script src="../../styles/script.js"></script>
 </head>
 <body>
 	<header>
@@ -31,11 +30,10 @@
 	</aside>
 	<div class="overlay" id="overlay"></div>
 	
-	<div class="list-content">
+	<div class="content">
 	
-		<div class="black-box-desc" id="top-page">
 			<h1>Basic "Clean" Counting<br></h1>
-			<p class="notes">It's for free version that uses 1-9 as triggers. For basic explanation you can go to <a href="counting.html">here</a></p>
+			<p class="notes">This page is for free version that uses 1-9 as triggers. For basic explanation you can go to <a href="counting.html">main page</a>.</p>
 			<hr>
 			<h1>Before we start</h1>
 			<p class="explanation">
@@ -61,14 +59,7 @@
 			<p class="explanation">2. Name: <span class="desc-bold">countingNumber</span> and Value: <span class="quote">1</span></p>
 			<p class="notes">Why not 0? Because you'll need 0-9 triggers that way and 0 is just gonna be typed only once anyway.</p>
 			<hr>
-			<h1>Teleport</h1>
-			<p class="explanation">
-				<a href="#copy-code">Source Code</a>
-			</p>
-			<br>
-		</div>
-		
-		<div class="black-box-code" id="copy-code">
+			
 			<h1>Trigger: <span class="trigger">1</span></h1>
 <pre><code class="bdscript">$nomention
 $onlyForChannels[(Limit to channel you want).;]
@@ -93,34 +84,25 @@ $endif
 				So basically what I did here is to know what the trigger we type using a <span class="quote">temporary variable</span> (<span class="func">$var</span>). Since normal <span class="func">$message</span> or <span class="func">$message[</span><span class="argValue">1</span><span class="func">]</span> will ignore the <span class="quote">trigger</span>, so I try to force show the trigger here. (lol)
 			</p>
 			<p class="notes">Click <a href="https://wiki.botdesignerdiscord.com/bdscript/var.html" target="_blank">here</a> to learn more about how to use $var.</p>
-<br><hr>
+			<hr>
+			
+			<div class="yellow-note">
+				<div class="yellow-header">How to apply</div>
+				<div class="centered"><img src="https://i.imgur.com/fhVq2wq.png"></div>
+			</div>
+			<hr>
+				
 			<p class="explanation">
-				<span class="quote">Please help, I don't understand how to put it in my bot!</span>
+				Thanks to discord user <a class="quote" href="https://sanaa.netlify.app/" target="_blank">@o.sana.o</a> for telling me this!
 			</p>
-			<p class="notes">
-				Okay, please calm down.. You just need to follow this guide :)
-			</p>
-				<img src="https://i.imgur.com/fhVq2wq.png">
-			<br>
-		</div>
-		
-		<div class="black-box-code">
+			<div class="centered"><img src="https://i.imgur.com/76iecNS.png"></div>
 			<p class="explanation">
-				Thanks to <a href="https://sanaa.netlify.app/" target="_blank">o.sana.o</a> for telling me this!
+				There's little problem here tho, when you use the method mentioned above..
 			</p>
-			<img src="https://i.imgur.com/76iecNS.png">
-			<p class="explanation">
-				There's little problem here tho, when you use that method for free version..
-			</p>
-			<img src="https://i.imgur.com/hr7AAub.png">
-			<p class="notes">
-				If you understands and still want to use it, alright!<br><br>
-				If you don't like it, simply don't touch it.. :)
-			</p>
-		<br>
-		</div>
-		
-		<div class="black-box-code">
+			<div class="centered"><img src="https://i.imgur.com/hr7AAub.png"></div>
+			<hr>
+			
+			<p class="notes">Anyway next step is simply create another copy but change the <span class="quote">1</span> into <span class="quote">2</span>.</p>
 			<h1>Trigger: <span class="trigger">2</span></h1>
 <pre><code class="bdscript">$nomention
 $onlyForChannels[(Limit to channel you want).;]
@@ -140,17 +122,8 @@ $elseif[$authorID==$getVar[countingUser]]
 	You can't count anymore, just one at a time, my brother!
 	$deleteIn[5s]
 $endif
-</code></pre>
-			<p class="explanation">
-				Isn't it same but just change the number in <span class="func">$var[</span><span class="argValue">number</span><span class="func">]</span> ??
-			</p>
-			<p class="notes">
-				Very correct!
-			</p>
-		<br>
-		</div>
-		
-		<div class="black-box-code">
+</code></pre><hr>
+			
 			<p class="notes">And we need to do this until trigger = 9 :)</p>
 			<h1>Trigger: <span class="trigger">3</span></h1>
 <pre><code class="bdscript">$nomention
@@ -171,11 +144,8 @@ $elseif[$authorID==$getVar[countingUser]]
 	You can't count anymore, just one at a time, my brother!
 	$deleteIn[5s]
 $endif
-</code></pre>
-		<br>
-		</div>
-		
-		<div class="black-box-code">
+</code></pre><hr>
+
 			<h1>Trigger: <span class="trigger">4</span></h1>
 <pre><code class="bdscript">$nomention
 $onlyForChannels[(Limit to channel you want).;]
@@ -195,11 +165,8 @@ $elseif[$authorID==$getVar[countingUser]]
 	You can't count anymore, just one at a time, my brother!
 	$deleteIn[5s]
 $endif
-</code></pre>
-		<br>
-		</div>
-		
-		<div class="black-box-code">
+</code></pre><hr>
+
 			<h1>Trigger: <span class="trigger">5</span></h1>
 <pre><code class="bdscript">$nomention
 $onlyForChannels[(Limit to channel you want).;]
@@ -219,11 +186,8 @@ $elseif[$authorID==$getVar[countingUser]]
 	You can't count anymore, just one at a time, my brother!
 	$deleteIn[5s]
 $endif
-</code></pre>
-		<br>
-		</div>
-		
-		<div class="black-box-code">
+</code></pre><hr>
+
 			<h1>Trigger: <span class="trigger">6</span></h1>
 <pre><code class="bdscript">$nomention
 $onlyForChannels[(Limit to channel you want).;]
@@ -243,11 +207,8 @@ $elseif[$authorID==$getVar[countingUser]]
 	You can't count anymore, just one at a time, my brother!
 	$deleteIn[5s]
 $endif
-</code></pre>
-		<br>
-		</div>
-		
-		<div class="black-box-code">
+</code></pre><hr>
+
 			<h1>Trigger: <span class="trigger">7</span></h1>
 <pre><code class="bdscript">$nomention
 $onlyForChannels[(Limit to channel you want).;]
@@ -267,11 +228,8 @@ $elseif[$authorID==$getVar[countingUser]]
 	You can't count anymore, just one at a time, my brother!
 	$deleteIn[5s]
 $endif
-</code></pre>
-		<br>
-		</div>
-		
-		<div class="black-box-code">
+</code></pre><hr>
+
 			<h1>Trigger: <span class="trigger">8</span></h1>
 <pre><code class="bdscript">$nomention
 $onlyForChannels[(Limit to channel you want).;]
@@ -291,12 +249,8 @@ $elseif[$authorID==$getVar[countingUser]]
 	You can't count anymore, just one at a time, my brother!
 	$deleteIn[5s]
 $endif
-</code></pre>
-		<br>
-		</div>
-		
-		<div class="black-box-code">
-			<p class="notes">This is the last one!</p>
+</code></pre><hr>
+
 			<h1>Trigger: <span class="trigger">9</span></h1>
 <pre><code class="bdscript">$nomention
 $onlyForChannels[(Limit to channel you want).;]
@@ -316,11 +270,15 @@ $elseif[$authorID==$getVar[countingUser]]
 	You can't count anymore, just one at a time, my brother!
 	$deleteIn[5s]
 $endif
-</code></pre>
-		<br>
+</code></pre><hr>
+			
+		<div class="red-note">
+			<div class="red-header">Not Recommended</div>
+			<p>I will just be honest here, don't ever think/try to create <span class="quote">if a user type a not number</span> system for non-premium bot.</p>
 		</div>
 		
 	</div>
-</body>
 	<script src="../../styles/bdshighlighter.js"></script>
+	<script src="../../styles/script.js"></script>
+</body>
 </html>

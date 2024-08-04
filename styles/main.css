@@ -20,6 +20,9 @@ header, footer {
 	z-index: 69;
 	transform: translateY(0);
 	transition: transform 0.3s ease;
+	justify-content: center;
+	align-items: center;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
 }
 
 header {
@@ -27,8 +30,6 @@ header {
 	top: 0;
 	height: 70px;
 	display: flex;
-	justify-content: center;
-	align-items: center;
 }
 
 .menu-portrait {
@@ -75,8 +76,12 @@ header {
 	transition: background-color 0.3s ease;
 }
 
+.sidebar-button:hover, .menu-portrait:hover {
+	background-color: #d67200;
+}
+
 .sidebar-button:hover {
-	background-color: #ff8c00;
+	scale: 1.05;
 }
 
 .overlay {
@@ -93,7 +98,7 @@ header {
 	z-index: 400;
 }
 
-.nav-menu, .youre-here {
+.nav-menu, .youre-here, .button-content {
 	position: relative;
 	border: 1px solid black;
 	border-radius: 0px;
@@ -111,7 +116,7 @@ header {
 	background-color: gray;
 }
 
-.nav-menu::before {
+.nav-menu::before, .button-content::before {
 	content: '';
 	position: absolute;
 	top: 0;
@@ -125,14 +130,18 @@ header {
 	user-select: none;
 }
 
-.nav-menu:hover::before {
+.nav-menu:hover::before, .button-content:hover::before {
 	left: 120%;
 }
 
-.nav-menu:hover {
+.nav-menu:hover, .button-content:hover {
 	color: white;
 	transform: scale(1.05);
 	background-color: #0056b3;
+}
+
+.button-content {
+	margin-bottom: 10px;
 }
 
 footer {
@@ -145,7 +154,7 @@ footer p {
 	text-align: center;
 }
 
-@media (max-width: 600px), (max-height: 600px), (orientation: portrait) {
+@media (max-width: 700px), (max-height: 600px) {
 	header {
 		transform: translateY(-70px);
 	}
@@ -156,7 +165,7 @@ footer p {
 		transform: translateY(130px);
 	}
 	.sidebar.open {
-		left: 0; /* Show sidebar */
+		left: 0;
 	}
 	.overlay.visible {
 		visibility: visible;

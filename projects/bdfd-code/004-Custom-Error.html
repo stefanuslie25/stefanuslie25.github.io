@@ -34,8 +34,16 @@
 	</aside>
 	<div class="overlay" id="overlay"></div>
 	
+	<div class="list-nav">
+		<button data-target="top"><p>▲</p></button>
+		<button data-target="point-1"><p>1.</p></button>
+		<button data-target="point-2"><p>2.</p></button>
+	</div>
+	<button class="list-nav-toggle"></button>
+	
 	<div class="content">
-		<h1>Custom Error Message</h1>
+	
+		<h1 id="top">Custom Error Message</h1>
 		<div class="centered"><img src="https://i.imgur.com/gHMfSgB.png"></div>
 		<p class="explanation">
 			There's at least <span class="quote">18 functions</span> (correct me if I'm wrong) that you <span class="desc-bold">can't modify the Error Message</span> into embed style or auto delete it  after few seconds etc. But I'll give an example for <span class="func">$onlyIf</span> first and hopefully you have an imagination on how to do it the rest.
@@ -43,7 +51,7 @@
 		<p class="notes">
 			Click here to learn more about <a class="func" href="https://wiki.botdesignerdiscord.com/bdscript/onlyIf.html" target="_blank">$onlyIf</a> function.
 		</p>
-		<hr>
+		<hr id="point-1">
 		
 		<h1>Example Code</h1>
 <pre><code class="bdscript">$onlyIf[$authorID==$botOwnerID.;Error message]
@@ -68,12 +76,14 @@ $description[$onlyIf[$authorID==$botOwnerID.;Error message]]
 		<p class="explanation">
 			Now let's go into the real code:
 		</p>
+		
 <pre><code class="bdscript">$if[$authorID==$botOwnerID]
 	Your code here
 $else
 	Error Message
 $endif
 </code></pre>
+		
 		<p class="explanation">
 			Result:
 		</p>
@@ -84,6 +94,7 @@ $endif
 		<p class="explanation">
 			Then, you can add embed or other things like <span class="func">$deleteIn</span>.
 		</p>
+		
 <pre><code class="bdscript">$if[$authorID==$botOwnerID]
 	Your code here
 $else
@@ -92,6 +103,7 @@ $else
 	$deleteIn[5s]
 $endif
 </code></pre>
+		
 		<p class="explanation">
 			Result:
 		</p>
@@ -101,6 +113,7 @@ $endif
 		<p class="explanation">
 			But, that thing could give error or maybe the result is not what you wanted depends on how you code it. For example:
 		</p>
+		
 <pre><code class="bdscript">$if[$authorID==$botOwnerID]
 	You're allowed to do this.
 $else
@@ -109,6 +122,7 @@ $endif
 
 $description[This message should only be sent if __you're the owner of the bot__.]
 </code></pre>
+		
 		<p class="explanation">
 			Result:
 		</p>
@@ -116,6 +130,7 @@ $description[This message should only be sent if __you're the owner of the bot__
 		<p class="explanation">
 			And to prevent it, it's so simple. We just need to add the <span class="func">$stop</span> function.
 		</p>
+		
 <pre><code class="bdscript">$if[$authorID==$botOwnerID]
 	You're allowed to do this.
 $else
@@ -125,6 +140,7 @@ $endif
 
 $description[This message should only be sent if __you're the owner of the bot__.]
 </code></pre>
+		
 		<p class="explanation">
 			Taadaa, magic!
 		</p>
@@ -132,8 +148,63 @@ $description[This message should only be sent if __you're the owner of the bot__
 		<p class="explanation">
 			If you have any more questions about this, you can go to <a href="https://discord.gg/JcENFCf" target="_blank" class="quote">official server of BDFD</a> and go to their <span class="func">#support</span> channel.
 		</p>
-	</div>
-	<script src="../../styles/bdshighlighter.js"></script>
-	<script src="../../styles/script.js"></script>
-</body>
+		<hr id="point-2">
+		
+		<p class="notes">If the above is not what you want, then maybe you need:</p>
+		
+<pre><code class="bdscript">$try
+	$title[.;]
+$.catch
+	Error message :x:
+$endtry
+</code></pre>
+
+		<br>
+		<p class="explanation">So, if you try to put <span class="func">$title[;]</span> only in a command, it should gives error.</p>
+		<div class="centered"><img src="https://i.imgur.com/2TA1kS0.png"></div>
+		<p class="notes">And if you used the code above..</p>
+		<p class="explanation">Result:</p>
+		<div class="centered"><img src="https://i.imgur.com/vjYBldf.png"></div>
+		<br>
+		<p class="notes">After you know the basic, you can modify it as you like!</p>
+		<hr>
+		
+		<h1>Custom Example Code 1</h1>
+		
+<pre><code class="bdscript">$try
+	$title[.;]
+$.catch
+	$description[Error message :x:]
+	$deleteIn[5s]
+$endtry
+</code></pre>
+		<br>
+
+		<div class="centered"><img src="https://i.imgur.com/23FL88r.gif"></div>
+		<p class="notes">If you confused of what happen in the image, I used the <span class="func">$deleteIn[<span class="argValue">5s</span>]</span>, so the custom error mesasge is removed in 5 seconds.</p>
+		<hr>
+		
+		<p class="notes">Also, there's another way to tell the error by using it real error message.</p>
+		<h1>Custom Example Code 2</h1>
+		
+<pre><code class="bdscript">$try
+	$title[.;]
+$.catch
+	$title[Error Handling]
+	$addField[Function:.;$error[command]]
+	$addField[Error:.;$error[message]]
+	$addField[Source:.;$error[source]]
+	$addField[Row:.;$error[row]]
+	$addField[Column:.;$error[column]]
+$endtry
+</code></pre>	
+
+		<p class="explanation">Result:</p>
+		<div class="centered"><img src="https://i.imgur.com/HJP84oi.png"></div>
+		<p class="notes">Learn more how to use this function in <a href="https://wiki.botdesignerdiscord.com/guides/general/bds2/errorHandling.html" target="_blank">this page</a>.</p>
+		
+		</div>
+		<script src="../../styles/bdshighlighter.js"></script>
+		<script src="../../styles/script.js"></script>
+	</body>
 </html>

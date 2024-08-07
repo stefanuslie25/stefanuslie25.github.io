@@ -11,7 +11,7 @@ h1 {
 p {
 	display: block;
 	font-size: 1em;
-	text-align: left;
+	text-align: justify;
 	margin: 15px 15%;
 }
 
@@ -27,12 +27,17 @@ hr {
 	text-align: center;
 }
 
-.desc {
+.desc, .paragraph {
 	display: block;
 	line-height: 1.25;
 	padding-left: 20px;
 	text-indent: -20px;
 	text-align: left;
+}
+
+.paragraph {
+	text-indent: 30px;
+	text-align: justify;
 }
 
 .explanation {

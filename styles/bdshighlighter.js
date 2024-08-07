@@ -13,7 +13,7 @@ for (b = 0; b < cb.length; b++) {
 	for (i = 0; i < keys.length; i++) {
 		// FUNCTIONS
 		arr = arr.replaceAll(keys[i], '<span style="color: #73FBFF;">' + keys[i] + '</span>');
-		arr = arr.replaceAll("$c", '<span style="color: #73FBFF;">' + "$c" + '</span>');
+		arr = arr.replaceAll("$c[", '<span style="color: #73FBFF;">' + "$c" + '</span>' + '<span style="color: #FF4C4C; font-weight: bold;">' + "[" + '</span>');
 	};
 	
 	arr = arr.replaceAll("$nomention", '<span style="color: #FF77F9;">' + "$nomention" + '</span>');

@@ -48,25 +48,27 @@
 		<h1 id="top">Basic Economy Input</h1>
 		<p class="desc">
 			1. Ability to <span class="desc-bold">input "all"</span> so users don't need to check how much money they have right now.<br>
-			1.1. Prevent users to <span class="desc-bold">input negative amount</span><br>
-			1.2. Prevent users to <span class="desc-bold">input zero as an amount</span><br>
-			1.3. Prevent users to <span class="desc-bold">input money they don't have</span>
 		</p>
 		<p class="desc">
 			2. Ability to <span class="desc-bold">custom error message</span> so you as the developer could express your own style.
 		</p>
-		<p class="notes">And if you already understand the basic, you can also do things below</p>
 		<p class="desc">
 			3. Ability to <span class="desc-bold">input "half" or "quarter" of money</span>
 		</p>
 		<p class="desc">
 			4. Ability to <span class="desc-bold">input X% of money</span>
 		</p>
+		<br>
+		<p class="desc">Other things you can learn in this wiki:<br>
+			1. Prevent users to <span class="desc-bold">input negative amount</span><br>
+			2. Prevent users to <span class="desc-bold">input zero as an amount</span><br>
+			3. Prevent users to <span class="desc-bold">input money they don't have</span>
+		</p>
 		<hr>
 		
 		<h1>Before we start</h1>
 		<p class="explanation">
-			<span class="desc-bold">Of course</span> you need a variable, and if you don't have one yet. Please make one and let's call it as <span class="quote">"money"</span> for now..
+			Of course <span class="desc-bold">you need a variable</span>, and if you don't have one yet. Please make one and let's call it as <span class="quote">"money"</span> for now..
 		</p>
 		<p class="notes">
 			If you don't know how to use variables, please go to <a href="https://wiki.botdesignerdiscord.com/guides/introduction/variables.html" target="_blank">BDFD wiki</a>. Thank you!
@@ -229,34 +231,9 @@ $color[00FF00]
 		$var[money.;$calculate[$getUserVar[money]/2]]
 	$elseif[$toLowercase[$message[1]]==quarter]
 		$var[money.;$divide[$getUserVar[money].;4]]
-	$else
-		$title[Invalid Amount!]
-		$color[FF0000]
-		$description[You can only input a number or "all" / "half" / "quarter"]
-		$footer[Try again]
-		$stop
 	$endif
 $else
-	$var[money.;$message[1]]
-	$if[$var[money]==0]
-		$title[Invalid Amount!]
-		$color[FF0000]
-		$description[You can't input 0 as an amount!]
-		$footer[Try again]
-		$stop
-	$elseif[$var[money]<0]
-		$title[Invalid Amount!]
-		$color[FF0000]
-		$description[You can't input negative amount!]
-		$footer[Try again]
-		$stop
-	$elseif[$var[money]>=$getUserVar[money]]
-		$title[Invalid Amount!]
-		$color[FF0000]
-		$description[You don't have that much money!]
-		$footer[Try again]
-		$stop
-	$endif
+	**$message** is a number!
 $endif
 
 $description[Congratulations, you successfully blablabla something **$var[money]** money!]
@@ -274,55 +251,20 @@ $color[00FF00]
 		<p class="explanation">
 			Basically the same, you need <span class="func">$calculate</span> function for that. But now, you'll need <span class="func">$multi</span> and <span class="func">$divide</span>.
 		</p>
-<pre><code class="bdscript">$if[$isNumber[$message]==false]
-	$if[$toLowercase[$message[1]]==all]
-		$var[money.;$getUserVar[money]]
-	$elseif[$toLowercase[$message[1]]==half]
-		$var[money.;$calculate[$getUserVar[money]/2]]
-	$elseif[$toLowercase[$message[1]]==quarter]
-		$var[money.;$divide[$getUserVar[money].;4]]
-	$elseif[$checkContains[$message[1].;%]==true]
-		$textSplit[$message[1].;%]
-		$var[percentNumber.;$splitText[1]]
-		$if[$isNumber[$var[percentNumber]]==true]
-			$enableDecimals[yes]
-			$var[money.;$calculate[($var[percentNumber]/100.0)*$getUserVar[money]]]
-			$enableDecimals[no]
-			$if[$var[money]<=0]
-				$title[Invalid Amount!]
-				$color[FF0000]
-				$description[Try input higher number of percentage!]
-				$footer[Try again]
-				$stop
-			$endif
+<pre><code class="bdscript">$if[$checkContains[$message[1].;%]==true]
+	$textSplit[$message[1].;%]
+	$var[percentNumber.;$splitText[1]]
+	$if[$isNumber[$var[percentNumber]]==true]
+		$enableDecimals[yes]
+		$var[money.;$calculate[($var[percentNumber]/100.0)*$getUserVar[money]]]
+		$enableDecimals[no]
+		$if[$var[money]<=0]
+			$title[Invalid Amount!]
+			$color[FF0000]
+			$description[Try input higher number of percentage!]
+			$footer[Try again]
+			$stop
 		$endif
-	$else
-		$title[Invalid Amount!]
-		$color[FF0000]
-		$description[You can only input a number or "all" / "half" / "quarter"]
-		$footer[Try again]
-		$stop
-	$endif
-$else
-	$var[money.;$message[1]]
-	$if[$var[money]==0]
-		$title[Invalid Amount!]
-		$color[FF0000]
-		$description[You can't input 0 as an amount!]
-		$footer[Try again]
-		$stop
-	$elseif[$var[money]<0]
-		$title[Invalid Amount!]
-		$color[FF0000]
-		$description[You can't input negative amount!]
-		$footer[Try again]
-		$stop
-	$elseif[$var[money]>=$getUserVar[money]]
-		$title[Invalid Amount!]
-		$color[FF0000]
-		$description[You don't have that much money!]
-		$footer[Try again]
-		$stop
 	$endif
 $endif
 
@@ -336,6 +278,42 @@ $color[00FF00]
 		<hr>
 		
 		<h1>Example Code: X% of money you have + $round</h1>
+<pre><code class="bdscript">$if[$checkContains[$message[1].;%]==true]
+	$textSplit[$message[1].;%]
+	$var[percentNumber.;$splitText[1]]
+	$if[$isNumber[$var[percentNumber]]==true]
+		$enableDecimals[yes]
+		$var[money.;$calculate[($var[percentNumber]/100.0)*$getUserVar[money]]]
+		$enableDecimals[no]
+		$if[$var[money]<=0]
+			$title[Invalid Amount!]
+			$color[FF0000]
+			$description[Try input higher number of percentage!]
+			$footer[Try again]
+			$stop
+		$endif
+	$endif
+$endif
+
+$description[Congratulations, you successfully blablabla something **$round[$var[money].;2]** money!]
+$color[00FF00]
+</code></pre>
+		<p class="explanation">
+			Taadaaa, magic!
+		</p>
+		<div class="centered"><img src="https://i.imgur.com/II2z8yI.png"></div>
+		<p class="notes">Click <a href="https://wiki.botdesignerdiscord.com/bdscript/round.html" target="_blank">here</a> to learn more.</p>
+		<hr>
+		
+		<p class="explanation">
+			If you want to use <span class="func">$multi</span> and <span class="func">$divide</span> it would looks like this.
+		</p>
+<pre><code class="bdscript">$var[money.;$multi[$divide[$var[percentNumber].;100].;$getUserVar[money]]]
+</code></pre>
+		<hr>
+		
+		<h1>Full Example Code</h1>
+		<p class="notes">Please remember this is only an example.<br>If it's not works with your current code that you working on try literally <span class="quote">COPY</span> this code and try again :)</p>
 <pre><code class="bdscript">$if[$isNumber[$message]==false]
 	$if[$toLowercase[$message[1]]==all]
 		$var[money.;$getUserVar[money]]
@@ -349,7 +327,6 @@ $color[00FF00]
 		$if[$isNumber[$var[percentNumber]]==true]
 			$enableDecimals[yes]
 			$var[money.;$calculate[($var[percentNumber]/100.0)*$getUserVar[money]]]
-			$var[money.;$round[$var[money].;2]]
 			$enableDecimals[no]
 			$if[$var[money]<=0]
 				$title[Invalid Amount!]
@@ -389,22 +366,8 @@ $else
 	$endif
 $endif
 
-$description[Congratulations, you successfully blablabla something **$var[money]** money!]
+$description[Congratulations, you successfully blablabla something **$round[$var[money].;2]** money!]
 $color[00FF00]
-</code></pre>
-		<p class="explanation">
-			Taadaaa, magic!
-		</p>
-		<div class="centered"><img src="https://i.imgur.com/II2z8yI.png"></div>
-		<p class="notes">
-			Click <a href="https://wiki.botdesignerdiscord.com/bdscript/round.html" target="_blank">here</a> to learn more. 
-		</p>
-		<hr>
-		
-		<p class="explanation">
-			If you want to use <span class="func">$multi</span> and <span class="func">$divide</span> it would looks like this.
-		</p>
-<pre><code class="bdscript">$var[money.;$multi[$divide[$var[percentNumber].;100].;$getUserVar[money]]]
 </code></pre>
 		<br>
 		

@@ -97,9 +97,9 @@ $if[$httpStatus!=200]
 	$title[Internal error. Please re-try the game again.]
 	$stop
 $endif
-$var[word.;$toLowercase[$httpResult[word.;0]]]
+$var[word.;$httpResult[word.;0]]
 $var[word_3_letters.;$cropText[$var[word].;3.;]]
-$setVar[WordGuess_3Letters.;$var[word_3_letters].;$authorID]
+$setVar[WordGuess_3Letters.;$toLowercase[$var[word_3_letters]].;$authorID]
 
 $c[Output]
 $title[Word Guess Game]
@@ -150,9 +150,9 @@ $if[$httpStatus!=200]
 	$description[The bot can't find a word at the moment.]
 	$stop
 $endif
-$var[word.;$toLowercase[$httpResult[word.;0]]]
+$var[word.;$httpResult[word.;0]]
 $var[word_3_letters.;$cropText[$var[word].;3.;]]
-$setVar[WordGuess_3Letters.;$var[word_3_letters].;$authorID]
+$setVar[WordGuess_3Letters.;$toLowercase[$var[word_3_letters]].;$authorID]
 
 $c[Output]
 $title[Word Guess Game]

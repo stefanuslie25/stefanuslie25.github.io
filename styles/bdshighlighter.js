@@ -23,7 +23,7 @@ for (b = 0; b < cb.length; b++) {
 	arr = arr.replaceAll("$else", '<span style="color: #B95CF4;">' + "$else" + '</span>');
 	arr = arr.replaceAll("$endif", '<span style="color: #B95CF4;">' + "$endif" + '</span>');
 	arr = arr.replaceAll("$try", '<span style="color: #B95CF4;">' + "$try" + '</span>');
-	arr = arr.replaceAll("$.catch", '<span style="color: #B95CF4;">' + "$catch" + '</span>');
+	arr = arr.replaceAll("$catch", '<span style="color: #B95CF4;">' + "$catch" + '</span>');
 	arr = arr.replaceAll("$endtry", '<span style="color: #B95CF4;">' + "$endtry" + '</span>');
 	
 	arr = arr.replaceAll("[", '<span style="color: #FF4C4C; font-weight: bold;">' + "[" + '</span>');

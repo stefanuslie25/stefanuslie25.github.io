@@ -116,7 +116,7 @@
 	scale: 1.05;
 }
 
-/* BUTTON SHOW/HIDE BUTTON SAMPING KANAN */
+/* SHOW/HIDE BUTTON SAMPING KANAN */
 
 .list-nav-toggle {
 	width: 80px;
@@ -133,6 +133,37 @@
 
 .list-nav-toggle.active {
 	transform: translateY(-50%) translateX(70px); /* Geser ke kanan sebanyak 100px */
+}
+
+/* SHOW OR HIDE CONTENT */
+
+.hishocont {
+	display: flex;
+	background-color: rgba(0, 0, 0, 0);
+	color: white;
+	scrollbar-width: none;
+	overflow-y: scroll;
+	position: relative;
+	flex-direction: column;
+	align-items: center;
+	transform: translateY(0);
+	transition: transform 0.3s ease, bottom 0.3s ease, left 0.4s ease, right 0.4s ease;
+}
+
+.hishobu {
+	margin: auto;
+	background-color: lightgray;
+	position: relative;
+	border: none;
+	width: auto;
+	height: 30px;
+	color: black;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+}
+
+.hishobu:hover {
+	background-color: white;
 }
 
 /* HOME AND CREDIT PAGE */
@@ -242,6 +273,12 @@ img {
 	border-radius: 10px;
 }
 
+/* VIDEO YOUTUBE EMBED */
+
+.yt-embed {
+	width: 50%; margin: auto;
+}
+width="560" height="315" 
 /* SMALLER SCREEN SETTINGS */
 
 @media (max-width: 1200px) {
@@ -274,5 +311,8 @@ img {
 	}
 	pre {
 		width: 90%;
+	}
+	.yt-embed {
+		margin: 0;
 	}
 }

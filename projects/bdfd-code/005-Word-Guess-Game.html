@@ -114,7 +114,7 @@ $c[On Going Game Checker]
 $onlyIf[$getVar[WordGuess_Ongoing.;$authorID]==true.;]
 
 $c[Check If User typed a word that include 3 letters or no]
-$if[$checkContains[$toUppercase[$message[1]].;$getVar[WordGuess_3Letters.;$authorID]]==false]
+$if[$checkContains[$toLowercase[$message[1]].;$getVar[WordGuess_3Letters.;$authorID]]==false]
 	$setVar[WordGuess_Ongoing.;false.;$authorID]
 	$title[Not include "$toUppercase[$getVar[WordGuess_3Letters.;$authorID]]" letters. You lose.]
 	$description[The word you typed: `$cropText[$message[1].;100.;...]`.]

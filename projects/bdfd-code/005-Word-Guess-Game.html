@@ -97,13 +97,13 @@ $if[$httpStatus!=200]
 	$title[Internal error. Please re-try the game again.]
 	$stop
 $endif
-$var[word.;$httpResult[word.;0]]
+$var[word.;$toUppercase[$httpResult[word.;0]]]
 $var[word_3_letters.;$cropText[$var[word].;3.;]]
-$setVar[WordGuess_3Letters.;$toLowercase[$var[word_3_letters]].;$authorID]
+$setVar[WordGuess_3Letters.;$var[word_3_letters].;$authorID]
 
 $c[Output]
 $title[Word Guess Game]
-$description[🍵 <@$authorID> Say a word containing **$toUppercase[$var[word_3_letters]]**.]
+$description[🍵 <@$authorID> Say a word containing **$var[word_3_letters]**.]
 </code></pre>
 		<hr>
 		
@@ -114,9 +114,9 @@ $c[On Going Game Checker]
 $onlyIf[$getVar[WordGuess_Ongoing.;$authorID]==true.;]
 
 $c[Check If User typed a word that include 3 letters or no]
-$if[$checkContains[$toLowercase[$message[1]].;$getVar[WordGuess_3Letters.;$authorID]]==false]
+$if[$checkContains[$toUppercase[$message[1]].;$getVar[WordGuess_3Letters.;$authorID]]==false]
 	$setVar[WordGuess_Ongoing.;false.;$authorID]
-	$title[Not include "$toUppercase[$getVar[WordGuess_3Letters.;$authorID]]" letters. You lose.]
+	$title[Not include "$getVar[WordGuess_3Letters.;$authorID]" letters. You lose.]
 	$description[The word you typed: `$cropText[$message[1].;100.;...]`.]
 	$stop
 $endif
@@ -150,13 +150,13 @@ $if[$httpStatus!=200]
 	$description[The bot can't find a word at the moment.]
 	$stop
 $endif
-$var[word.;$httpResult[word.;0]]
+$var[word.;$toUppercase[$httpResult[word.;0]]]
 $var[word_3_letters.;$cropText[$var[word].;3.;]]
-$setVar[WordGuess_3Letters.;$toLowercase[$var[word_3_letters]].;$authorID]
+$setVar[WordGuess_3Letters.;$var[word_3_letters].;$authorID]
 
 $c[Output]
 $title[Word Guess Game]
-$description[🍵 <@$authorID> Say a word containing **$toUppercase[$var[word_3_letters]]**.]
+$description[🍵 <@$authorID> Say a word containing **$var[word_3_letters]**.]
 </code></pre>
 		<hr>
 		

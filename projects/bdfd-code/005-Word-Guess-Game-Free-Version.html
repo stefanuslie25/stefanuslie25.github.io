@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Simple Word Guess Game</title>
+	<meta property="og:title" content="Simple Word Guess Game">
+	<meta property="og:description" content="It's like the Tea game from mudae bot. In simple word, it's just a word guessing game.">
+	<meta property="og:image" content="https://i.imgur.com/YNigVBH.png">
+	<meta property="og:type" content="article">
+	<link rel="icon" href="https://i.imgur.com/taLNQSv.png" type="image/png">
+	<link rel="stylesheet" href="../../styles/main.css">
+	<link rel="stylesheet" href="../../styles/content.css">
+	<link rel="stylesheet" href="../../styles/text.css">
+</head>
+<body>
+	<header>
+		<div>
+			<button class="nav-menu" onclick="window.location.href='../../index.html'">Home</button>
+			<button class="nav-menu">My Projects</button>
+			<button class="nav-menu" onclick="window.location.href='list.html'">BDFD Code</button>
+			<button class="nav-menu">Contact Me</button>
+			<button class="nav-menu" onclick="window.location.href='../../credits.html'">Credits</button>
+		</div>
+	</header>
+	<footer><p>Unaffiliated with Bot Designer For Discord and Discord Inc.</p></footer>
+	<button class="menu-portrait" id="sidebar-toggle">Menu</button>
+	<aside class="sidebar" id="sidebar">
+		<button class="sidebar-button" onclick="window.location.href='../../index.html'">Home</button>
+		<button class="sidebar-button">My Projects</button>
+		<button class="sidebar-button" onclick="window.location.href='list.html'">BDFD Codes</button>
+		<button class="sidebar-button">Contact Me</button>
+		<button class="sidebar-button" onclick="window.location.href='../../credits.html'">Credits</button>
+	</aside>
+	<div class="overlay" id="overlay"></div>
+	
+	<div class="list-nav">
+		<button data-target="top"><p>▲</p></button>
+		<button data-target="point-1"><p>1.</p></button>
+		<button data-target="point-2"><p>2.</p></button>
+	</div>
+	<button class="list-nav-toggle"></button>
+	
+	<div class="content">
+	
+		<h1 id="top">Word Guess Game</h1>
+		<p class="explanation">
+			Version: 1.0 (Free Version)
+		</p>
+		<hr>
+		
+		<h1>Before we start, you need:</h1>
+		<p class="desc">
+			1. <span class="desc-bold">Variables</span> - To save the letters and "on-going" status.<br>
+			a.) Example Variable Name: "<span class="quote">WordGuess_Ongoing</span>" - Default Value: "false"<br>
+			b.) Example Variable Name: "<span class="quote">WordGuess_3Letters</span>" - Default Value: " " (yep, it's nothing.)<br>
+		</p>
+		<p class="notes">Optionally: You can add another variable for points.</p>
+		<p class="desc">
+			2. <span class="desc-bold">Api Key</span> - To access the API.<br>
+			- You might need to save it into a variable called "<span class="quote">key</span>" for safety.
+		</p>
+		<p class="notes">Optionally: Find another API that doesn't need an API key. If you don't know how to get the key from the web.</p>
+		<hr>
+		
+		<h1>Disclaimer:</h1>
+		<p class="desc">1. Any modifications to the code that result in errors are not my responsibility. At least, you have to understand it first before modifying it.</p>
+		<p class="desc">
+			2. Read the documents on how to use the API and BDFD wiki on how to use JSON function if you want to modify the look.<br>
+			a.) Word Generator: <a class="quote" href="https://api-ninjas.com/api/randomword" target="_blank">https://api-ninjas.com/api/randomword</a><br>
+			b.) Valid Word Checker: <a class="quote" href="https://api-ninjas.com/api/dictionary" target="_blank">https://api-ninjas.com/api/dictionary</a><br>
+			c.) JSON function: <a class="quote" href="https://wiki.botdesignerdiscord.com/guides/general/jsonFunctions.html" target="_blank">https://wiki.botdesignerdiscord.com/guides/general/jsonFunctions.html</a>
+		</p>
+		<hr>
+		
+		<h1>Initial Command</h1>
+		<p class="explanation">
+			To start the game using <span class="func">!start</span> command for example.
+		</p>
+<pre id="point-1"><code class="bdscript">$nomention $reply
+
+$c[On Going Game Checker]
+$onlyIf[$getVar[WordGuess_Ongoing.;$authorID]==false.;You are currently engaged in a game.]
+
+$c[Set Ongoing Game as TRUE]
+$setVar[WordGuess_Ongoing.;true.;$authorID]
+
+$c[The System]
+$httpAddHeader[X-Api-Key;$getVar[key]]
+$httpGet[https://api.api-ninjas.com/v1/randomword]
+$if[$httpStatus!=200]
+	$setVar[WordGuess_Ongoing.;false.;$authorID]
+	$title[Internal error. Please re-try the game again.]
+	$stop
+$endif
+$var[word.;$toUppercase[$httpResult[word.;0]]]
+$var[word_3_letters.;$cropText[$var[word].;3.;]]
+$setVar[WordGuess_3Letters.;$var[word_3_letters].;$authorID]
+
+$c[Output]
+$title[Word Guess Game]
+$description[🍵 <@$authorID> Say a word containing **$var[word_3_letters]**.]
+</code></pre>
+		<hr>
+		
+		<h1>The Gameplay</h1>
+		<p class="explanation">
+			To play the game by using <span class="func">!answer &lt;valid word&gt;</span> command for example.<br>
+		</p>
+		<p class="notes">It's better than <span class="func">$awaitFunc</span> + <span class="func">$awaitedCommand</span> which is limited.</p>
+<pre><code class="bdscript">$nomention $reply
+
+$c[On Going Game Checker]
+$onlyIf[$getVar[WordGuess_Ongoing.;$authorID]==true.;]
+
+$c[Check If User typed a word that include 3 letters or no]
+$if[$checkContains[$toUppercase[$message[1]].;$getVar[WordGuess_3Letters.;$authorID]]==false]
+	$setVar[WordGuess_Ongoing.;false.;$authorID]
+	$title[Not include "$getVar[WordGuess_3Letters.;$authorID]" letters. You lose.]
+	$description[The word you typed: `$cropText[$message[1].;100.;...]`.]
+	$stop
+$endif
+
+$c[Check if the word you input is valid or no]
+$httpAddHeader[X-Api-Key.;$getVar[key]]
+$httpGet[https://api.api-ninjas.com/v1/dictionary?word=$message[1]]
+$if[$httpStatus==200]
+	$if[$httpResult[valid]==false]
+		$setVar[WordGuess_Ongoing.;false.;$authorID]
+		$title[Not a valid word. You lose.]
+		$description[The word you typed: `$cropText[$message[1].;100.;...]` is not correct.]
+		$stop
+	$endif
+$else
+	$setVar[WordGuess_Ongoing.;false.;$authorID]
+	$title[Internal error. You win.]
+	$description[The bot can't find a word at the moment.]
+	$stop
+$endif
+
+$c[Just a response if the bot done check your input]
+$addCmdReactions[✅]
+
+$c[Generate another random word]
+$httpAddHeader[X-Api-Key.;$getVar[key]]
+$httpGet[https://api.api-ninjas.com/v1/randomword]
+$if[$httpStatus!=200]
+	$setVar[WordGuess_Ongoing.;false.;$authorID]
+	$title[Internal error. You win.]
+	$description[The bot can't find a word at the moment.]
+	$stop
+$endif
+$var[word.;$toUppercase[$httpResult[word.;0]]]
+$var[word_3_letters.;$cropText[$var[word].;3.;]]
+$setVar[WordGuess_3Letters.;$var[word_3_letters].;$authorID]
+
+$c[Output]
+$title[Word Guess Game]
+$description[🍵 <@$authorID> Say a word containing **$var[word_3_letters]**.]
+</code></pre>
+		<hr>
+		
+		<h1 id="point-2">Preview</h1>
+		<div class="yt-embed"> <iframe width="560" height="315" src="https://www.youtube.com/embed/r4cwuJodEdg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen> </iframe> </div>
+
+		</div>
+		<script src="../../styles/bdshighlighter.js"></script>
+		<script src="../../styles/script.js"></script>
+	</body>
+</html>

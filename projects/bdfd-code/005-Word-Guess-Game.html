@@ -162,6 +162,19 @@ $description[🍵 <@$authorID> Say a word containing **$var[word_3_letters]**.]
 </code></pre>
 		<hr>
 		
+		<h1>Extra Fix</h1>
+		<p class="explanation">
+			The command name can be anything, e.g. <span class="func">!fix</span> for example. Then you'll need: <span class="func">!fix &lt;someone&gt;</span>.
+		</p>
+		<p class="notes">Extra fix when you got stuck at "<span class="quote">You are currently engaged in a game.</span>"</p>
+<pre><code class="bdscript">$nomention
+$var[user;$findUser[$message[1].;no]]
+$onlyIf[$var[user]==.;You need to mention someone.]
+$setVar[WordGuess_Ongoing.;false.;$var[user]]
+$description[Successfully set on-going game for <@$var[user]> to `false`.]
+</code></pre>
+		<hr>
+		
 		<h1 id="point-2">Preview</h1>
 		<div class="yt-embed"> <iframe width="560" height="315" src="https://www.youtube.com/embed/r4cwuJodEdg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen> </iframe> </div>
 

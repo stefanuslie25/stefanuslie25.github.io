@@ -170,7 +170,7 @@ $description[🍵 <@$authorID> Say a word containing **$var[word_3_letters]**.]
 		<p class="notes">Extra fix when you got stuck at "<span class="quote">You are currently engaged in a game.</span>"</p>
 <pre><code class="bdscript">$nomention
 $var[user;$findUser[$message[1].;no]]
-$onlyIf[$var[user]==.;You need to mention someone.]
+$onlyIf[$var[user]!=.;You need to mention someone.]
 $setVar[WordGuess_Ongoing.;false.;$var[user]]
 $description[Successfully set on-going game for <@$var[user]> to `false`.]
 </code></pre>

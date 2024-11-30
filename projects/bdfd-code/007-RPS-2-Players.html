@@ -44,7 +44,7 @@
 	<div class="content">
 	
 		<h1 id="top">RPS 2 Players</h1>
-		<p class="explanation">It's just a basic rps game that can be played with other players.</p>
+		<p class="explanation">It's a basic RPS game designed for players to <span class="quote">enjoy matches with others</span>. The game includes a <span class="desc-bold">bet</span> feature to make it more engaging and fun for those who enjoy a gamble. Additionally, an <span class="desc-bold">ongoing</span> feature is implemented to check if players or their opponents have other active games in progress, ensuring a smooth gaming experience.</p>
 		<hr>
 		
 		<h1>Before we start, you need:</h1>
@@ -52,7 +52,7 @@
 			1. <span class="desc-bold">Variables</span> - To save the ongoing status, move and maybe money if you wanna make a bet.<br>
 			1.) Variable Name: "<span class="quote">onGoing</span>" - Default Value: "no"<br>
 			2.) Variable Name: "<span class="quote">move</span>" - Default Value: "" (empty)<br>
-			3.) Variable Name: "<span class="quote">Money</span>" - Default Value: "0"<br>
+			3.) Variable Name: "<span class="quote">Money</span>" - Default Value: "0" (Optional)<br>
 		</p>
 		<p class="desc">2. Use <span class="desc-bold">BDScript 2</span>.</p>
 		<hr>
@@ -102,7 +102,7 @@ $setVar[onGoing;yes;$var[user]]
 		</p>
 <pre><code class="bdscript">$nomention
 
-$c[To stop someone else clicking the buttons]
+$c[To notify someone else when they clicking the buttons]
 $if[$checkContains[$customID;$authorID]==false]
 	$ephemeral $removeButtons It's not your game! $stop
 $endif

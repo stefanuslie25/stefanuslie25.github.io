@@ -52,7 +52,8 @@ document.addEventListener('DOMContentLoaded', () => {
 	});
 });
 
-function toggleDiv() {
+
+function hisho() {
 	var div = document.getElementById('hisho');
 	if (div.style.display === 'none') {
 		div.style.display = 'block'; // Tampilkan div

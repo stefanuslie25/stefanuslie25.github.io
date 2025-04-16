@@ -3,35 +3,59 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Contact Me</title>
+	<title>About Me</title>
 	<link rel="icon" href="https://i.imgur.com/taLNQSv.png" type="image/png">
 	<link rel="stylesheet" href="styles/main.css">
 	<link rel="stylesheet" href="styles/content.css">
 	<link rel="stylesheet" href="styles/text.css">
+	<link rel="stylesheet" href="styles/progress-bar.css">
 	<script src="styles/all-script.js"></script>
-	<script src="styles/progress-bar.js"></script>
 </head>
 <body>
 	<header>
 		<div>
 			<button class="nav-menu" onclick="window.location.href='index.html'">Home</button>
 			<button class="nav-menu" onclick="window.location.href='projects.html'">My Projects</button>
-			<button class="youre-here" onclick="window.location.href='contact.html'">Contact Me</button>
+			<button class="youre-here" onclick="window.location.href='contact.html'">About Me</button>
 		</div>
 	</header>
 	<button class="menu-portrait" id="sidebar-toggle">Menu</button>
 	<aside class="sidebar" id="sidebar">
 		<button class="side-buttons" onclick="window.location.href='index.html'">Home</button>
 		<button class="side-buttons" onclick="window.location.href='projects.html'">My Projects</button>
-		<button class="youre-here-2" onclick="window.location.href='contact.html'">Contact Me</button>
+		<button class="youre-here-2" onclick="window.location.href='contact.html'">About Me</button>
 	</aside>
 	<div class="overlay" id="overlay"></div>
 	
 	<div class="page-content">
-	<h1 style="color: white;">My Contact</h1>
+	<h1 style="color: white;">Coming Soon</h1>
 	<p class="explanation">
-		Coming soon...
+		I love the animation fr
 	</p>
 	</div>
 </body>
+<body2>
+	<div class="progress-group">
+		<div class="counter" data-target="1">0</div>
+		<div class="progress-container">
+			<div class="progress-bar"></div>
+			<div class="progress-text">Skill 1</div>
+		</div>
+	</div>
+	<div class="progress-group">
+		<div class="counter" data-target="50">0</div>
+		<div class="progress-container">
+			<div class="progress-bar"></div>
+			<div class="progress-text">Skill 2</div>
+		</div>
+	</div>
+	<div class="progress-group">
+		<div class="counter" data-target="99">0</div>
+		<div class="progress-container">
+			<div class="progress-bar"></div>
+			<div class="progress-text">Skill 3</div>
+		</div>
+	</div>
+</body2>
+	<script src="styles/progress-bar.js"></script>
 </html>

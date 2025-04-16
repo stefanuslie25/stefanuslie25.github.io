@@ -12,7 +12,7 @@ p {
 	display: block;
 	font-size: 1em;
 	text-align: justify;
-	margin: 15px 15%;
+	margin: 10px 15%;
 }
 
 hr {
@@ -87,4 +87,10 @@ a:hover {
 	color: lightgray;
 	font-family: 'Courier New', Courier, monospace;
 	background-color: black;
+}
+
+@media (max-width: 1000px), (max-height: 600px) {
+	p {
+		margin: 10px 5%;
+	}
 }

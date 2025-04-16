@@ -50,7 +50,6 @@ header {
 
 .sidebar {
 	position: fixed;
-	top: 0;
 	left: -120px;
 	width: 120px;
 	height: 100%;
@@ -62,7 +61,7 @@ header {
 	scrollbar-width: none;
 }
 
-.sidebar-button, .youre-here-2 {
+.side-buttons, .youre-here-2 {
 	background-color: #ffa500;
 	position: relative;
 	border: none;
@@ -70,17 +69,17 @@ header {
 	height: 30px;
 	color: #fff;
 	left: 10px;
-	top: 10px;
+	top: 15px;
 	cursor: pointer;
 	margin-bottom: 10px;
 	transition: background-color 0.3s ease;
 }
 
-.sidebar-button:hover, .menu-portrait:hover {
+.side-buttons:hover, .menu-portrait:hover {
 	background-color: #d67200;
 }
 
-.sidebar-button:hover {
+.side-buttons:hover {
 	scale: 1.05;
 }
 

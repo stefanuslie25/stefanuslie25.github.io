@@ -166,9 +166,9 @@
 	background-color: white;
 }
 
-/* HOME AND CREDIT PAGE */
+/* PAGE CONTENT */
 
-.home-content, .credit-content {
+.home-content, .page-content {
 	position: absolute;
 	min-width: 600px;
 	top: 50%;
@@ -184,6 +184,7 @@
 	font-size: 5em;
 	font-weight: bold;
 	margin-bottom: 20px;
+    transition: font-size 0.5s ease, color 0.5s ease;
 }
 
 .home-bg {
@@ -300,6 +301,10 @@ width="560" height="315"
 }
 
 @media (max-width: 700px), (max-height: 600px) {
+	.home-title {
+		font-size: 4em;
+        transition: font-size 0.5s ease, color 0.5s ease;
+	}
 	.list-content, .content {
 		transform: translateY(-70px);
 		bottom: -70px;
@@ -318,7 +323,7 @@ width="560" height="315"
 	.yt-embed {
 		margin: 0;
 	}
-	.credit-content {
+	.page-content {
 		position: absolute;
 		width: 600px;
 		transform: translate(-50%, -50%);

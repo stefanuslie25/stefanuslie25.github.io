@@ -170,6 +170,7 @@
 
 .home-content, .credit-content {
 	position: absolute;
+	min-width: 600px;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
@@ -279,6 +280,7 @@ img {
 	width: 50%; margin: auto;
 }
 width="560" height="315" 
+
 /* SMALLER SCREEN SETTINGS */
 
 @media (max-width: 1200px) {
@@ -287,6 +289,7 @@ width="560" height="315"
 		right: 15%;
 	}
 }
+
 
 @media (max-height: 420px) {
 	.list-nav, .list-nav-toggle {
@@ -314,5 +317,14 @@ width="560" height="315"
 	}
 	.yt-embed {
 		margin: 0;
+	}
+	.credit-content {
+		position: absolute;
+		width: 600px;
+		transform: translate(-50%, -50%);
+		text-align: center;
+		color: white;
+		z-index: 0;
+		user-select: none;
 	}
 }

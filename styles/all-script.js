@@ -6,12 +6,8 @@ if (window.location.hostname === 'www.stefanuslie25.my.id' && window.location.pa
 	window.location.replace(window.location.pathname.replace('projects.html', 'projects'));
 }
 
-if (window.location.hostname === 'www.stefanuslie25.my.id' && window.location.pathname.endsWith('contact.html')) {
-	window.location.replace(window.location.pathname.replace('contact.html', 'contact'));
-}
-
-if (window.location.hostname === 'www.stefanuslie25.my.id' && window.location.pathname.endsWith('credits.html')) {
-	window.location.replace(window.location.pathname.replace('credits.html', 'credits'));
+if (window.location.hostname === 'www.stefanuslie25.my.id' && window.location.pathname.endsWith('info.html')) {
+	window.location.replace(window.location.pathname.replace('info.html', 'info'));
 }
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -37,6 +33,7 @@ document.addEventListener('DOMContentLoaded', function () {
         sidebar.classList.remove('open');
         overlay.classList.remove('visible');
     });
+	
 });
 
 document.addEventListener('DOMContentLoaded', function() {

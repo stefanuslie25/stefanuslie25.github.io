@@ -132,7 +132,7 @@
 }
 
 .list-nav-toggle.active {
-	transform: translateY(-50%) translateX(70px); /* Geser ke kanan sebanyak 100px */
+	transform: translateY(-50%) translateX(70px);
 }
 
 /* SHOW OR HIDE CONTENT */
@@ -176,7 +176,7 @@
 	transform: translate(-50%, -50%);
 	text-align: center;
 	color: white;
-	z-index: 0;
+	z-index: 1;
 	user-select: none;
 }
 
@@ -198,6 +198,35 @@
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-attachment: fixed;
+}
+
+.info-container {
+	position: fixed;
+	top: 80px;
+	bottom: 50px;
+	left: 10px;
+	right: 10px;
+	display: flex;
+	flex-direction: row;
+	z-index: -1;
+}
+
+.info-main {
+	right: 10px;
+	width: 100%;
+	height: 100%;
+	color: white;
+	background-color: rgba(255, 0, 0, 0.3);
+	border-radius: 10px;
+}
+
+.info-sub {
+	width: 300px;
+	height: 100%;
+	right: 10px;
+	background-color: rgba(0, 0, 255, 0.5);
+	color: white;
+	border-radius: 10px;
 }
 
 /* NOTE BOX */
@@ -291,6 +320,7 @@ width="560" height="315"
 	}
 }
 
+/* SMALLER SCREEN SIZE */
 
 @media (max-height: 420px) {
 	.list-nav, .list-nav-toggle {

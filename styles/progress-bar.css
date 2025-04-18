@@ -1,8 +1,25 @@
+.manualPos {
+	position: fixed;
+	right: 170px;
+	bottom: 40px;
+	transform: translateX(50%);
+	padding: 10px;
+	transition: transform 0.3s ease;
+	z-index: 33;
+	background-color: red;
+}
+
+.allProgress {
+	position: fixed;
+	right: 10px;
+	padding: 10px;
+}
+
 .progress-group {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
-	width: 500px;
+	width: 170px;
 	gap: 10px;
 }
 
@@ -10,10 +27,10 @@
 	flex: 1;
 	position: relative;
 	background-color: #D3D3D3;
-	border: 5px solid #888;
+	border: 2px solid #888;
 	border-radius: 10px;
 	overflow: hidden;
-	height: 40px;
+	height: 30px;
 }
 
 .progress-bar {
@@ -28,21 +45,34 @@
 	width: 100%;
 	top: 30%;
 	left: 10px;
-	font-weight: bold;
+	font-weight: 600;
+	font-style: italic;
 	text-align: left;
 	color: #111;
 }
 
 .counter {
-	font-size: 3.5rem;
+	font-size: 1.5rem;
 	font-weight: bold;
-	color: #333;
+	color: #fff;
 	text-align: right;
-	min-width: 150px; /* Tetapkan lebar tetap untuk angka */
+	min-width: 60px;
 }
 
-@media (max-width: 520px) {
-	.progress-group {
-		width: 100%;
+@media (max-height: 500px) {
+	.progBarPos {
+		transform: translateX(50%) translateY(150%);
+	}
+}
+
+@media (max-width: 700px) {
+	.progBarPos {
+		transform: translateX(50%) translateY(20%);
+	}
+}
+
+@media (max-width: 700px), (max-height: 300px) {
+	.progBarPos {
+		transform: translateX(50%) translateY(150%);
 	}
 }

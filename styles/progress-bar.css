@@ -10,16 +10,15 @@
 }
 
 .allProgress {
-	position: fixed;
-	right: 10px;
 	padding: 10px;
 }
 
 .progress-group {
 	display: flex;
 	flex-direction: row;
-	align-items: center;
-	width: 170px;
+	width: 220px;
+	height: 30px;
+	padding: 5px;
 	gap: 10px;
 }
 
@@ -30,7 +29,7 @@
 	border: 2px solid #888;
 	border-radius: 10px;
 	overflow: hidden;
-	height: 30px;
+	height: 25px;
 }
 
 .progress-bar {
@@ -52,11 +51,13 @@
 }
 
 .counter {
-	font-size: 1.5rem;
+	font-size: 20px;
 	font-weight: bold;
-	color: #fff;
+	color: black;
 	text-align: right;
 	min-width: 60px;
+	top: 50%;
+	transform: translateY(20%);
 }
 
 @media (max-height: 500px) {
@@ -68,6 +69,12 @@
 @media (max-width: 700px) {
 	.progBarPos {
 		transform: translateX(50%) translateY(20%);
+	}
+	.counter {
+		min-width: 50px;
+	}
+	.progress-group {
+		width: 150px;
 	}
 }
 

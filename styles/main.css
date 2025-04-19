@@ -1,8 +1,10 @@
 body, html {
 	height: 100%;
+	max-width: 100vw;
 	margin: 0;
 	font-family: Arial, sans-serif;
 	scrollbar-width: none;
+	overflow: hidden;
 }
 
 body {
@@ -69,7 +71,6 @@ header {
 	color: #fff;
 	left: 10px;
 	top: 15px;
-	cursor: pointer;
 	margin-bottom: 10px;
 	transition: background-color 0.3s ease;
 }
@@ -105,13 +106,13 @@ header {
 	background-color: lightblue;
 	z-index: 1;
 	user-select: none;
-	cursor: pointer;
 	overflow: hidden;
 	transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
 }
 
 .youre-here, .youre-here-2 {
 	background-color: gray;
+	pointer-events: none;
 }
 
 .nav-menu::before, .button-content::before {
@@ -152,15 +153,14 @@ footer p {
 	text-align: center;
 }
 
+/* ERROR: FIX LATER
+
 @media (max-width: 700px) {
 	header {
 		transform: translateY(-70px);
 	}
 	.menu-portrait {
 		transform: translateY(130px);
-	}
-	footer {
-		transform: translateY(40px);
 	}
 }
 
@@ -173,3 +173,5 @@ footer p {
 		opacity: 1;
 	}
 }
+
+*/

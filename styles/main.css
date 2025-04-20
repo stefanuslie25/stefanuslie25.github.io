@@ -1,3 +1,7 @@
+* {
+	margin: 0;
+}
+
 body, html {
 	height: 100%;
 	max-width: 100vw;
@@ -33,71 +37,11 @@ header {
 	display: flex;
 }
 
-.menu-portrait {
-	position: fixed;
-	border: 1px solid black;
-	border-radius: 0;
-	width: 100px;
-	height: 30px;
-	top: -100px;
-	left: 15px;
-	background-color: yellow;
-	z-index: 420;
-	cursor: pointer;
-	overflow: hidden;
-	transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
-	transform: translateY(0);
+h1 {
+	text-align: center;
 }
 
-.sidebar {
-	position: fixed;
-	left: -120px;
-	width: 120px;
-	height: 100%;
-	background: #333;
-	color: #fff;
-	transition: left 0.3s ease;
-	z-index: 500;
-	overflow-y: auto;
-	scrollbar-width: none;
-}
-
-.side-buttons, .youre-here-2 {
-	background-color: #ffa500;
-	position: relative;
-	border: none;
-	width: 100px;
-	height: 30px;
-	color: #fff;
-	left: 10px;
-	top: 15px;
-	margin-bottom: 10px;
-	transition: background-color 0.3s ease;
-}
-
-.side-buttons:hover, .menu-portrait:hover {
-	background-color: #d67200;
-}
-
-.side-buttons:hover {
-	scale: 1.05;
-}
-
-.overlay {
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background: rgba(0, 0, 0, 0.5);
-	backdrop-filter: blur(5px);
-	visibility: hidden;
-	opacity: 0;
-	transition: opacity 0.3s ease, visibility 0.3s ease;
-	z-index: 400;
-}
-
-.nav-menu, .youre-here, .button-content {
+.nav-menu, .youre-here {
 	position: relative;
 	border: 1px solid black;
 	border-radius: 0px;
@@ -110,12 +54,12 @@ header {
 	transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
 }
 
-.youre-here, .youre-here-2 {
+.youre-here {
 	background-color: gray;
 	pointer-events: none;
 }
 
-.nav-menu::before, .button-content::before {
+.nav-menu::before {
 	content: '';
 	position: absolute;
 	top: 0;
@@ -129,18 +73,14 @@ header {
 	user-select: none;
 }
 
-.nav-menu:hover::before, .button-content:hover::before {
+.nav-menu:hover::before {
 	left: 120%;
 }
 
-.nav-menu:hover, .button-content:hover {
+.nav-menu:hover {
 	color: white;
 	transform: scale(1.05);
 	background-color: #0056b3;
-}
-
-.button-content {
-	margin-bottom: 10px;
 }
 
 footer {
@@ -151,27 +91,5 @@ footer {
 
 footer p {
 	text-align: center;
+	margin-top: 10px;
 }
-
-/* ERROR: FIX LATER
-
-@media (max-width: 700px) {
-	header {
-		transform: translateY(-70px);
-	}
-	.menu-portrait {
-		transform: translateY(130px);
-	}
-}
-
-@media (max-height: 600px) {
-	.sidebar.open {
-		left: 0;
-	}
-	.overlay.visible {
-		visibility: visible;
-		opacity: 1;
-	}
-}
-
-*/

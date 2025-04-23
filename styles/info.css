@@ -25,7 +25,7 @@
 	height: 100%;
 	background-color: white;
 	color: white;
-	box-shadow:-15px 0 30px rgba(0,0,0, 0.25);
+	box-shadow: -10px 0 15px rgba(0,0,0, 0.25);
 	transition: transform 0.3s ease;
 	overflow: auto;
 	scrollbar-width: none;
@@ -95,7 +95,7 @@
 
 .linki {
 	text-decoration: none;
-	color: #BA8D00;
+	color: black;
 }
 
 .linki:hover {
@@ -110,8 +110,16 @@
 	color: black;
 }
 
+.si { /* 1 sentence */
+	text-align: right;
+}
+
 .pi b {
 	font-weight: bold;
+}
+
+.pi i {
+	font-style: italic;
 }
 
 .gpi { /* garis pembatas */

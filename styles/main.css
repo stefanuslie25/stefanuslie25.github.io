@@ -27,7 +27,7 @@ header, footer {
 	transition: transform 0.3s ease;
 	justify-content: center;
 	align-items: center;
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+	box-shadow: 0 0 15px 3px rgba(0, 0, 0, 0.4);
 }
 
 header {
@@ -37,8 +37,15 @@ header {
 	display: flex;
 }
 
-h1 {
+footer {
+	color: white;
+	bottom: 0px;
+	height: 40px;
+}
+
+footer p {
 	text-align: center;
+	margin-top: 10px;
 }
 
 .nav-menu, .youre-here {
@@ -47,6 +54,7 @@ h1 {
 	border-radius: 0px;
 	width: 100px;
 	height: 30px;
+	color: black;
 	background-color: lightblue;
 	z-index: 1;
 	user-select: none;
@@ -81,15 +89,4 @@ h1 {
 	color: white;
 	transform: scale(1.05);
 	background-color: #0056b3;
-}
-
-footer {
-	color: white;
-	bottom: 0px;
-	height: 40px;
-}
-
-footer p {
-	text-align: center;
-	margin-top: 10px;
 }

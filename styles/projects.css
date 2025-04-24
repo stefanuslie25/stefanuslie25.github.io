@@ -11,17 +11,24 @@
 	scrollbar-width: none;
 }
 
-.pc h1 {
+.pch {
 	text-align: center;
 	margin-top: 30px;
 	color: yellow;
+	transition: transform 0.5s ease;
 }
 
-.pc p {
+.pcp1, .pcp2 {
 	text-align: center;
 	margin-top: 8px;
 	margin-bottom: 10px;
 	color: yellow;
+	transition: transform 0.5s ease;
+}
+
+.pcp2 {
+	margin-top: -30px;
+	transform: translateX(-100%);
 }
 
 .container {
@@ -30,6 +37,7 @@
 	gap: 10px;
 	padding: 5px;
 	justify-content: center;
+	transition: transform 0.3s ease;
 }
 
 .box {
@@ -58,7 +66,7 @@
 	margin-bottom: 10px;
 }
 
-.box h1, .box p {
+.boxh, .box p {
 	color: white;
 }
 
@@ -74,8 +82,14 @@
 	}
 }
 
-@media (max-width: 500px) {
+@media (min-width: 321px) and (max-width: 500px) {
 	.box {
 		flex: 0 0 calc(50% - 10px);
+	}
+}
+
+@media (max-width: 320px), (max-height: 320px) {
+	.pc {
+		display: none;
 	}
 }

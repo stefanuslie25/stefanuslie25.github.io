@@ -90,3 +90,35 @@ footer p {
 	transform: scale(1.05);
 	background-color: #0056b3;
 }
+
+.unsupported-size {
+	display: none;
+}
+
+@media (max-height: 320px), (max-width: 320px) {
+	header {
+		transform: translateY(-100%);
+		transition: transform 0.5s ease;
+	}
+	footer {
+		transform: translateY(100%);
+		transition: transform 0.5s ease;
+	}
+	.unsupported-size {
+		display: flex;
+		position: fixed;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
+	.warning-message {
+		width: 80vw;
+		height: auto;
+		padding: 3vw;
+		background-color: red;
+		text-align: center;
+		border-radius: 5vw;
+		font-size: 4vw;
+		font-weight: bold;
+	}
+}

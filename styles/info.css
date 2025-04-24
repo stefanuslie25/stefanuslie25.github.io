@@ -186,7 +186,7 @@
 	font-size: 15px;
 }
 
-@media (max-width: 1000px) {
+@media (min-width: 321px) and (max-width: 1000px) {
 	.info-container {
 		width: 100%;
 	}
@@ -194,6 +194,19 @@
 
 @media (max-width: 700px) {
 	.info-sub {
+		display: none;
+	}
+}
+
+@media (min-width: 321px) and (max-width: 500px) {
+	.rkai {
+		padding-right: 25px;
+		padding-left: 25px;
+	}
+}
+
+@media (max-height: 320px), (max-width: 320px) {
+	.info-container {
 		display: none;
 	}
 }

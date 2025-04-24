@@ -95,7 +95,14 @@ footer p {
 	display: none;
 }
 
-@media (max-height: 320px), (max-width: 320px) {
+@media (max-height: 400px) {
+	footer {
+		transform: translateY(40px);
+		transition: transform 0.5s ease;
+	}
+}
+
+@media (max-width: 319px), (max-height: 319px) {
 	header {
 		transform: translateY(-100%);
 		transition: transform 0.5s ease;

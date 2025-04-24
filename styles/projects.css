@@ -70,6 +70,13 @@
 	color: white;
 }
 
+@media (max-height: 400px) {
+	.pc {
+		bottom: 0;
+		transition: transform 0.3s ease;
+	}
+}
+
 @media (max-width: 1000px) {
 	.pc {
 		width: 100%;
@@ -82,13 +89,13 @@
 	}
 }
 
-@media (min-width: 321px) and (max-width: 500px) {
+@media (min-width: 320px) and (max-width: 500px) {
 	.box {
 		flex: 0 0 calc(50% - 10px);
 	}
 }
 
-@media (max-width: 320px), (max-height: 320px) {
+@media (max-width: 319px), (max-height: 319px) {
 	.pc {
 		display: none;
 	}

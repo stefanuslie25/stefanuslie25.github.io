@@ -186,7 +186,7 @@
 	font-size: 15px;
 }
 
-@media (min-width: 321px) and (max-width: 1000px) {
+@media (min-width: 320px) and (max-width: 1000px) {
 	.info-container {
 		width: 100%;
 	}
@@ -198,14 +198,21 @@
 	}
 }
 
-@media (min-width: 321px) and (max-width: 500px) {
+@media (max-height: 400px) {
+	.info-container {
+		bottom: 0;
+		transition: transform 0.3s ease;
+	}
+}
+
+@media (min-width: 320px) and (max-width: 500px) {
 	.rkai {
 		padding-right: 25px;
 		padding-left: 25px;
 	}
 }
 
-@media (max-height: 320px), (max-width: 320px) {
+@media (max-width: 319px), (max-height: 319px) {
 	.info-container {
 		display: none;
 	}

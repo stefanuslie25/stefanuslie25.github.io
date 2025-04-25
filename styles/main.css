@@ -17,14 +17,13 @@ body {
 }
 
 header, footer {
-	background-color: rgba(200, 200, 200, 0.4);
+	background-color: #A2A7AA;
 	font-size: 1em;
 	user-select: none;
 	position: fixed;
 	width: 100%;
 	z-index: 69;
-	transform: translateY(0);
-	transition: transform 0.3s ease;
+	transition: height 0.5s ease;
 	justify-content: center;
 	align-items: center;
 	box-shadow: 0 0 15px 3px rgba(0, 0, 0, 0.4);
@@ -35,23 +34,22 @@ header {
 	top: 0;
 	height: 70px;
 	display: flex;
+	transition: transform 0.3s ease, height 0.3s ease;
 }
 
 footer {
-	color: white;
 	bottom: 0px;
 	height: 40px;
 }
 
 footer p {
+	color: white;
 	text-align: center;
 	margin-top: 10px;
 }
 
 .nav-menu, .youre-here {
-	position: relative;
 	border: 1px solid black;
-	border-radius: 0px;
 	width: 100px;
 	height: 30px;
 	color: black;
@@ -91,6 +89,30 @@ footer p {
 	background-color: #0056b3;
 }
 
+#menu-toggle {
+	display: none;
+}
+
+.close-menu, .menu-icon {
+	position: fixed;
+	top: 10px;
+	right: 20px;
+	font-size: 3rem;
+	color: white;
+	cursor: pointer;
+	display: none;
+}
+
+.menu-icon {
+	top: 20px;
+	right: 25px;
+	font-size: 1.5rem;
+}
+
+.close-menu:hover, .menu-icon:hover {
+	color: #ff6347;
+}
+
 .unsupported-size {
 	display: none;
 }
@@ -103,13 +125,8 @@ footer p {
 }
 
 @media (max-width: 319px), (max-height: 319px) {
-	header {
-		transform: translateY(-100%);
-		transition: transform 0.5s ease;
-	}
-	footer {
-		transform: translateY(100%);
-		transition: transform 0.5s ease;
+	header, footer {
+		display: none;
 	}
 	.unsupported-size {
 		display: flex;
@@ -127,5 +144,32 @@ footer p {
 		border-radius: 5vw;
 		font-size: 4vw;
 		font-weight: bold;
+	}
+}
+
+@media (min-width: 320px) and (max-width: 500px) and (min-height: 320px) {
+	button {
+		transform: translateY(-100px);
+		transition: transform 0.3s ease;
+		margin: 5px;
+	}
+	.nav-menu, .youre-here {
+		width: 100%;
+	}
+	.nav-menu:hover, .youre-here:hover {
+		transform: translateY(-100px);
+	}
+	#menu-toggle:checked + header {
+		height: 100%;
+		transition: height 0.3s ease;
+	}
+	.menu-icon {
+		display: block;
+	}
+	#menu-toggle:checked ~ header .menu-icon {
+		display: none;
+	}
+	#menu-toggle:checked ~ header .close-menu {
+		display: block;
 	}
 }

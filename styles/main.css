@@ -148,16 +148,19 @@ footer p {
 }
 
 @media (min-width: 320px) and (max-width: 500px) and (min-height: 320px) {
-	button {
-		transform: translateY(-100px);
-		transition: transform 0.3s ease;
+	#menu-toggle ~ header .nav-menu, #menu-toggle ~ header .youre-here {
+		display: none;
+	}
+	#menu-toggle:checked ~ header .nav-menu, #menu-toggle:checked ~ header .youre-here {
+		display: block;
+		width: 90vw;
 		margin: 5px;
+		top: 50%;
+		transform: translateY(-50%);
 	}
-	.nav-menu, .youre-here {
-		width: 100%;
-	}
-	.nav-menu:hover, .youre-here:hover {
-		transform: translateY(-100px);
+	#menu-toggle:checked ~ header .nav-menu:hover {
+		top: 50%;
+		transform: translateY(-50%);
 	}
 	#menu-toggle:checked + header {
 		height: 100%;

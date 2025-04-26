@@ -79,32 +79,20 @@
 }
 
 @media (max-height: 400px) {
-	.pc {
+	.pp {
 		bottom: 0;
 		transition: transform 0.3s ease;
 	}
 }
 
 @media (max-width: 1000px) {
-	.pc {
+	.pp {
 		width: 100%;
 	}
 }
 
-@media (max-width: 750px) {
-	.box {
-		flex: 0 0 calc(33.33% - 10px);
-	}
-}
-
-@media (min-width: 320px) and (max-width: 500px) {
-	.box {
-		flex: 0 0 calc(50% - 10px);
-	}
-}
-
 @media (max-width: 319px), (max-height: 319px) {
-	.pc {
+	.pp {
 		display: none;
 	}
 }

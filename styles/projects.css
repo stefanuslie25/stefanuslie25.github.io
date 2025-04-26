@@ -40,10 +40,13 @@
 	position: relative;
 	border-radius: 10px;
 	margin-bottom: 30px;
-	background-color: green;
 }
 
-.box img {
+.boxi {
+	position: relative;
+}
+
+.boxi img {
 	width: 100%;
 	height: auto;
 	border-radius: 10px 10px 0 0;

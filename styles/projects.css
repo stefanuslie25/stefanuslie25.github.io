@@ -117,19 +117,17 @@
 	top: 40px;
 	left: 40px;
 	width: 150px;
-	height: 150px;
-	background-color: red;
 }
 
 .popup-boxi img {
 	width: 100%;
-	height: 100%;
+	height: auto;
 }
 
 .popup-boxt {
 	position: absolute;
 	top: 40px;
-	bottom: 20px;
+	bottom: 75px;
 	right: 40px;
 	left: 210px;
 	text-align: justify;
@@ -139,13 +137,40 @@
 
 .popup-boxt h2 {
 	margin-bottom: 15px;
+	order: 1;
 }
 
 .popup-boxt p {
 	text-indent: 50px;
+	order: 2;
 }
 
-/* Tombol untuk menutup pop-up */
+.popup-nav-left, .popup-nav-right {
+	position: absolute;
+	color: grey;
+	z-index: 6;
+	bottom: 20px;
+	font-size: 30px;
+	text-decoration: none;
+}
+
+.popup-nav-left:hover, .popup-nav-right:hover {
+	color: darkgrey;
+}
+
+.popup-nav-left {
+	left: 40%;
+}
+
+.popup-nav-right {
+	right: 40%;
+}
+
+.blocked {
+	pointer-events: none;
+	color: lightgrey;
+}
+
 .popup-close {
 	position: absolute;
 	top: 10px;
@@ -170,6 +195,31 @@
 @media (max-width: 1000px) {
 	.pp {
 		width: 100%;
+	}
+}
+
+@media (min-width: 320px) and (max-width: 549px) {
+	.popup-box {
+		aspect-ratio: 0.85;
+	}
+	.popup-boxi {
+		left: 50%;
+		transform: translateX(-50%);
+		height: 150px;
+		justify-content: center;
+		align-items: center;
+	}
+	.popup-boxi img {
+		width: auto;
+		height: 100%;
+	}
+	.popup-boxt {
+		top: 225px;
+		left: 25px;
+		right: 25px;
+	}
+	.popup-boxt h2 {
+		text-align: center;
 	}
 }
 

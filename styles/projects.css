@@ -203,23 +203,24 @@
 		aspect-ratio: 0.85;
 	}
 	.popup-boxi {
+		height: 200px;
+		width: auto;
 		left: 50%;
 		transform: translateX(-50%);
-		height: 150px;
-		justify-content: center;
-		align-items: center;
+		background-color: red;
 	}
 	.popup-boxi img {
 		width: auto;
 		height: 100%;
 	}
 	.popup-boxt {
-		top: 225px;
+		top: 260px;
 		left: 25px;
 		right: 25px;
 	}
 	.popup-boxt h2 {
 		text-align: center;
+		margin-bottom: 10px;
 	}
 }
 

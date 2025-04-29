@@ -143,16 +143,27 @@
 	text-indent: 50px;
 }
 
-.popup-nav-left, .popup-nav-right {
+.popup-nav-first, .popup-nav-left, .popup-nav-right, .popup-nav-last {
 	position: absolute;
-	color: grey;
-	bottom: 20px;
-	font-size: 30px;
+	color: black;
 	text-decoration: none;
+	bottom: 20px;
 }
 
-.popup-nav-left:hover, .popup-nav-right:hover {
+.popup-nav-first, .popup-nav-last {
+	font-size: 35px;
+}
+
+.popup-nav-left, .popup-nav-right {
+	font-size: 30px;
+}
+
+.popup-nav-first:hover, .popup-nav-left:hover, .popup-nav-right:hover, .popup-nav-last:hover {
 	color: darkgrey;
+}
+
+.popup-nav-first {
+	left: 25%;
 }
 
 .popup-nav-left {
@@ -161,6 +172,10 @@
 
 .popup-nav-right {
 	right: 40%;
+}
+
+.popup-nav-last {
+	right: 25%;
 }
 
 .blocked {
@@ -173,7 +188,7 @@
 	top: 10px;
 	right: 10px;
 	color: #000;
-	font-size: 20px;
+	font-size: 40px;
 	text-decoration: none;
 }
 
@@ -205,6 +220,18 @@
 	.popup-boxt h2 {
 		text-align: center;
 		margin-bottom: 10px;
+	}
+	.popup-nav-first {
+		left: 25%;
+	}
+	.popup-nav-left {
+		left: 37%;
+	}
+	.popup-nav-right {
+		right: 37%;
+	}
+	.popup-nav-last {
+		right: 25%;
 	}
 }
 

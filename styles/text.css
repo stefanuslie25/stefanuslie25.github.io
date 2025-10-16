@@ -1,5 +1,5 @@
 * {
-	color: yellow;	
+	color: white;	
 }
 
 .b { /* bold*/
@@ -12,19 +12,6 @@
 
 .i { /*italic */
 	font-style: italic;
-}
-
-.rka { /* rata kanan */
-	display: block;
-	text-align: right;
-	padding-right: 50px;
-	padding-left: 60px;
-}
-
-.rki { /* rata kiri */
-	display: block;
-	text-align: left;
-	padding-left: 20px;
 }
 
 .subtitle {
@@ -60,12 +47,12 @@
 	margin-bottom: 7px;
 }
 
-.linki {
+.link {
 	text-decoration: none;
 	color: cyan;
 }
 
-.linki:hover {
+.link:hover {
 	color: blue;
 }
 
@@ -73,11 +60,25 @@
 	text-indent: 50px;
 	text-align: justify;
 	font-style: normal;
+	margin-top: 15px;
 }
 
-.line { /* garis pembatas */
+.infoL { /* garis pembatas */
 	border: none;
 	height: 3px;
 	background-color: white;
 	width: auto;
+	margin-top: 50px;
+}
+
+.category {
+	color: orange;
+	font-weight: 600;
+	margin-top: 50px;
+}
+
+.name {
+	color: yellow;
+	font-weight: 600;
+	margin-top: 25px;
 }

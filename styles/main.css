@@ -2,177 +2,103 @@
 	margin: 0;
 }
 
+:root {
+	--animTime: 0.2s;
+	--animType: linear;
+}
+
 body, html {
 	height: 100%;
 	max-width: 100vw;
 	margin: 0;
 	font-family: Arial, sans-serif;
-	scrollbar-width: none;
-	overflow: hidden;
 }
 
 body {
 	width: 100%;
-	background-color: #5C6869;
+	background-color: grey;
 }
 
-header, footer {
-	background-color: #A2A7AA;
-	font-size: 1em;
-	user-select: none;
-	position: fixed;
-	width: 100%;
-	z-index: 69;
-	transition: height 0.5s ease;
-	justify-content: center;
-	align-items: center;
-	box-shadow: 0 0 15px 3px rgba(0, 0, 0, 0.4);
-}
-
-header {
-	color: black;
-	top: 0;
-	height: 70px;
-	display: flex;
-	transition: transform 0.3s ease, height 0.3s ease;
-}
-
-footer {
-	bottom: 0px;
-	height: 40px;
-}
-
-footer p {
+button {
+	border: 2px solid white;
+	padding: 10px 20px;
 	color: white;
-	text-align: center;
-	margin-top: 10px;
-}
-
-.nav-menu, .youre-here {
-	border: 1px solid black;
-	width: 100px;
-	height: 30px;
-	color: black;
-	background-color: lightblue;
+	background-color: rgba(0,0,0,0);
 	z-index: 1;
 	user-select: none;
 	overflow: hidden;
-	transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+	transition: background-color var(--animTime) var(--animType),
+				color var(--animTime) var(--animType),
+				transform var(--animTime) var(--animType);
 }
 
-.youre-here {
-	background-color: gray;
-	pointer-events: none;
+button:hover {
+	transform: scale(1.05);
+	background-color: white;
+	color: black;
+	font-weight: bold;
 }
 
-.nav-menu::before {
-	content: '';
-	position: absolute;
-	top: 0;
-	left: -120%;
+.main {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	text-align: center;
+	z-index: 0;
+}
+
+.container {
+	position: fixed;
+	top: 50px;
+	bottom: 40px;
+	width: 90vw;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+.content {
 	width: 100%;
 	height: 100%;
-	background: rgba(255, 255, 255, 0.2);
-	transform: skewX(-45deg);
-	transition: all 0.5s;
-	z-index: -1;
-	user-select: none;
+	overflow: auto;
+	scrollbar-width: none;
 }
 
-.nav-menu:hover::before {
-	left: 120%;
+.button {
+	text-align: center;
 }
 
-.nav-menu:hover {
+.title {
+	font-size: 15vw;
 	color: white;
-	transform: scale(1.05);
-	background-color: #0056b3;
+    transition: font-size var(--animTime) var(--animType);
+	z-index: 2;
 }
 
-#menu-toggle {
-	display: none;
-}
-
-.close-menu, .menu-icon {
+.bg {
 	position: fixed;
-	top: 10px;
-	right: 20px;
-	font-size: 3rem;
-	color: white;
-	cursor: pointer;
-	display: none;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: url('https://pa1.aminoapps.com/6417/c45674b40f559366731b9fc04e3cf739eacca677_hq.gif');
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-attachment: fixed;
 }
 
-.menu-icon {
-	top: 20px;
-	right: 25px;
-	font-size: 1.5rem;
-}
-
-.close-menu:hover, .menu-icon:hover {
-	color: #ff6347;
-}
-
-.unsupported-size {
-	display: none;
-}
-
-@media (max-height: 400px) {
-	footer {
-		transform: translateY(40px);
-		transition: transform 0.5s ease;
+@media (min-width: 700px) {
+	.title {
+		font-size: 105px;
+	}
+	.container {
+		width: 700px;
 	}
 }
 
-@media (max-width: 319px), (max-height: 319px) {
-	header, footer {
-		display: none;
-	}
-	.unsupported-size {
-		display: flex;
-		position: fixed;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
-	}
-	.warning-message {
-		width: 80vw;
-		height: auto;
-		padding: 3vw;
-		background-color: red;
-		text-align: center;
-		border-radius: 5vw;
-		font-size: 4vw;
-		font-weight: bold;
-	}
-}
-
-@media (min-width: 320px) and (max-width: 500px) and (min-height: 320px) {
-	#menu-toggle ~ header .nav-menu, #menu-toggle ~ header .youre-here {
-		display: none;
-	}
-	#menu-toggle:checked ~ header .nav-menu, #menu-toggle:checked ~ header .youre-here {
-		display: block;
-		width: 90vw;
-		margin: 5px;
-		top: 50%;
-		transform: translateY(-50%);
-	}
-	#menu-toggle:checked ~ header .nav-menu:hover {
-		top: 50%;
-		transform: translateY(-50%);
-	}
-	#menu-toggle:checked + header {
-		height: 100%;
-		transition: height 0.3s ease;
-	}
-	.menu-icon {
-		display: block;
-	}
-	#menu-toggle:checked ~ header .menu-icon {
-		display: none;
-	}
-	#menu-toggle:checked ~ header .close-menu {
-		display: block;
+@media (max-width: 200px) {
+	.title {
+		font-size: 30px;
 	}
 }

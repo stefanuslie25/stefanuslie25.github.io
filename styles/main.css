@@ -7,22 +7,21 @@
 	--animType: linear;
 }
 
-body, html {
+body {
 	height: 100%;
+	width: 100%;
 	max-width: 100vw;
 	margin: 0;
 	font-family: Arial, sans-serif;
-}
-
-body {
-	width: 100%;
-	background-color: grey;
+	background-color: #f5f2e8;
+	color: black;
 }
 
 button {
-	border: 2px solid white;
+	border: 2px solid black;
 	padding: 10px 20px;
-	color: white;
+	color: black;
+	font-weight: bold;
 	background-color: rgba(0,0,0,0);
 	z-index: 1;
 	user-select: none;
@@ -33,10 +32,8 @@ button {
 }
 
 button:hover {
-	transform: scale(1.05);
-	background-color: white;
-	color: black;
-	font-weight: bold;
+	background-color: black;
+	color: white;
 }
 
 .main {
@@ -49,9 +46,8 @@ button:hover {
 }
 
 .container {
-	position: fixed;
+	position: relative;
 	top: 50px;
-	bottom: 80px;
 	width: 90vw;
 	left: 50%;
 	transform: translateX(-50%);
@@ -59,7 +55,6 @@ button:hover {
 
 .content {
 	width: 100%;
-	height: 100%;
 	overflow: auto;
 	scrollbar-width: none;
 }
@@ -70,7 +65,7 @@ button:hover {
 
 .title {
 	font-size: 15vw;
-	color: white;
+	color: black;
     transition: font-size var(--animTime) var(--animType);
 	z-index: 2;
 }
@@ -81,7 +76,7 @@ button:hover {
 	left: 0;
 	width: 100%;
 	height: 100%;
-	background: url('https://pa1.aminoapps.com/6417/c45674b40f559366731b9fc04e3cf739eacca677_hq.gif');
+	background: url('');
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;

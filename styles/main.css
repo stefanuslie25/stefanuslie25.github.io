@@ -59,15 +59,8 @@ button:hover {
 	scrollbar-width: none;
 }
 
-.button {
+.button-container {
 	text-align: center;
-}
-
-.title {
-	font-size: 15vw;
-	color: black;
-    transition: font-size var(--animTime) var(--animType);
-	z-index: 2;
 }
 
 .bg {
@@ -84,16 +77,7 @@ button:hover {
 }
 
 @media (min-width: 700px) {
-	.title {
-		font-size: 105px;
-	}
 	.container {
 		width: 700px;
-	}
-}
-
-@media (max-width: 200px) {
-	.title {
-		font-size: 30px;
 	}
 }

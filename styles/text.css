@@ -77,3 +77,23 @@
 	font-weight: 600;
 	margin-top: 25px;
 }
+
+
+.title {
+	font-size: 10vw;
+	color: black;
+    transition: font-size var(--animTime) var(--animType);
+	z-index: 2;
+}
+
+@media (min-width: 700px) {
+	.title {
+		font-size: 70px;
+	}
+}
+
+@media (max-width: 200px) {
+	.title {
+		font-size: 20px;
+	}
+}

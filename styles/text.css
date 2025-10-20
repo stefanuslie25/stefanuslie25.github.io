@@ -63,7 +63,6 @@
 .infoL { /* garis pembatas */
 	border: none;
 	height: 3px;
-	background-color: black;
 	width: auto;
 	margin-top: 50px;
 }
@@ -81,7 +80,6 @@
 
 .title {
 	font-size: 10vw;
-	color: black;
     transition: font-size var(--animTime) var(--animType);
 	z-index: 2;
 }

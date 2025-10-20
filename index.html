@@ -11,16 +11,18 @@
 	<link rel="icon" href="favicon/meow.png" type="image/png">
 	<link rel="stylesheet" href="styles/main.css">
 	<link rel="stylesheet" href="styles/text.css">
+	<link id="theme-style" rel="stylesheet" href="theme/theme-light.css">
 </head>
 <body>
 	
 	<div class="bg"></div>
 	<div class="main">
 		<div class="title b i">Welcome!</div>
-		<nav>
-			<button class="estop2" onclick="window.location.href='info.html'">About Me</button>
+		<nav class="estop2">
+			<button onclick="window.location.href='info.html'">About Me</button>
+			<button id="toggle-theme">Switch Theme</button>
 		</nav>
 	</div>
-	
+	<script src="theme/theme.js"></script>
 </body>
 </html>

@@ -7,6 +7,7 @@
 	<link rel="icon" href="favicon/meow.png" type="image/png">
 	<link rel="stylesheet" href="styles/main.css">
 	<link rel="stylesheet" href="styles/text.css">
+	<link id="theme-style" rel="stylesheet" href="theme/theme-light.css">
 </head>
 <body>
 
@@ -14,10 +15,11 @@
 		<div class="title b">404</div>
 		<h1>PAGE NOT FOUND</h1>
 		<p>The page you're looking for doesn't exist.</p>
-	<nav>
-		<button class="estop2" onclick="window.location.href='index.html'">Home</button>
-	</nav>
+		<nav class="estop2">
+			<button onclick="window.location.href='index.html'">Home</button>
+			<button id="toggle-theme">Switch Theme</button>
+		</nav>
 	</div>
-	
+	<script src="theme/theme.js"></script>
 </body>
 </html>

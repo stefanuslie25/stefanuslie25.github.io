@@ -1,13 +1,3 @@
-:root {
-	--animTime: 0.2s;
-	--animType: linear;
-}
-
-body, button {
-	transition: background-color var(--animTime) var(--animType),
-				color var(--animTime) var(--animType);
-}
-
 body {
 	background-color: black;
 	color: #f5f2e8;
@@ -15,13 +5,8 @@ body {
 
 button {
 	border: 2px solid #f5f2e8;
-	padding: 10px 20px;
 	color: #f5f2e8;
-	font-weight: bold;
 	background-color: rgba(0,0,0,0);
-	z-index: 1;
-	user-select: none;
-	overflow: hidden;
 }
 
 button:hover {
@@ -35,4 +20,12 @@ button:hover {
 
 .infoL {
 	background-color: #f5f2e8;
+}
+
+.link {
+	color: white;
+}
+
+.link:hover {
+	color: grey;
 }

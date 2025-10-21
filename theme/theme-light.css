@@ -3,7 +3,7 @@
 	--animType: linear;
 }
 
-body. button {
+body, button {
 	transition: background-color var(--animTime) var(--animType),
 				color var(--animTime) var(--animType);
 }

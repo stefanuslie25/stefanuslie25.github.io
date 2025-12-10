@@ -28,6 +28,12 @@ button {
 	overflow: hidden;
 }
 
+.disabled { /* button disable */
+	cursor: not-allowed;
+	background-color: grey;
+	color: white;
+}
+
 .main {
 	position: fixed;
 	top: 50%;

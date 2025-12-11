@@ -82,6 +82,10 @@
 	z-index: 2;
 }
 
+.floating-button-container button {
+	font-size: 8px;
+}
+
 @media (min-width: 700px) {
 	.title {
 		font-size: 40px;

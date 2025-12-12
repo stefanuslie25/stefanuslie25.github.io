@@ -9,5 +9,4 @@ toggleBtn.onclick = () => {
     const newTheme = themeLink.href.includes('light') ? 'theme/theme-dark.css' : 'theme/theme-light.css';
     themeLink.href = newTheme;
     localStorage.setItem('theme', newTheme); // Simpan tema
-	window.location.reload()
 };

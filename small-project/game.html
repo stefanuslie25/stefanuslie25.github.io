@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div id="stats" class="container hidden">
+		<div class="stats-container">
+			<div id="pStats" class="fullHp">
+				<div class="hp-container">
+					<div class="hp-bar" id="player-hp-bar"></div>
+				</div>
+				<b>Player (Lv. <span id="player-level"></span>)</b>
+				<br> HP: <span id="player-hp"></span>/10
+				<br> (XP: <span id="player-xp-current"></span>/<span id="player-xp-max"></span>)
+				<br> Move: <b><span id="player-move"></span></b>
+			</div>
+			<div class="result">
+				Result:<br>
+				<b><span id="Result"></span></b>
+				<br><br>
+				Draw:<br>
+				<b><span id="drawCount"></span></b>
+				</div>
+			<div id="eStats" class="fullHp">
+				<div class="hp-container">
+					<div class="hp-bar" id="enemy-hp-bar"></div>
+				</div>
+				<b><span id="enemy-name"></span></b>
+				<br> HP: <span id="enemy-hp"></span>/<span id="enemy-hp-max"></span>
+				<br> (Attack: <span id="enemy-damage"></span>)
+				<br> Move: <b><span id="enemy-move"></span></b>
+			</div>
+		</div>
+		
+		<div class="hint">
+			<b>How to play:</b> <br>
+			[R] to choose "Rock", [P] for "Paper" and [S] for Scissors<br>
+			Click refresh to reset all stats
+			<br><br>
+			(Kill: <span id="killCount"></span>, Death: <span id="deathCount"></span>)
+		</div>
+	</div>
+	<div id="out" class="container"></div>
+	<div id="controls" class="button-container"></div>
+	<script src="enemy.js"></script>
+	<script src="game.js"></script>
+	<script src="main.js"></script>
+</body>
+</html>

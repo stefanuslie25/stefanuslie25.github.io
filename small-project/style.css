@@ -1,0 +1,93 @@
+* {
+	text-align: center;
+}
+.fullHp, .lowHp {
+	color: black;
+	font-size: 16px;
+	border: 1px solid #000;
+	width: 150px;
+	height: 120px;
+}
+
+.fullHp {
+	background-color: lightgreen;
+}
+
+.lowHp {
+	background-color: red;
+}
+
+.hp-container {
+	width: auto;
+	height: 20px;
+	background: #444;
+	border: 1px solid #000;
+	margin:5px 5px 10px;
+}
+
+.hp-bar {
+	height: 100%;
+	width: 100%;
+	background: red;
+	transition: width 0.2s ease;
+}
+
+.result {
+	width: 100px;
+	height: 120px;
+	border: 1px solid #000;
+	background-color: lightgrey;
+}
+
+.stats-container {
+	display: flex;
+	gap: 10px;
+}
+	
+.gameover {
+	font-weight: bold;
+	color: red;
+	font-size: 50px;
+}
+	
+.gamewin {
+	font-weight: bold;
+	color: green;
+	font-size: 50px;
+}
+
+.hint {
+	margin-top: 10px;
+	font-size: 15px;
+	background-color: yellow;
+	border: 1px solid #000;
+	padding: 10px;
+}
+
+.container {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+#controls {
+	display: flex;
+	gap: 5px;
+}
+
+#controls button {
+	font-size: 18px;
+	padding: 12px 20px;
+}
+
+.button-container {
+	position: fixed;
+	bottom: 20px;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+.hidden {
+	opacity: 0;
+}

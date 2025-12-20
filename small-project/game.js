@@ -3,20 +3,31 @@ function getRandomEnemy() {
 	enemyStats = { ...enemies[randomIndex] }
 }
 
+const baseXp = 10
+const incrementXp = 5
+const baseHp = 10
+const incrementHp = 1
+
 function getMaxXP(playerLevel) {
-	return 50 + ( state.playerLevel - 1 ) * 25
+	return baseXp + ( state.playerLevel - 1 ) * incrementXp
 }
 
-function initialState() {
+function getMaxHP(playerLevel) {
+	return baseHp + ( state.playerLevel - 1 ) * incrementHp
+}
+
+function initialState(playerLevel) {
 	getRandomEnemy()
-	function giveRandomXP(min, max) {
-		return Math.floor(Math.random() * (max - min + 1)) + min
-	}
 	
-	const xpGain = giveRandomXP(enemyStats.giveXpMin, enemyStats.giveXpMax)
+	const xpGain = Math.floor(
+		Math.random() * (enemyStats.giveXpMax - enemyStats.giveXpMin + 1)
+	) + enemyStats.giveXpMin
+	
+	const maxHp = getMaxHP(playerLevel)
 	
 	return {
-		playerHp: 10,
+		playerHp: maxHp,
+		playerMaxHp: maxHp,
 		enemyName: enemyStats.name,
 		enemyMaxHp: enemyStats.hp,
 		enemyHp: enemyStats.hp,
@@ -32,13 +43,16 @@ function initialState() {
 }
 
 let state = {
-	...initialState(),
 	playerLevel: 1,
 	playerXp: 0,
 	death: 0,
 	kill: 0
 }
 
+Object.assign(state, initialState(state.playerLevel))
+
+state.playerHp = getMaxHP(state.playerLevel)
+state.playerMaxHp = getMaxHP(state.playerLevel)
 state.playerMaxXP = getMaxXP(state.playerLevel)
 
 const choice = [ "rock", "paper", "scissors" ]
@@ -82,36 +96,55 @@ function checkResult(playerMove, enemyMove) {
 		state.enemyHp -= 10
 		return "Win"
 	}
+	if (playerMove === "heal") {
+		if (state.playerHp >= state.playerMaxHp) {
+			return "Hp full!"
+		}
 	
+		const heal = 10
+		state.playerHp = Math.min(state.playerHp + heal, state.playerMaxHp)
+		return "Hp Healed!"
+	}
 	state.playerHp -= state.getHurt
 	return "Lose"
 }
 
 function restart() {
+	const level = state.playerLevel
+	const xp = state.playerXp
+	
 	state = {
-		...initialState(),
-		playerLevel: state.playerLevel,
-		playerXp: state.playerXp,
+		...initialState(level),
+		playerLevel: level,
+		playerXp: xp,
 		death: state.death,
 		kill: state.kill
 	}
+
+	while (state.playerXp >= getMaxXP(state.playerLevel)) {
+		state.playerXp -= getMaxXP(state.playerLevel)
+		state.playerLevel++
+	}
+	
+	state.playerHp = getMaxHP(state.playerLevel)
+	state.playerMaxHp = getMaxHP(state.playerLevel)
 	state.playerMaxXP = getMaxXP(state.playerLevel)
 }
 
 controls.addEventListener("click", e => {
-  const btn = e.target.closest("button")
-  if (!btn) return
-
-  if (btn.dataset.action === "restart") {
-    if (state.gameOver || state.gameWin) {
-      restart()
-      render()
-    }
-    return
-  }
-
-  if (btn.dataset.move) {
-    update(btn.dataset.move)
-    render()
-  }
+	const btn = e.target.closest("button")
+	if (!btn) return
+	
+	if (btn.dataset.action === "restart") {
+		if (state.gameOver || state.gameWin) {
+		restart()
+		render()
+		}
+		return
+	}
+	
+	if (btn.dataset.move) {
+		update(btn.dataset.move)
+		render()
+	}
 })

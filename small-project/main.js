@@ -1,6 +1,7 @@
 const bindings = {
   "player-level": () => state.playerLevel,
-  "player-hp": () => state.playerHp,
+  "player-hp-current": () => state.playerHp,
+  "player-hp-max": () => state.playerMaxHp,
   "player-xp-current": () => state.playerXp,
   "player-xp-max": () => state.playerMaxXP,
   "player-move": () => state.playerMove,
@@ -52,12 +53,13 @@ function render() {
 		<button data-move="rock">🗿</button>
 		<button data-move="paper">📄</button>
 		<button data-move="scissors">✂️</button>
+		<button data-move="heal">🍎</button>
 	`
 	renderHp()
 }
 
 function renderHp() {
-	document.getElementById("player-hp-bar").style.width = (state.playerHp / 10 * 100) + "%"
+	document.getElementById("player-hp-bar").style.width = (state.playerHp / state.playerMaxHp * 100) + "%"
 	document.getElementById("enemy-hp-bar").style.width = (state.enemyHp / state.enemyMaxHp * 100) + "%"
 }
 
@@ -65,6 +67,7 @@ document.addEventListener("keydown", e => {
 	if (e.key.toLowerCase() === "r") update("rock") 
 	if (e.key.toLowerCase() === "p") update("paper")
 	if (e.key.toLowerCase() === "s") update("scissors")
+	if (e.key.toLowerCase() === "h") update("heal")
 	if ( state.gameOver || state.gameWin) {
 		if (e.key === " " || e.code === "Space") restart()
 	}

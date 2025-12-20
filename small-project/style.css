@@ -1,6 +1,24 @@
 * {
 	text-align: center;
 }
+
+.overlay {
+	position: fixed;
+	background-color: black;
+	height: 100%;
+	width: 100%;
+	left: 0;
+	top: 0;
+	opacity: 0.5;
+}
+
+.container {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
 .fullHp, .lowHp {
 	color: black;
 	font-size: 16px;
@@ -64,13 +82,6 @@
 	padding: 10px;
 }
 
-.container {
-	position: fixed;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-}
-
 #controls {
 	display: flex;
 	gap: 5px;
@@ -83,11 +94,19 @@
 
 .button-container {
 	position: fixed;
-	bottom: 20px;
 	left: 50%;
-	transform: translateX(-50%);
+	bottom: calc(50% - 215px);
+	transform: translate(-50%,-50%);
 }
 
 .hidden {
 	opacity: 0;
+}
+
+@media (max-height: 380px) {
+	.button-container {
+		bottom: 20px;
+		left: 50%;
+		transform: translateX(-50%);
+	}
 }

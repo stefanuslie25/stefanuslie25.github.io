@@ -2,9 +2,10 @@
 <html>
 <head>
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
 	<link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body>	
 	<div id="stats" class="container hidden">
 		<div class="stats-container">
 			<div id="pStats" class="fullHp">
@@ -12,7 +13,7 @@
 					<div class="hp-bar" id="player-hp-bar"></div>
 				</div>
 				<b>Player (Lv. <span id="player-level"></span>)</b>
-				<br> HP: <span id="player-hp"></span>/10
+				<br> HP: <span id="player-hp-current"></span>/<span id="player-hp-max"></span>
 				<br> (XP: <span id="player-xp-current"></span>/<span id="player-xp-max"></span>)
 				<br> Move: <b><span id="player-move"></span></b>
 			</div>
@@ -21,7 +22,7 @@
 				<b><span id="Result"></span></b>
 				<br><br>
 				Draw:<br>
-				<b><span id="drawCount"></span></b>
+				<b><span id="drawCount"></span></b> time(s)
 				</div>
 			<div id="eStats" class="fullHp">
 				<div class="hp-container">
@@ -36,7 +37,7 @@
 		
 		<div class="hint">
 			<b>How to play:</b> <br>
-			[R] to choose "Rock", [P] for "Paper" and [S] for Scissors<br>
+			[R] to choose "Rock", [P] for "Paper", [S] for Scissors, [H] for heal<br>
 			Click refresh to reset all stats
 			<br><br>
 			(Kill: <span id="killCount"></span>, Death: <span id="deathCount"></span>)

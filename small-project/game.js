@@ -55,11 +55,11 @@ state.playerHp = getMaxHP(state.playerLevel)
 state.playerMaxHp = getMaxHP(state.playerLevel)
 state.playerMaxXP = getMaxXP(state.playerLevel)
 
-const choice = [ "rock", "paper", "scissors" ]
+const RPSchoice = [ "Rock", "Paper", "Scissors" ]
 
 function enemyMove() {
-	const i = Math.floor(Math.random() * choice.length)
-	return choice[i]
+	const i = Math.floor(Math.random() * RPSchoice.length)
+	return RPSchoice[i]
 }
 
 function update(cmd) {
@@ -84,29 +84,42 @@ function update(cmd) {
 }
 
 function checkResult(playerMove, enemyMove) {
-	if (playerMove === enemyMove) {
-		state.draw ++
-		return "Draw"
-	}
-	if (
-		(playerMove === "rock" && enemyMove === "scissors") ||
-		(playerMove === "paper" && enemyMove === "rock") ||
-		(playerMove === "scissors" && enemyMove === "paper")
-	) {
-		state.enemyHp -= 10
-		return "Win"
-	}
-	if (playerMove === "heal") {
-		if (state.playerHp >= state.playerMaxHp) {
-			return "Hp full!"
+	if (RPSchoice.includes(playerMove)) {
+		const win = {
+			Rock: "Scissors",
+			Paper: "Rock",
+			Scissors: "Paper"
 		}
-	
-		const heal = 10
-		state.playerHp = Math.min(state.playerHp + heal, state.playerMaxHp)
-		return "Hp Healed!"
+		if (playerMove === enemyMove) {
+			state.draw++
+			return "Draw"
+		}
+		if (win[playerMove] === enemyMove) {
+			state.enemyHp -= 10
+			return "Win"
+		}
+		if (win[enemyMove] === playerMove) {
+			state.playerHp -= state.getHurt
+			return "Lose"
+		}
+	} else {
+		state.enemyMove = "waiting..."
+		if (playerMove === "Heal") {
+			if (state.playerHp >= state.playerMaxHp) {
+				return "Can't heal"
+			} else {
+				const healValue = 10
+				state.playerHp = Math.min(state.playerHp + healValue, state.playerMaxHp)
+				return "Hp Healed!"
+			}
+		} else {
+			if (playerMove === "Inventory") openPopup("popup-inventory")
+			if (playerMove === "Store") openPopup("popup-store")
+			if (playerMove === "Escape") closePopup()
+			state.playerMove = "N/A"
+		}
+		return "N/A"
 	}
-	state.playerHp -= state.getHurt
-	return "Lose"
 }
 
 function restart() {
@@ -131,15 +144,20 @@ function restart() {
 	state.playerMaxXP = getMaxXP(state.playerLevel)
 }
 
-controls.addEventListener("click", e => {
+document.addEventListener("click", e => {
 	const btn = e.target.closest("button")
 	if (!btn) return
 	
-	if (btn.dataset.action === "restart") {
+	if (btn.dataset.action === "Restart") {
 		if (state.gameOver || state.gameWin) {
 		restart()
 		render()
 		}
+		return
+	}
+	
+	if (btn.dataset.action === "ClosePopup") {
+		closePopup()
 		return
 	}
 	

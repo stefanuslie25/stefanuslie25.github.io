@@ -20,7 +20,7 @@ const bindings = {
 
 function render() {
 	if (state.gameOver || state.gameWin) {
-		controls.innerHTML = `<button data-action="restart">🔁</button>`
+		controls.innerHTML = `<button data-action="Restart">🔁</button>`
 		document.getElementById("stats").classList.add("hidden")
 	}
 	if (state.gameOver) {
@@ -50,10 +50,12 @@ function render() {
 	}
 	
 	controls.innerHTML = `
-		<button data-move="rock">🗿</button>
-		<button data-move="paper">📄</button>
-		<button data-move="scissors">✂️</button>
-		<button data-move="heal">🍎</button>
+		<button data-move="Rock">🗿</button>
+		<button data-move="Paper">📄</button>
+		<button data-move="Scissors">✂️</button>
+		<button data-move="Heal">🍎</button>
+		<button data-move="Inventory">🎒</button>
+		<button data-move="Store">🏪</button>
 	`
 	renderHp()
 }
@@ -63,15 +65,36 @@ function renderHp() {
 	document.getElementById("enemy-hp-bar").style.width = (state.enemyHp / state.enemyMaxHp * 100) + "%"
 }
 
+let activePopup = null
+
+function openPopup(name) {
+	activePopup = name
+	document.getElementById(name).classList.remove("hidden")
+}
+
+function closePopup() {
+	if (!activePopup) return
+	document.getElementById(activePopup).classList.add("hidden")
+	activePopup = null
+}
+
 document.addEventListener("keydown", e => {
-	if (e.key.toLowerCase() === "r") update("rock") 
-	if (e.key.toLowerCase() === "p") update("paper")
-	if (e.key.toLowerCase() === "s") update("scissors")
-	if (e.key.toLowerCase() === "h") update("heal")
+	if (activePopup) {
+		if (!["Escape", "Enter"].includes(e.key)) return
+		if (e.key === "Escape") {
+			closePopup()
+			return
+		}
+	}
+	if (e.key.toLowerCase() === "r") update("Rock") 
+	if (e.key.toLowerCase() === "p") update("Paper")
+	if (e.key.toLowerCase() === "s") update("Scissors")
+	if (e.key.toLowerCase() === "h") update("Heal")
+	if (e.key.toLowerCase() === "i") update("Inventory")
+	if (e.key.toLowerCase() === "o") update("Store")
 	if ( state.gameOver || state.gameWin) {
 		if (e.key === " " || e.code === "Space") restart()
 	}
-
 	render()
 })
 

@@ -2,16 +2,6 @@
 	text-align: center;
 }
 
-.overlay {
-	position: fixed;
-	background-color: black;
-	height: 100%;
-	width: 100%;
-	left: 0;
-	top: 0;
-	opacity: 0.5;
-}
-
 .container {
 	position: fixed;
 	top: 50%;
@@ -83,7 +73,7 @@
 	gap: 5px;
 }
 
-#controls button {
+button {
 	font-size: 18px;
 	padding: 12px 20px;
 }
@@ -95,8 +85,37 @@
 	transform: translate(-50%,-50%);
 }
 
+.overlay {
+	position: fixed;
+	inset: 0;
+	background: rgba(0,0,0,0.5);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 1000;
+}
+
+.popup-box {
+	background: #fff;
+	padding: 20px;
+	border-radius: 8px;
+}
+
 .hidden {
-	opacity: 0;
+	display: none;
+}
+
+.closePopup {
+	z-index: 3;
+}
+
+.popupTitle {
+	font-size: 30px;
+	margin: 5px;
+}
+
+.warning {
+	color: red;
 }
 
 @media (max-height: 380px) {

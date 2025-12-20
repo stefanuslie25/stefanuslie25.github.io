@@ -34,13 +34,28 @@
 				<br> Move: <b><span id="enemy-move"></span></b>
 			</div>
 		</div>
-		
 		<div class="hint">
 			<b>How to play:</b> <br>
-			[R] to choose "Rock", [P] for "Paper", [S] for Scissors, [H] for heal<br>
-			Click refresh to reset all stats
+			[R] to choose "Rock", [P] for "Paper", [S] for Scissors,<br>
+			[H] for heal, [I] to open inventory, [O] to open store<br>
+			<i><b class="warning">WARNING: THIS GAME STILL HAS NO SAVE SYSTEM</b></i>
 			<br><br>
 			(Kill: <span id="killCount"></span>, Death: <span id="deathCount"></span>)
+		</div>
+	</div>
+	<div id="popup-inventory" class="overlay hidden">
+		<div class="popup-box">
+			<p class="popupTitle">Inventory</p>
+			<button data-action="ClosePopup" id="closePopup">Close</button>
+		</div>
+	</div>
+	<div id="popup-store" class="overlay hidden">
+		<div class="popup-box">
+			<p class="popupTitle">Store</p>
+			🪙 123,456 - It's<br>
+			🪙 12,345 - Just a<br>
+			🪙 1,234 - Placeholder <br><br>
+			<button data-action="ClosePopup" id="closePopup">Close</button>
 		</div>
 	</div>
 	<div id="out" class="container"></div>

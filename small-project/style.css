@@ -17,22 +17,17 @@
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
+	padding: 10px;
+	width: calc(100% - 20px);
 }
 
-.fullHp, .lowHp {
+.stats {
+	background-color: lightgreen;
 	color: black;
 	font-size: 16px;
 	border: 1px solid #000;
-	width: 150px;
+	width: calc(100% / 2.29);
 	height: 120px;
-}
-
-.fullHp {
-	background-color: lightgreen;
-}
-
-.lowHp {
-	background-color: red;
 }
 
 .hp-container {
@@ -51,15 +46,16 @@
 }
 
 .result {
-	width: 100px;
+	width: 80px;
 	height: 120px;
+	padding: 0 10px;
 	border: 1px solid #000;
 	background-color: lightgrey;
 }
 
 .stats-container {
 	display: flex;
-	gap: 10px;
+	gap: 5px;
 }
 	
 .gameover {
@@ -75,7 +71,7 @@
 }
 
 .hint {
-	margin-top: 10px;
+	margin-top: 5px;
 	font-size: 15px;
 	background-color: yellow;
 	border: 1px solid #000;
@@ -108,5 +104,15 @@
 		bottom: 20px;
 		left: 50%;
 		transform: translateX(-50%);
+	}
+}
+@media (min-width: 500px) {
+	.container {
+		width: 480px;
+	}
+}
+@media (max-width: 320px) {
+	.container {
+		width: 300px;
 	}
 }

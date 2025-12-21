@@ -5,12 +5,14 @@ const bindings = {
   "player-xp-current": () => state.playerXp,
   "player-xp-max": () => state.playerMaxXP,
   "player-move": () => state.playerMove,
+  "player-money": () => state.OwnedMoney,
 
   "enemy-name": () => state.enemyName,
   "enemy-hp": () => state.enemyHp,
   "enemy-hp-max": () => state.enemyMaxHp,
-  "enemy-damage": () => state.getHurt,
   "enemy-move": () => state.enemyMove,
+  "enemy-damage-min": () => state.getHurtMinValue,
+  "enemy-damage-max": () => state.getHurtMaxValue,
 
   "Result": () => state.result,
   "drawCount": () => state.draw,
@@ -34,7 +36,7 @@ function render() {
 	} else if (state.gameWin) {
 		out.innerHTML = `
 			<div class="gamewin">YOU WIN!</div>
-			Rewards: ${state.xpGain} XP
+			Rewards: ${state.xpGain} XP & ${state.moneyGain} gold(s)
 			<div class="hint">Press [Space] to restart.</div>
 			<div class="button-container">
 				<button data-action="Restart">🔁</button>

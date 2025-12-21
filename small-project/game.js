@@ -3,25 +3,25 @@ function getRandomEnemy() {
 	enemyStats = { ...enemies[randomIndex] }
 }
 
-const baseXp = 10
-const incrementXp = 5
-const baseHp = 10
-const incrementHp = 1
+getRandomEnemy()
 
-function getMaxXP(playerLevel) {
-	return baseXp + ( state.playerLevel - 1 ) * incrementXp
+function scaleStats(base, increment, level) {
+  return base + (level - 1) * increment
 }
 
-function getMaxHP(playerLevel) {
-	return baseHp + ( state.playerLevel - 1 ) * incrementHp
-}
+const playerDamage = 5
+const getMaxXP = level => scaleStats(10, 5, level)
+const getMaxHP = level => scaleStats(10, 1, level)
 
 function initialState(playerLevel) {
-	getRandomEnemy()
 	
 	const xpGain = Math.floor(
-		Math.random() * (enemyStats.giveXpMax - enemyStats.giveXpMin + 1)
-	) + enemyStats.giveXpMin
+		Math.random() * (enemyStats.giveXp.max - enemyStats.giveXp.min + 1)
+	) + enemyStats.giveXp.min
+	
+	const moneyGain = Math.floor(
+		Math.random() * (enemyStats.giveMoney.max - enemyStats.giveMoney.min + 1)
+	) + enemyStats.giveMoney.min
 	
 	const maxHp = getMaxHP(playerLevel)
 	
@@ -31,8 +31,10 @@ function initialState(playerLevel) {
 		enemyName: enemyStats.name,
 		enemyMaxHp: enemyStats.hp,
 		enemyHp: enemyStats.hp,
-		getHurt: enemyStats.attack,
+		getHurtMinValue: enemyStats.damage.min,
+		getHurtMaxValue: enemyStats.damage.max,
 		xpGain,
+		moneyGain,
 		playerMove: "N/A",
 		enemyMove: "N/A",
 		result: "N/A",
@@ -45,6 +47,7 @@ function initialState(playerLevel) {
 let state = {
 	playerLevel: 1,
 	playerXp: 0,
+	OwnedMoney: 0,
 	death: 0,
 	kill: 0
 }
@@ -65,6 +68,12 @@ function enemyMove() {
 function update(cmd) {
 	if (state.gameOver) return
 	if (state.gameWin) return
+
+	const enemyDamageFinal = Math.floor(
+		Math.random() * (enemyStats.damage.max - enemyStats.damage.min + 1)
+	) + enemyStats.damage.min
+	
+	state.getHurt = enemyDamageFinal
 	
 	state.playerMove = cmd
 	state.enemyMove = enemyMove()
@@ -80,11 +89,13 @@ function update(cmd) {
 		state.gameWin = true
 		state.kill++
 		state.playerXp += state.xpGain
+		state.OwnedMoney += state.moneyGain
 	}
 }
 
 function checkResult(playerMove, enemyMove) {
 	if (RPSchoice.includes(playerMove)) {
+		
 		const win = {
 			Rock: "Scissors",
 			Paper: "Rock",
@@ -95,7 +106,7 @@ function checkResult(playerMove, enemyMove) {
 			return "Draw"
 		}
 		if (win[playerMove] === enemyMove) {
-			state.enemyHp -= 10
+			state.enemyHp -= playerDamage
 			return "Win"
 		}
 		if (win[enemyMove] === playerMove) {
@@ -130,6 +141,7 @@ function restart() {
 		...initialState(level),
 		playerLevel: level,
 		playerXp: xp,
+		OwnedMoney: state.OwnedMoney,
 		death: state.death,
 		kill: state.kill
 	}

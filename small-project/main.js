@@ -49,13 +49,16 @@ function render() {
 		document.getElementById(id).textContent = bindings[id]()
 	}
 	
-	controls.innerHTML = `
+	controls.innerHTML =
+	`
+	<nav>
 		<button data-move="Rock">🗿</button>
 		<button data-move="Paper">📄</button>
 		<button data-move="Scissors">✂️</button>
 		<button data-move="Heal">🍎</button>
 		<button data-move="Inventory">🎒</button>
 		<button data-move="Store">🏪</button>
+	</nav>
 	`
 	renderHp()
 }

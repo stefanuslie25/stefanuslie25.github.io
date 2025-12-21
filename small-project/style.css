@@ -73,16 +73,22 @@
 	gap: 5px;
 }
 
+nav {
+	display: grid;
+	gap: 10px;
+	grid-template-columns: repeat(6, 1fr);
+}
+
 button {
 	font-size: 18px;
 	padding: 12px 20px;
 }
 
 .button-container {
-	position: fixed;
+	position: absolute;
 	left: 50%;
-	bottom: calc(50% - 215px);
-	transform: translate(-50%,-50%);
+	transform: translateX(-50%);
+	margin-top: 20px;
 }
 
 .overlay {
@@ -128,6 +134,11 @@ button {
 @media (min-width: 500px) {
 	.container {
 		width: 480px;
+	}
+}
+@media (max-width: 500px) {
+	nav {
+		grid-template-columns: repeat(3, 1fr);
 	}
 }
 @media (max-width: 320px) {

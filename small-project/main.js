@@ -20,23 +20,25 @@ const bindings = {
 
 function render() {
 	if (state.gameOver || state.gameWin) {
-		controls.innerHTML = `<button data-action="Restart">🔁</button>`
 		document.getElementById("stats").classList.add("hidden")
 	}
 	if (state.gameOver) {
 		out.innerHTML = `
 			<div class="gameover">GAME OVER</div>
 			<div class="hint">Press [Space] to restart.</div>
+			<div class="button-container">
+				<button data-action="Restart">🔁</button>
+			</div>
 		`
 		return;
-	} else {
-		out.innerHTML = ""
-	}
-	if (state.gameWin) {
+	} else if (state.gameWin) {
 		out.innerHTML = `
 			<div class="gamewin">YOU WIN!</div>
 			Rewards: ${state.xpGain} XP
 			<div class="hint">Press [Space] to restart.</div>
+			<div class="button-container">
+				<button data-action="Restart">🔁</button>
+			</div>
 		`
 		return;
 	} else {

@@ -111,10 +111,6 @@ button {
 	display: none;
 }
 
-.closePopup {
-	z-index: 3;
-}
-
 .popupTitle {
 	font-size: 30px;
 	margin: 5px;

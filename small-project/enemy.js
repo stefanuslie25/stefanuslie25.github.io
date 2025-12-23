@@ -1,7 +1,7 @@
 const enemies = [
 	{
-		name: "Slime Blue",
-		hp: 100,
+		name: "Test 01",
+		hp: 10,
 		damage: {
 			min: 0,
 			max: 2
@@ -16,8 +16,8 @@ const enemies = [
 		}
 	},
 	{
-		name: "Slime Green",
-		hp: 150,
+		name: "Test 02",
+		hp: 15,
 		damage: {
 			min: 1,
 			max: 3
@@ -32,8 +32,8 @@ const enemies = [
 		}
 	},
 	{
-		name: "Slime Pink",
-		hp: 250,
+		name: "Test 03",
+		hp: 25,
 		damage: {
 			min: 2,
 			max: 5
@@ -45,22 +45,6 @@ const enemies = [
 		giveMoney: {
 			min: 100,
 			max: 500
-		}
-	},
-	{
-		name: "Slime King",
-		hp: 1000,
-		damage: {
-			min: 0,
-			max: 7
-		},
-		giveXp: {
-			min: 50,
-			max: 120
-		},
-		giveMoney: {
-			min: 300,
-			max: 1000
 		}
 	}
 ]
